@@ -24,3 +24,18 @@ Here are the columns names:
  'Episode_season',
  'multiple_entreprenuers'
 
+
+
+
+
+
+
+In the next chart I would like to know the number of investments made by the sharks in each season. Therefore, I would reveal this element and illustrate it by using  the pie chart.
+We can notice, there is an increase in the number of investments made by the sharks as the TV show progressed over the seasons.
+As we can see, the number of investments taken in the first and second season was 27 and 19 .
+And on the opposite side, in the fifth season  and sixth season we can notice a big increase in numbers : 61 and 63.
+Seasons 1+2  = 27+19 = 46
+Seasons 5+6 = 61 + 63 = 124
+
+
+
