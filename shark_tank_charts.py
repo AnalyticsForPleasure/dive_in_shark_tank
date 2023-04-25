@@ -55,7 +55,6 @@ def pie_chart_which_illustrate_the_number_of_investments_each_season_over_the_ye
                bbox_to_anchor=(1, 0, 0.5, 1))
     plt.show()
 
-
 def two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(individual_entre_df, multiple_entre_df):
     # Data to be plotted
     # In this chart we have 2 series: multiple_entrepreneur, individual_entrepreneur

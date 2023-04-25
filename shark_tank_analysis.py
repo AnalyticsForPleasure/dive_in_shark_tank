@@ -452,8 +452,7 @@ if __name__ == '__main__':
     # print('*')
 
     # 11. What is the ratio of investments of each shark choosing between multiple entrepreneurs VS individual entrepreneurs?
-    res = ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_individual_entrepreneur(
-        all_the_deals_closed)
+    res = ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_individual_entrepreneur(all_the_deals_closed)
     two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(res[0], res[1])
     print('*')
 
@@ -475,8 +474,10 @@ if __name__ == '__main__':
 
     # df = df.dropna(how='all')
     counting_the_number_of_entrepreneuers_in_a_group_for_pitching(df)
+    print('*')
 
     # Which shark is known as the more willing to take risks? # TODO : continue with the risky shark + chart
+    closed_deals = df.loc[df['deal'] == True, :]
     finding_the_shark_which_known_as_willing_to_takes_risky_investment(closed_deals)
     print('*')
     # What is the average investment over the seasons?
@@ -493,7 +494,7 @@ if __name__ == '__main__':
         print('*')
 
         # 23. What is the average valuation of each shark willing to invest? ( over each season )
-        # getting_avg_valuation_of_each_shark_willing_to_invest_each_season(all_the_deals_closed)
-        print('*')
+        #getting_avg_valuation_of_each_shark_willing_to_invest_each_season(all_the_deals_closed)
+        #print('*')
 
     # ['deal', 'description', 'episode', 'category', 'entrepreneurs', 'location', 'website', 'askedfor', 'exchangeforstake', 'valuation', 'season', 'shark1', 'shark2', 'shark3', 'shark4', 'shark5', 'title', 'episode_season', '']
