@@ -1,17 +1,14 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-import dataframe_image as dfi  # Should install: "dataframe-image"
-import seaborn as sns
-#import plotly.express as px
 import re
+
+import numpy as np
+import pandas as pd
 
 
 def convert_to_number(text_row):
     if text_row is np.nan:
         return 0
 
-    value_cap = int(text_row.replace('$', '').replace(',', ''))
+    value_cap = text_row.replace('$', '').replace(',', '')
 
     return value_cap
 
@@ -31,7 +28,6 @@ def convert_percentage_number(text_row):
 # return value:
 # ******************************************************************************************************************
 def retrieving_negotiation_details(df):
-
     df_deals_closed = df.loc[:, ['ASK', 'DEAL']].dropna()  # selecting only 6 relevant columns
     # Working on the valuation part:
     df_deals_closed['ASK', 'Valuation_ASK'] = df_deals_closed.loc[:, ('ASK', 'Valuation')].apply(
@@ -63,7 +59,7 @@ def retrieving_negotiation_details(df):
     res['Y'] = [1] * len(res)
     list_x = list(range(0, len(res)))
     res['X'] = list_x
-    res
+
     print('*')
 
     return res
@@ -84,34 +80,56 @@ def retriving_info_about_royalty_equity_and_loans(df):
             df[f'contains_{k}'] = df.loc[:, 'Details / Notes'].str.contains('equity|perpetual', regex=True,
                                                                             flags=re.IGNORECASE)
 
-        dict_royalties_loans_equities[k] = np.sum(df[f'contains_{k}']) # {'royalty': 22, 'loan': 15, 'equity': 16}
+        dict_royalties_loans_equities[k] = np.sum(df[f'contains_{k}'])  # {'royalty': 22, 'loan': 15, 'equity': 16}
     print('*')
     return dict_royalties_loans_equities
 
+
 if __name__ == '__main__':
     pd.set_option('display.max_rows', 500)
-    df = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx", sheet_name='Sheet1')  # header=[0, 1]
+    df = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",
+                       sheet_name='Sheet1')  # header=[0, 1]
 
-
-    #retriving_info_about_royalty_equity_and_loans(df)
-    #print('*')
-
-
-    # # create a sample dataframe
-    # df = pd.DataFrame({'text': ['I love pandas', 'Pandas are awesome', 'Python is great']})
-    #
-    # # search for the word 'pandas' in the 'text' column
-    # df['contains_pandas'] = df['text'].str.contains('pandas', case=False)
-
-    result = retrieving_negotiation_details(df)
+    print('*')
+    # retriving_info_about_royalty_equity_and_loans(df)
+    # print('*')
+    ##########################################################################################################################
+    # In order to do the the dynamic Waffle chart :
+    all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
+    all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
     print('*')
 
+    all_the_deals_closed['DEAL'] = all_the_deals_closed['DEAL'].apply(lambda x: convert_to_number(x))
+    all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['DEAL'] != '', :]
+    all_the_deals_closed['DEAL'] = all_the_deals_closed['DEAL'].astype('int')
+    column_headers = list(all_the_deals_closed.columns.values)
+    groups_by_season = all_the_deals_closed.groupby('Season')
+    for season_number, mini_df_season_number in groups_by_season:
+        # print(f'Season #{season_number}')
+        mini_df_season_number.reset_index(inplace=True, drop=True)
+        investors_matrix = mini_df_season_number.iloc[:, 17:24]
+        investors_matrix = investors_matrix.replace('', 0)
+        investors_matrix = investors_matrix.astype('int')
+        mini_df_season_number['number_of_investors'] = investors_matrix.sum(axis=1)
+        mini_df_season_number['investment_per_investor'] = mini_df_season_number['DEAL'] / \
+                                                           mini_df_season_number['number_of_investors']
+
+        infinite_investment = mini_df_season_number['investment_per_investor'] == np.inf
+        mini_df_season_number.loc[infinite_investment, 'investment_per_investor'] = 0
+        res = np.multiply(investors_matrix.T,
+                          mini_df_season_number['investment_per_investor'])
+        res2 = res.sum(axis=1)
+        print(f'Season #{season_number}:\n {res2}')
+        print('*' * 50)
+
+    # result = retrieving_negotiation_details(df)
+    # print('*')
     # https://towardsdatascience.com/9-visualizations-to-show-proportions-or-percentages-instead-of-a-pie-chart-4e8d81617451
 
     # check the column 'willing_to_invest' it over the seasons
     # ratio_ask_to_deal_valiation
-    print('*')
-    #
+    # print('*')
+
     # pal_ = list(sns.color_palette(palette='plasma_r',
     #                               n_colors=len(res.measurement)).as_hex())
     # # create a laebls list for each bubble

@@ -1,13 +1,7 @@
-import pandas as pd
-import dataframe_image as dfi
 import numpy as np
-
-from shark_tank_charts import getting_top_5_investments_made_by_a_shark_over_stack_bar_chart
-from shark_tank_charts import pie_chart_which_illustrate_the_number_of_investments_each_season_over_the_years
+import pandas as pd
 
 from shark_tank_charts import two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur
-from shark_tank_charts import creating_bidirectional_bar_chart_by_categories
-from shark_tank_charts import slope_chart_for_industries_have_gotten_hotter_or_colder_over_6_seasons
 
 
 # **************************************************************************************************************
@@ -452,7 +446,8 @@ if __name__ == '__main__':
     # print('*')
 
     # 11. What is the ratio of investments of each shark choosing between multiple entrepreneurs VS individual entrepreneurs?
-    res = ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_individual_entrepreneur(all_the_deals_closed)
+    res = ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_individual_entrepreneur(
+        all_the_deals_closed)
     two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(res[0], res[1])
     print('*')
 
@@ -494,7 +489,7 @@ if __name__ == '__main__':
         print('*')
 
         # 23. What is the average valuation of each shark willing to invest? ( over each season )
-        #getting_avg_valuation_of_each_shark_willing_to_invest_each_season(all_the_deals_closed)
-        #print('*')
+        # getting_avg_valuation_of_each_shark_willing_to_invest_each_season(all_the_deals_closed)
+        # print('*')
 
     # ['deal', 'description', 'episode', 'category', 'entrepreneurs', 'location', 'website', 'askedfor', 'exchangeforstake', 'valuation', 'season', 'shark1', 'shark2', 'shark3', 'shark4', 'shark5', 'title', 'episode_season', '']
