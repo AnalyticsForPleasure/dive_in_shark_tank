@@ -2,6 +2,18 @@ import numpy as np
 import pandas as pd
 
 from shark_tank_charts import two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur
+# **************************************************************************************************************
+# Function  name: helper function for Define a function for converting the format
+# input:
+# return value:
+# ***************************************************************************************************************
+def convert_format(value):
+    parts = value.split('-')
+    if len(parts) == 2:
+        return '.'.join(parts)
+    else:
+        return value
+
 
 
 # **************************************************************************************************************
@@ -359,6 +371,8 @@ if __name__ == '__main__':
 
     pd.set_option('display.max_rows', 500)
     df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv')
+
+    df['episode_season'] = df['episode_season'].apply(convert_format)
     print('*')
     # short info about the data:
     print(df.columns.values)  # list of column names
