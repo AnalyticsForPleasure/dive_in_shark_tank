@@ -371,13 +371,16 @@ if __name__ == '__main__':
 
     pd.set_option('display.max_rows', 500)
     df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv')
-
+    #df_2 = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",sheet_name='Sheet1')
+    # In order to make inner join -  I need to make small changes / casting
     df['episode_season'] = df['episode_season'].apply(convert_format)
+    #res.rename(columns={res.columns[0]: 'season_number'}, inplace=True)
     print('*')
+
     # short info about the data:
-    print(df.columns.values)  # list of column names
-    print(df.shape[0])  # 495 rows
-    print(df.shape[1])  # 19 columns
+    # print(df.columns.values)  # list of column names
+    # print(df.shape[0])  # 495 rows
+    # print(df.shape[1])  # 19 columns
     print('*')
 
     # Adding a column which shows us how is the choosen shark selected
