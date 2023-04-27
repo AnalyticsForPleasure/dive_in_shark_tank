@@ -38,4 +38,8 @@ Seasons 1+2  = 27+19 = 46
 Seasons 5+6 = 61 + 63 = 124
 
 
+![image](https://user-images.githubusercontent.com/28948369/234967869-da3aeb9b-3e4a-4710-9ff1-7a20b988f1ff.png)
+
+
+
 
