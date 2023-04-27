@@ -347,16 +347,18 @@ def counting_the_number_of_entrepreneuers_in_a_group_for_pitching(df):
     # Apply the function to each row in the column
     df['entrepreneurs_output'] = df['entrepreneurs_output'].apply(count_elements_in_list)
     df['entrepreneurs_output'] = df['entrepreneurs_output'].apply(lambda x: int(x))
+    df.rename(columns={df.columns[1]: 'Number of entrepreneurs in a pitch '}, inplace=True)
     # number of entrepreneurs in the group how gave a pitch:
     final_result = df['entrepreneurs_output'].value_counts().reset_index(level=0)
-    print(df)
+    final_result.rename(columns={final_result.columns[0]: 'Number of entrepreneurs in a pitch'}, inplace=True)
+    print('*')
     return final_result
 
 
 if __name__ == '__main__':
 
     pd.set_option('display.max_rows', 500)
-    df = pd.read_csv('../data/shark_tank_companies.csv')
+    df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv')
     print('*')
     # short info about the data:
     print(df.columns.values)  # list of column names
