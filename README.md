@@ -6,10 +6,11 @@ For some of you, who aren’t similar with the TV show “Shark Tank” series, 
 
 This mainstreaming of angel investment (  = a high net worth individual who invests their own money along with their time) in this entertaining format , gives us a bigger picture of how we can learn from the discussion of equity, funding, valuation and growth strategies.
 
-Now, Let’s see a glimpse of the angel investor process
+Now, Let’s see a glimpse of the *angel investor* process
 
 This data presents us with useful information about the show series taken on the ABC channel.
 As we can see below, the dataset includes 18 columns 450 rows ( matrix of 450 *18 ). Each row gives us information about the next entrepreneur who is willing to succeed in the big world,
+
 
 Here are the columns names:
 'Deal'
