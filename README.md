@@ -48,3 +48,18 @@ Seasons 5+6 = 61 + 63 = 124
 
 
 
+
+# Analysis the new data 
+As we go over the multiindex data we can notice an hierarchical indexing under the header of “ASK” and “DEAL” multiindex.
+The “ASK” columns presents all the aspects ( Amount, acuity and valuation ) given by the entrepreneurs as they give their peches offer to the sharks.
+The “DEAL”columns present the same aspects, but after a negotiation between the entrepreneurs and the sharks. Usually the sharks will try to “cut off “ the asking price valuation or reduce the amount of money they are willing to pay, In order to hedge their investments.
+
+Therefore, I decided to drill down, and to focus on the negotiation part.
+
+As we go over the multiindex data we can notice an hierarchical indexing under the header of “ASK” and “DEAL” multiindex.
+The “ASK” columns presents all the aspects ( Amount, acuity and valuation ) given by the entrepreneurs as they give their peches offer to the sharks.
+The “DEAL”columns present the same aspects, but after a negotiation between the entrepreneurs and the sharks. Usually the sharks will try to “cut off “ the asking price valuation or reduce the amount of money they are willing to pay, In order to hedge their investments.
+
+Therefore, I decided to drill down, and to focus on the negotiation part.
+
+
