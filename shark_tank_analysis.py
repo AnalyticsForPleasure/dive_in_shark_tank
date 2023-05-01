@@ -9,22 +9,14 @@ from shark_tank_charts import two_bar_plot_shows_multiple_entrepreneurs_VS_indiv
 # input:
 # return value:
 # ***************************************************************************************************************
-def pad_number(num):
-    # split the number into integer and decimal parts
-    int_part, dec_part = str(num).split('.')
-
-    # check if the decimal part needs padding
-    if len(dec_part) < 2:
-        # pad the decimal part with leading zeros
-        dec_part_padded = np.format_float_positional(float('0.' + dec_part), precision=2, trim='-')
-    else:
-        # use the original decimal part
-        dec_part_padded = dec_part
-
-    # join the integer and padded decimal parts
-    padded_num = int_part + '.' + dec_part_padded
-
-    return float(padded_num)
+def format_number(input_str):
+    parts = input_str.split('-')
+    int_part = parts[0]
+    dec_part = parts[1]
+    if len(dec_part) == 1:
+        dec_part = '0' + dec_part
+    output_str = int_part + '.' + dec_part
+    return output_str
 
 # **************************************************************************************************************
 # Function  name: helper function for Define a function to count the number of elements in a list
@@ -384,8 +376,10 @@ if __name__ == '__main__':
     df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1') # Ten seasons
 
     # In order to make inner join -  I need to make small changes / casting
-    df['Episode'] = df['episode_season'].apply(pad_number)
+    df['Episode'] = df['episode_season'].apply(format_number)
+    df_2['Episode'] = df_2['Episode'].apply(lambda x: "{0:.2f}".format(x))
     print('*')
+
     # Merging between the 2 data
     df_merged = pd.merge(df, df_2, on='Episode', how='inner')
     print('*')
