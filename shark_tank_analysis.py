@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import openpyxl as oy
+
 
 from shark_tank_charts import two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur
 # **************************************************************************************************************
@@ -7,14 +9,22 @@ from shark_tank_charts import two_bar_plot_shows_multiple_entrepreneurs_VS_indiv
 # input:
 # return value:
 # ***************************************************************************************************************
-def convert_format(value):
-    parts = value.split('-')
-    if len(parts) == 2:
-        return '.'.join(parts)
+def pad_number(num):
+    # split the number into integer and decimal parts
+    int_part, dec_part = str(num).split('.')
+
+    # check if the decimal part needs padding
+    if len(dec_part) < 2:
+        # pad the decimal part with leading zeros
+        dec_part_padded = np.format_float_positional(float('0.' + dec_part), precision=2, trim='-')
     else:
-        return value
+        # use the original decimal part
+        dec_part_padded = dec_part
 
+    # join the integer and padded decimal parts
+    padded_num = int_part + '.' + dec_part_padded
 
+    return float(padded_num)
 
 # **************************************************************************************************************
 # Function  name: helper function for Define a function to count the number of elements in a list
@@ -32,8 +42,8 @@ def count_elements_in_list(lst):
 # return value:
 # ****************************************************************************************************************
 
-def get_top_n(final_table, n=1):
-    return df.nlargest(n, 'amount_of_investments')
+#def get_top_n(final_table, n=1):
+   # return df.nlargest(n, 'amount_of_investments')
 
 
 # **************************************************************************************************************
@@ -369,13 +379,18 @@ def counting_the_number_of_entrepreneuers_in_a_group_for_pitching(df):
 
 if __name__ == '__main__':
 
-    pd.set_option('display.max_rows', 500)
-    df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv')
-    #df_2 = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",sheet_name='Sheet1')
+    pd.set_option('display.max_rows', 900)
+    df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv') # six seasons
+    df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1') # Ten seasons
+
     # In order to make inner join -  I need to make small changes / casting
-    df['episode_season'] = df['episode_season'].apply(convert_format)
-    #res.rename(columns={res.columns[0]: 'season_number'}, inplace=True)
+    df['Episode'] = df['episode_season'].apply(pad_number)
     print('*')
+    # Merging between the 2 data
+    df_merged = pd.merge(df, df_2, on='Episode', how='inner')
+    print('*')
+    #res.rename(columns={res.columns[0]: 'season_number'}, inplace=True)
+
 
     # short info about the data:
     # print(df.columns.values)  # list of column names
@@ -384,19 +399,19 @@ if __name__ == '__main__':
     print('*')
 
     # Adding a column which shows us how is the choosen shark selected
-    all_the_deals_closed = df.loc[df['deal'] == True, :]
-    all_the_deals_closed['Shark_which_invested'] = np.random.randint(1, 11, size=251)
+    #all_the_deals_closed = df.loc[df['deal'] == True, :]
+    #all_the_deals_closed['Shark_which_invested'] = np.random.randint(1, 11, size=251)
     print('*')
 
-    column_headers = list(df.columns.values)
+    #column_headers = list(df.columns.values)
     print('*')
 
     # instead of writing the entire sharked  hard coded, we will write the coded this way:
-    shark_columns = [f'shark{i}' for i in range(1, 6)]
-    shark_names = np.unique(df[shark_columns])
-    dict_sharks = dict(zip(range(len(shark_names)), shark_names))
+    #shark_columns = [f'shark{i}' for i in range(1, 6)]
+    #shark_names = np.unique(df[shark_columns])
+    #dict_sharks = dict(zip(range(len(shark_names)), shark_names))
 
-    all_the_deals_closed['chosen_shark'] = all_the_deals_closed['Shark_which_invested'].map(dict_sharks)
+    #all_the_deals_closed['chosen_shark'] = all_the_deals_closed['Shark_which_invested'].map(dict_sharks)
 
     # 1.What is the name of the shark who appeared the most seasons?
 
@@ -465,13 +480,12 @@ if __name__ == '__main__':
     # print('*')
 
     # 11. What is the ratio of investments of each shark choosing between multiple entrepreneurs VS individual entrepreneurs?
-    res = ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_individual_entrepreneur(
-        all_the_deals_closed)
-    two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(res[0], res[1])
+    #res = ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_individual_entrepreneur(all_the_deals_closed)
+    #two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(res[0], res[1])
     print('*')
 
     # 20. How many “No”s and “Yes”s ( for investment ), each category got over the years ?
-    # res = retrieving_the_amount_of_investments_and_non_investments_by_categories(df)
+    #res = retrieving_the_amount_of_investments_and_non_investments_by_categories(df)
     # creating_bidirectional_bar_chart_by_categories(res)
     # print('*')
 
@@ -487,25 +501,25 @@ if __name__ == '__main__':
     # print('*')
 
     # df = df.dropna(how='all')
-    counting_the_number_of_entrepreneuers_in_a_group_for_pitching(df)
-    print('*')
+    #counting_the_number_of_entrepreneuers_in_a_group_for_pitching(df)
+    #print('*')
 
     # Which shark is known as the more willing to take risks? # TODO : continue with the risky shark + chart
-    closed_deals = df.loc[df['deal'] == True, :]
-    finding_the_shark_which_known_as_willing_to_takes_risky_investment(closed_deals)
+    #closed_deals = df.loc[df['deal'] == True, :]
+    #finding_the_shark_which_known_as_willing_to_takes_risky_investment(closed_deals)
     print('*')
     # What is the average investment over the seasons?
-    groups_by_season = closed_deals.groupby('season')
-    for season, askedfor_df_by_season in groups_by_season:
+    #groups_by_season = closed_deals.groupby('season')
+    #for season, askedfor_df_by_season in groups_by_season:
         # print(season)
         # print(askedfor_df_by_season)
-        avg_investment_per_season_show = askedfor_df_by_season['askedfor'].mean()
-        tatal_investment_per_season_show = askedfor_df_by_season['askedfor'].sum()
-        print('*')
+     #   avg_investment_per_season_show = askedfor_df_by_season['askedfor'].mean()
+      #  tatal_investment_per_season_show = askedfor_df_by_season['askedfor'].sum()
+       # print('*')
 
         # 22. Which shark is known investing in multiple entrepreneurs and in which field?
-        getting_the_shark_name_investing_in_multiple_entrepreneurs_in_dif_fields(all_the_deals_closed)
-        print('*')
+        #getting_the_shark_name_investing_in_multiple_entrepreneurs_in_dif_fields(all_the_deals_closed)
+        #print('*')
 
         # 23. What is the average valuation of each shark willing to invest? ( over each season )
         # getting_avg_valuation_of_each_shark_willing_to_invest_each_season(all_the_deals_closed)
