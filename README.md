@@ -42,6 +42,10 @@ And on the opposite side, in the fifth season  and sixth season we can notice a 
 Seasons 1+2  = 27+19 = 46
 Seasons 5+6 = 61 + 63 = 124
 
+In the next chart I want to dive into the information about the investing part of each shark getting into their pocket in order to invest in each entrepreneur project.
+
+We can see here below in every waffle diagram the amount of money a specific shark invested in a relevant season vs the rest of investments made by the rest of the sharks.
+
 
 ![image](https://user-images.githubusercontent.com/28948369/234967869-da3aeb9b-3e4a-4710-9ff1-7a20b988f1ff.png)
 
