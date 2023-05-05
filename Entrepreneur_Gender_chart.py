@@ -44,13 +44,15 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , gen
         ax.plot([X - w / 2, X + w / 2], [0, 0], 'gray', alpha=0.25)
     ax.set_xlim(xlim)
 
+            ax.text(x[0]-0.18, 0.75, 'Female entrepreneurs', ha='left', va='bottom', fontsize=FS+2, alpha=1, rotation=90, color='w')
 
     # Touch up the plot
     for b, c in zip(barlist, ['pink', 'skyblue', 'orange']):
         b.set_color(c)
     for n in np.arange(len(pos_gender_chart)):
-        ax.text(gender_counter[n], 2, "{g}".format(g=genders_df[n]),
-                fontsize=12, ha='center', color='w', weight='heavy')
+        ax.text(gender_counter[n], 2, "{g}".format(g=genders_df[n]),fontsize=12, ha='center', color='w', weight='heavy')
+        #ax.text(x[0]-0.18, 0.75, 'Female entrepreneurs', ha='left', va='bottom', fontsize=FS+2, alpha=1, rotation=90, color='w') # Check this line out
+        
     mid = ax.get_xlim()[0]
     ##ax.set_title('Gender representation on Shark Tank', fontsize=12, weight='heavy')
     params = {'fontsize': 12, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'gray'}
