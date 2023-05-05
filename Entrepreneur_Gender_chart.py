@@ -27,7 +27,9 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , gen
     fig, ax = plt.subplots(figsize=(12, 4))
     w = 0.6
     barlist = ax.bar(pos_gender, gender_counter, width=w, alpha=0.9)
+    # ToDO:need to check the different between those 2 lines below
     ax.set_xticklabels(genders_df_new)
+    #ax.set_xticklabels(genders_df_new, weight='heavy', fontsize=12)
 
     # Plot the metric
     ax.set_ylim([-2, 62])
@@ -35,12 +37,14 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , gen
     ax.set_yticks(np.arange(0, 61, 20))
     ax.set_ylabel('Percent of entrepreneurs', fontsize=12)
     ax.tick_params(labelsize=12)
-    # ax.set_xticklabels(genders, weight='heavy', fontsize=FS+2)
+
     ax.set_xticklabels([])
     xlim = ax.get_xlim()
     for X in pos_gender:  # Plot a horizontal line under each bar
         ax.plot([X - w / 2, X + w / 2], [0, 0], 'gray', alpha=0.25)
     ax.set_xlim(xlim)
+
+
     # Touch up the plot
     for b, c in zip(barlist, ['pink', 'skyblue', 'orange']):
         b.set_color(c)
@@ -48,12 +52,13 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , gen
         ax.text(gender_counter[n], 2, "{g}".format(g=genders_df[n]),
                 fontsize=12, ha='center', color='w', weight='heavy')
     mid = ax.get_xlim()[0]
-    # ax.set_title('Gender representation on Shark Tank', fontsize=FS, weight='heavy')
+    ##ax.set_title('Gender representation on Shark Tank', fontsize=12, weight='heavy')
     params = {'fontsize': 12, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'gray'}
     y = 64
     ax.text(xlim[0] + 0.02, y, 'Gender representation on', fontdict=params)
     ax.text(xlim[0] + 0.879, y, 'Shark Tank', fontdict=params, style='italic')
-    ax.text(xlim[-1] - 0.03, y, 'Analytics For Pleasure', fontdict=params, fontsize=12, alpha=0.4, ha='right')
+    ax.text(xlim[-1] - 0.03, y, 'AnalyticsForPleasure', fontdict=params, fontsize=12, alpha=0.4, ha='right')
+
     plt.show()
 
 
