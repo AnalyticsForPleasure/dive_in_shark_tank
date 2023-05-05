@@ -8,22 +8,26 @@ import matplotlib.lines as mlines
 def creating_the_data_gender(df_2):
 
     genders_df = np.unique(df_2['Entrepreneur Gender'])
-    gender_counts = np.zeros(len(genders_df))  # initialize the array
+    index = [0]
+    remove_element = np.array([0])
+    genders_df_new = np.delete(genders_df, index)
+
+    gender_counts = np.zeros(len(genders_df_new))  # initialize the array
     # in order to fill the array we will use a loop
-    for n, gender in enumerate(genders_df):
+    for n, gender in enumerate(genders_df_new):
         gender_counts[n] = 100 * (df_2['Entrepreneur Gender'] == gender).sum() / len(df_2)
     print('*')
-    pos_gender_chart = np.arange(len(genders_df))
+    pos_gender_chart = np.arange(len(genders_df_new))
 
-    return pos_gender_chart, gender_counts , genders_df
+    return pos_gender_chart, gender_counts , genders_df_new
 
 
-def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , genders_df):
+def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , genders_df_new):
 
     fig, ax = plt.subplots(figsize=(12, 4))
     w = 0.6
     barlist = ax.bar(pos_gender, gender_counter, width=w, alpha=0.9)
-    ax.set_xticklabels(genders_df)
+    ax.set_xticklabels(genders_df_new)
 
     # Plot the metric
     ax.set_ylim([-2, 62])
