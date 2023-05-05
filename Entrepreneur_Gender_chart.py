@@ -43,6 +43,20 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter, gend
     # Touch up the plot
     for b, c in zip(barlist, ['pink', 'skyblue', 'orange']):
         b.set_color(c)
+<<<<<<< HEAD
+=======
+    for n in np.arange(len(pos_gender_chart)):
+        ax.text(gender_counter[n], 2, "{g}".format(g=genders_df[n]),fontsize=12, ha='center', color='w', weight='heavy')
+        #ax.text(x[0]-0.18, 0.75, 'Female entrepreneurs', ha='left', va='bottom', fontsize=FS+2, alpha=1, rotation=90, color='w') # Check this line out
+        
+    mid = ax.get_xlim()[0]
+    ##ax.set_title('Gender representation on Shark Tank', fontsize=12, weight='heavy')
+    params = {'fontsize': 12, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'gray'}
+    y = 64
+    ax.text(xlim[0] + 0.02, y, 'Gender representation on', fontdict=params)
+    ax.text(xlim[0] + 0.879, y, 'Shark Tank', fontdict=params, style='italic')
+    ax.text(xlim[-1] - 0.03, y, 'AnalyticsForPleasure', fontdict=params, fontsize=12, alpha=0.4, ha='right')
+>>>>>>> origin/main
 
     # category ="{g}".format(g=genders_df[n])
     # value of the gender counter = gender_counter[n]
