@@ -24,12 +24,14 @@ def creating_the_data_gender(df_2):
 
 def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , genders_df_new):
 
+    plt.style.use('seaborn') # This line is responsible for the gray background
     fig, ax = plt.subplots(figsize=(12, 4))
     w = 0.6
     barlist = ax.bar(pos_gender, gender_counter, width=w, alpha=0.9)
     # ToDO:need to check the different between those 2 lines below
     ax.set_xticklabels(genders_df_new)
     #ax.set_xticklabels(genders_df_new, weight='heavy', fontsize=12)
+
 
     # Plot the metric
     ax.set_ylim([-2, 62])
