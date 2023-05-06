@@ -51,8 +51,9 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , gen
     for b, c in zip(barlist, ['pink', 'skyblue', 'orange']):
         b.set_color(c)
 
-    #category ="{g}".format(g=genders_df[n])
-    # value of the gender counter = gender_counter[n]
+    #TODO : need to add a counter anaimation for each bar, which will present the value of the bar
+    #plt.title('Deaths per Country \n' + str(df1.index[iv].strftime('%y-%m-%d'))) # taken from  https://medium.com/towards-data-science/learn-how-to-create-animated-graphs-in-python-fce780421afe
+
     for n in np.arange(len(pos_gender_chart)):
 
         ax.text(x=pos_gender_chart[n],y=3.5,s="{g}".format(g=genders_df_new[n]),va='bottom',fontsize=12, ha='center', color='w', weight='heavy',alpha=1)
@@ -72,6 +73,7 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , gen
     ax.text(x=xlim[-1] - 0.03, y=y,s='AnalyticsForPleasure', fontdict=params, fontsize=12, alpha=0.4, ha='right')
 
     plt.show()
+
 
 
 if __name__ == '__main__':
