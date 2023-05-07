@@ -103,9 +103,26 @@ if __name__ == '__main__':
     # Ratios of men and women appearing on show
     gender_ratios = {'m': 100*(df_2['Entrepreneur Gender'] =='Male').sum()/df_2.shape[0],
                      'f': 100*(df_2['Entrepreneur Gender'] =='Female').sum()/df_2.shape[0]}
-    gender_ratios
 
+    genders_df = np.unique(df_2['Entrepreneur Gender'])
+    index = [0]
+    remove_element = np.array([0])
+    genders_df_new = np.delete(genders_df, index)
 
+    gender_labels = genders_df_new[0:2]  #  gender_labels => ['Female' 'Male']
+    fig, axs = plt.subplots(ncols=len(sharks), sharey=True, figsize=(14,6))
+    idxs = np.linspace(0,1,num=9)
+    for ax,shark,idx in zip(axs,sharks,idxs):
 
+        percent_funded = []
 
+        for n,gender in enumerate(gender_labels):
+            num_gender = (df_2['Entrepreneur Gender']==gender).sum()
+            percent_funded.append(100*((df_2['Entrepreneur Gender']==gender) * df_2['# Sharks']).sum()/df_2['# Sharks'].sum())
+            # 100*((df.gender==gender).values * df[shark].values).sum()/df[shark].sum()-gender_ratios[gender[0].lower()])
+            print('*')
+    #
+    # # Plot the reference line
+    # ax.plot([ 0.6, 1.4], gender_ratios['m']*np.array([1, 1]), color='k', linestyle='--')
+    # ax.plot([-0.4, 0.4], gender_ratios['f']*np.array([1, 1]), color='k', linestyle='--')
 
