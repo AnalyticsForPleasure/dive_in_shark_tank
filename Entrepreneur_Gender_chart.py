@@ -1,12 +1,13 @@
-import pandas as pd
-import dataframe_image as dfi
-import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.lines as mlines
+import numpy as np
+import pandas as pd
 
-
+# **************************************************************************************************************
+# Function  name: creating_the_data_gender
+# input:
+# return value:
+# ****************************************************************************************************************
 def creating_the_data_gender(df_2):
-
     genders_df = np.unique(df_2['Entrepreneur Gender'])
     index = [0]
     remove_element = np.array([0])
@@ -19,19 +20,21 @@ def creating_the_data_gender(df_2):
     print('*')
     pos_gender_chart = np.arange(len(genders_df_new))
     print('*')
-    return pos_gender_chart, gender_counts , genders_df_new
+    return pos_gender_chart, gender_counts, genders_df_new
 
-
-def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , genders_df_new):
-
-    plt.style.use('seaborn') # This line is responsible for the gray background
+# **************************************************************************************************************
+# Function  name: horizontal_bar_plot_for_gender_enterpreneur
+# input:
+# return value:
+# ****************************************************************************************************************
+def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter, genders_df_new):
+    plt.style.use('seaborn')  # This line is responsible for the gray background
     fig, ax = plt.subplots(figsize=(12, 4))
     w = 0.6
     barlist = ax.bar(pos_gender, gender_counter, width=w, alpha=0.9)
-    # ToDO:need to check the different between those 2 lines below
+    # TODO:need to check the different between those 2 lines below
     ax.set_xticklabels(genders_df_new)
-    #ax.set_xticklabels(genders_df_new, weight='heavy', fontsize=12)
-
+    # ax.set_xticklabels(genders_df_new, weight='heavy', fontsize=12)
 
     # Plot the metric
     ax.set_ylim([-2, 62])
@@ -46,17 +49,16 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , gen
         ax.plot([X - w / 2, X + w / 2], [0, 0], 'gray', alpha=0.25)
     ax.set_xlim(xlim)
 
-
     # Touch up the plot
-    for b, c in zip(barlist, ['pink', 'skyblue', 'orange']):
+    for b, c in zip(barlist, ['lightgreen', 'skyblue', 'orchid']):
         b.set_color(c)
 
-    #TODO : need to add a counter anaimation for each bar, which will present the value of the bar
-    #plt.title('Deaths per Country \n' + str(df1.index[iv].strftime('%y-%m-%d'))) # taken from  https://medium.com/towards-data-science/learn-how-to-create-animated-graphs-in-python-fce780421afe
+    # TODO : need to add a counter anaimation for each bar, which will present the value of the bar
+    # plt.title('Deaths per Country \n' + str(df1.index[iv].strftime('%y-%m-%d'))) # taken from  https://medium.com/towards-data-science/learn-how-to-create-animated-graphs-in-python-fce780421afe
 
-    for n in np.arange(len(pos_gender_chart)):
-
-        ax.text(x=pos_gender_chart[n],y=3.5,s="{g}".format(g=genders_df_new[n]),va='bottom',fontsize=12, ha='center', color='w', weight='heavy',alpha=1)
+    for n in np.arange(len(pos_gender_chart)): # this line is correct
+        ax.text(x=pos_gender_chart[n], y=3.5, s="{g}".format(g=genders_df_new[n]), va='bottom', fontsize=12, # this line is correct
+                ha='center', color='w', weight='heavy', alpha=1)
 
     #   Instead of writing this 3 lines bellow, we wrote here above one line using a loop
     # ax.text(x=2,y=3.5,s='Mixed Team',va='bottom',fontsize=12, ha='center', color='w', weight='heavy',alpha=1)
@@ -70,20 +72,40 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter , gen
     y = 64
     ax.text(x=xlim[0] + 0.02, y=y, s='Gender representation on', fontdict=params)
     ax.text(x=xlim[0] + 0.879, y=y, s='Shark Tank', fontdict=params, style='italic')
-    ax.text(x=xlim[-1] - 0.03, y=y,s='AnalyticsForPleasure', fontdict=params, fontsize=12, alpha=0.4, ha='right')
+    ax.text(x=xlim[-1] - 0.03, y=y, s='AnalyticsForPleasure', fontdict=params, fontsize=12, alpha=0.4, ha='right')
 
     plt.show()
 
 
 
-if __name__ == '__main__':
 
-    df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1') #
+
+if __name__ == '__main__':
+    df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',
+                         sheet_name='Sheet1')  #
     df_2 = df_2.fillna(' ')
     print('*')
 
-    #creating the Data (before adding a plot )
+    # creating the Data (before adding a plot )
 
-    pos_gender_chart ,gender_counts , genders_df = creating_the_data_gender(df_2)
-    horizontal_bar_plot_for_gender_enterpreneur(pos_gender_chart ,gender_counts , genders_df )
+    #pos_gender_chart, gender_counts, genders_df = creating_the_data_gender(df_2)
+    #horizontal_bar_plot_for_gender_enterpreneur(pos_gender_chart, gender_counts, genders_df)
+    #print('*')
+
+    #Creating a dictionary:
+    sharks = ['Corcoran', 'Greiner', 'Cuban', 'Herjavec', 'John', "O'Leary"]
+    shark_genders = dict(zip(sharks,['f','f','m','m','m','m']))
+
+    # for shark in sharks:
+    #     df_2['shark'].fillna(0, inplace=True)
     print('*')
+
+    # Ratios of men and women appearing on show
+    gender_ratios = {'m': 100*(df_2['Entrepreneur Gender'] =='Male').sum()/df_2.shape[0],
+                     'f': 100*(df_2['Entrepreneur Gender'] =='Female').sum()/df_2.shape[0]}
+    gender_ratios
+
+
+
+
+
