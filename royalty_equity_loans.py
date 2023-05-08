@@ -20,3 +20,15 @@ panda_df = pd.DataFrame(data = numpyArray,
 
 
 print('*')
+
+if __name__ == '__main__':
+    pd.set_option('display.max_rows', 900)
+    df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')
+    df_2 = df_2.fillna(' ')
+    print('*')
+
+    #data =df_2.loc[:,'Barbara\nCorcoran':'Guest','# Sharks']
+
+    print(df_2.columns.values)
+    print('*')
+
