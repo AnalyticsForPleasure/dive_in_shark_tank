@@ -15,10 +15,11 @@ if __name__ == '__main__':
 
     # Add columns to dataframe to record Shark attendance
     shark_names = {'Mark': 'Cuban',
+                   'Kevin H.':'Harrington', # I added
                    'Daymond': 'John',
                    'Barbara': 'Corcoran',
                    'Robert': 'Herjavec',
-                   'Kevin': "O'Leary",
+                   'Kevin O.': "O'Leary",
                    'Lori': 'Greiner'}
 
 
@@ -37,17 +38,22 @@ if __name__ == '__main__':
     seasons = html.find_all('table', class_="wikitable plainrowheaders wikiepisodetable")
     print('*')
 
-
+    # num_season --> 1-10
+    # num_episode --> 1 - 25
     for num_season,season in enumerate(seasons[:10]):
+        num_season =3
         print("-"*30)
         print("Season: {}".format(num_season+2))
         episodes = season.find_all('td', class_='description')
         for num_episode,episode in enumerate(episodes):
             # Determine which Sharks were on the episode
+            num_episode = 2
             if num_season==0:
-                sharks = ['Daymond','Kevin','Barbara','Robert']
-            else:
+                sharks = ['Daymond','Kevin H.','Barbara','Robert','Kevin O.']
+            else: # Number of season 2-10
                 sharks = episode.text.split('Sharks: ')[1].split('\n')[0].split(', ')
+               # For shark in sharks:
+               #     shark = shark.split(' ')[0]
                 sharks = [shark.split(' ')[0] for shark in sharks]
 
             # Update Shark attendance rates in the dataframe
