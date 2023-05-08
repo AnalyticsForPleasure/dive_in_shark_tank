@@ -35,16 +35,19 @@ if __name__ == '__main__':
     html = bs(page.text, 'html.parser')
 
     # Get the season descriptions
-    seasons = html.find_all('table', class_="wikitable plainrowheaders wikiepisodetable")
+    seasons = html.find_all('table', class_="wikitable plainrowheaders wikiepisodetable") # still the same - don't change
     print('*')
 
     # num_season --> 1-10
     # num_episode --> 1 - 25
+
+    num_season =3
     for num_season,season in enumerate(seasons[:10]):
-        num_season =3
+
         print("-"*30)
         print("Season: {}".format(num_season+2))
-        episodes = season.find_all('td', class_='description')
+        #episodes = season.find_all('td', class_='description')
+        episodes = season.find_all('tr', class_='expand-child')
         for num_episode,episode in enumerate(episodes):
             # Determine which Sharks were on the episode
             num_episode = 2
@@ -64,3 +67,5 @@ if __name__ == '__main__':
 
         #df.sort_values(by = 'Season', inplace=True,ascending=False)
         print('*')
+
+
