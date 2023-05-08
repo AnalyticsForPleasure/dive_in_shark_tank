@@ -66,3 +66,11 @@ The “DEAL”columns present the same aspects, but after a negotiation between 
 Therefore, I decided to drill down, and to focus on the negotiation part.
 
 
+
+The next thing we are willing to find out is out the investments made ny each shark upon the entrepreneurs. This mean we ae willing to know which shark preference to invest apon a solo entrepreneurs VS  multiple entreprenuers.
+
+![image](https://user-images.githubusercontent.com/28948369/236793307-0a116837-577a-4398-abc6-d9108eb23819.png)
+
+
+
+
