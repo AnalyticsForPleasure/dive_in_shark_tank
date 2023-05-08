@@ -66,3 +66,101 @@ The “DEAL”columns present the same aspects, but after a negotiation between 
 Therefore, I decided to drill down, and to focus on the negotiation part.
 
 
+
+The next thing we are willing to find out is out the investments made ny each shark upon the entrepreneurs. This mean we ae willing to know which shark preference to invest apon a solo entrepreneurs VS  multiple entreprenuers.
+
+Therefore I wrote same code to anlaysis
+```pyhton
+def ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_individual_entrepreneur(
+        all_the_deals_closed):
+    mapping = {True: 'individual entrepreneur',
+               False: 'multiple entrepreneurs'}
+
+    all_the_deals_closed['kind_of_entrepreneurs'] = all_the_deals_closed['multiple_entreprenuers'].apply(
+        lambda x: mapping[x])
+    filter_data_individual = all_the_deals_closed.loc[
+                             all_the_deals_closed['kind_of_entrepreneurs'] == 'individual entrepreneur', :]
+    individual_entrepreneur = filter_data_individual['chosen_shark'].value_counts()
+    individual_entrepreneur_df = individual_entrepreneur.reset_index()
+    individual_entrepreneur_df.rename(
+        columns={individual_entrepreneur_df.columns[1]: 'counter_of_individual_entrepreneur'}, inplace=True)
+    individual_entrepreneur_df.rename(columns={individual_entrepreneur_df.columns[0]: 'chosen_shark'}, inplace=True)
+    print('*')
+
+    filter_data_multiple = all_the_deals_closed.loc[
+                           all_the_deals_closed['kind_of_entrepreneurs'] == 'multiple entrepreneurs', :]
+    multiple_entrepreneur = filter_data_multiple['chosen_shark'].value_counts()
+    multiple_entrepreneur_df = multiple_entrepreneur.reset_index()
+    multiple_entrepreneur_df.rename(columns={multiple_entrepreneur_df.columns[1]: 'counter_of_multiple_entrepreneur'},
+                                    inplace=True)
+    multiple_entrepreneur_df.rename(columns={multiple_entrepreneur_df.columns[0]: 'chosen_shark'}, inplace=True)
+    print('*')
+
+    return individual_entrepreneur_df, multiple_entrepreneur_df
+```
+
+```pyhton
+def two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(individual_entre_df, multiple_entre_df):
+    # Data to be plotted
+    # In this chart we have 2 series: multiple_entrepreneur, individual_entrepreneur
+    multiple_entrepreneur = list(multiple_entre_df.loc[:, 'counter_of_multiple_entrepreneur'])
+    individual_entrepreneur = list(individual_entre_df.loc[:, 'counter_of_individual_entrepreneur'])
+
+    X = np.arange(len(multiple_entrepreneur))
+    plt.style.use('seaborn')  # This line is responsible for the gray background
+    # Passing the parameters to the bar function, this is the main function which creates the bar plot
+    # Using X now to align the bars side by side
+    plt.bar(X, multiple_entrepreneur, color='midnightblue', width=0.20)
+    plt.bar(X + 0.25, individual_entrepreneur, color='lightskyblue', width=0.20)
+
+    # Creating the legend of the bars in the plot ( This time 2 legends )
+    plt.legend(['Multiple entrepreneurs', 'Solo entrepreneur'])
+
+
+    # Overriding the x axis with the sharks names
+    list_of_sharks = list(multiple_entre_df.loc[:, 'chosen_shark'])
+    plt.xticks([i + 0.25 for i in range(multiple_entre_df.shape[0])], list_of_sharks)
+
+    # # This is the location for the annotated text
+    i = 1.0
+    j = 0.25
+
+    # Annotating the bar plot with the values (multiple_entrepreneur count)
+    for i in range(len(multiple_entrepreneur)):
+        plt.annotate(multiple_entrepreneur[i], (-0.05 + i, multiple_entrepreneur[i] + j))
+    # Annotating the bar plot with the values (individual_entrepreneur count)
+    for i in range(len(individual_entrepreneur)):
+        plt.annotate(individual_entrepreneur[i], (i + 0.2, individual_entrepreneur[i] + j))
+
+
+    # Adding the labels over the 2 series of the bar chart:
+    plt.text(x=0.20, y=0.75,s= 'Solo', ha='left', va='bottom', fontsize=12, alpha=1, rotation=90, color='w',weight='bold')
+    plt.text(x=-0.05, y=0.5, s='Multiple', ha='left', va='bottom', fontsize=12, alpha=1, rotation=90, color='w',weight='bold')
+
+    for n in np.arange(len(individual_entrepreneur)):
+        plt.text(x=n+1.22, y=0.75,s= 'Solo', ha='left', va='bottom', fontsize=12, alpha=1, rotation=90, color='w',weight='bold')
+        plt.text(x=n+0.95, y=0.5, s='Multiple', ha='left', va='bottom', fontsize=12, alpha=1, rotation=90, color='w',weight='bold')
+
+        # for n in np.arange(len(pos_gender_chart)):
+        #     ax.text(x=pos_gender_chart[n], y=3.5, s="{g}".format(g=genders_df_new[n]), va='bottom', fontsize=12, # this line is correct
+        #             ha='center', color='w', weight='heavy', alpha=1)
+    # Giving the title for the plot
+    # Number of investments made by each shark over \n team entrepreneur VS solo entrepreneur
+    plt.title("Sharks' investments done through either Solo or with multiple entrepreneurs",
+              fontsize=16,
+              weight='bold')
+    # Naming the x and y axis
+    plt.xlabel('Shark names', weight='bold')
+    plt.ylabel('Number of investments', weight='bold')
+    # Saving the plot as a 'png'
+    plt.savefig('4BarPlot.png')
+    # Displaying the bar plot
+    plt.show()
+```
+
+
+![image](https://user-images.githubusercontent.com/28948369/236793307-0a116837-577a-4398-abc6-d9108eb23819.png)
+
+
+
+
