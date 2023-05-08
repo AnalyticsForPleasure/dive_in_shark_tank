@@ -71,6 +71,35 @@ The next thing we are willing to find out is out the investments made ny each sh
 
 Therefore I wrote same code to anlaysis
 ```pyhton
+def ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_individual_entrepreneur(
+        all_the_deals_closed):
+    mapping = {True: 'individual entrepreneur',
+               False: 'multiple entrepreneurs'}
+
+    all_the_deals_closed['kind_of_entrepreneurs'] = all_the_deals_closed['multiple_entreprenuers'].apply(
+        lambda x: mapping[x])
+    filter_data_individual = all_the_deals_closed.loc[
+                             all_the_deals_closed['kind_of_entrepreneurs'] == 'individual entrepreneur', :]
+    individual_entrepreneur = filter_data_individual['chosen_shark'].value_counts()
+    individual_entrepreneur_df = individual_entrepreneur.reset_index()
+    individual_entrepreneur_df.rename(
+        columns={individual_entrepreneur_df.columns[1]: 'counter_of_individual_entrepreneur'}, inplace=True)
+    individual_entrepreneur_df.rename(columns={individual_entrepreneur_df.columns[0]: 'chosen_shark'}, inplace=True)
+    print('*')
+
+    filter_data_multiple = all_the_deals_closed.loc[
+                           all_the_deals_closed['kind_of_entrepreneurs'] == 'multiple entrepreneurs', :]
+    multiple_entrepreneur = filter_data_multiple['chosen_shark'].value_counts()
+    multiple_entrepreneur_df = multiple_entrepreneur.reset_index()
+    multiple_entrepreneur_df.rename(columns={multiple_entrepreneur_df.columns[1]: 'counter_of_multiple_entrepreneur'},
+                                    inplace=True)
+    multiple_entrepreneur_df.rename(columns={multiple_entrepreneur_df.columns[0]: 'chosen_shark'}, inplace=True)
+    print('*')
+
+    return individual_entrepreneur_df, multiple_entrepreneur_df
+```
+
+```pyhton
 def two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(individual_entre_df, multiple_entre_df):
     # Data to be plotted
     # In this chart we have 2 series: multiple_entrepreneur, individual_entrepreneur
