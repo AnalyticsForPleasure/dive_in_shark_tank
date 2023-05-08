@@ -62,13 +62,15 @@ def two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(individ
     individual_entrepreneur = list(individual_entre_df.loc[:, 'counter_of_individual_entrepreneur'])
 
     X = np.arange(len(multiple_entrepreneur))
+    plt.style.use('seaborn')  # This line is responsible for the gray background
     # Passing the parameters to the bar function, this is the main function which creates the bar plot
     # Using X now to align the bars side by side
-    plt.bar(X, multiple_entrepreneur, color='mediumspringgreen', width=0.20)
+    plt.bar(X, multiple_entrepreneur, color='midnightblue', width=0.20)
     plt.bar(X + 0.25, individual_entrepreneur, color='lightskyblue', width=0.20)
 
     # Creating the legend of the bars in the plot ( This time 2 legends )
     plt.legend(['Multiple entrepreneurs', 'Solo entrepreneur'])
+
 
     # Overriding the x axis with the sharks names
     list_of_sharks = list(multiple_entre_df.loc[:, 'chosen_shark'])
@@ -85,6 +87,18 @@ def two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(individ
     for i in range(len(individual_entrepreneur)):
         plt.annotate(individual_entrepreneur[i], (i + 0.2, individual_entrepreneur[i] + j))
 
+
+    # Adding the labels over the 2 series of the bar chart:
+    plt.text(x=0.20, y=0.75,s= 'Solo', ha='left', va='bottom', fontsize=12, alpha=1, rotation=90, color='w',weight='bold')
+    plt.text(x=-0.05, y=0.5, s='Multiple', ha='left', va='bottom', fontsize=12, alpha=1, rotation=90, color='w',weight='bold')
+
+    for n in np.arange(len(individual_entrepreneur)):
+        plt.text(x=n+1.22, y=0.75,s= 'Solo', ha='left', va='bottom', fontsize=12, alpha=1, rotation=90, color='w',weight='bold')
+        plt.text(x=n+0.95, y=0.5, s='Multiple', ha='left', va='bottom', fontsize=12, alpha=1, rotation=90, color='w',weight='bold')
+
+        # for n in np.arange(len(pos_gender_chart)):
+        #     ax.text(x=pos_gender_chart[n], y=3.5, s="{g}".format(g=genders_df_new[n]), va='bottom', fontsize=12, # this line is correct
+        #             ha='center', color='w', weight='heavy', alpha=1)
     # Giving the title for the plot
     # Number of investments made by each shark over \n team entrepreneur VS solo entrepreneur
     plt.title("Sharks' investments done through either Solo or with multiple entrepreneurs",
@@ -116,7 +130,7 @@ def creating_bidirectional_bar_chart_by_categories(final_table):
     column1 = final_table['counter_unclosed_deals']
     title0 = 'Amount of closed deals by categories'
     title1 = 'Amount of unclosed deals by categories'
-
+    plt.style.use('seaborn')
     fig, axes = plt.subplots(figsize=(10, 5), facecolor=facecolor, ncols=2, sharey=True)
     fig.tight_layout()
 
@@ -158,8 +172,6 @@ def newline(p1, p2, color='black'):
                       markersize=6)  # coloring the line by condition
     ax.add_line(l)
     return l
-
-
 
 
 def slope_chart_for_industries_have_gotten_hotter_or_colder_over_6_seasons(final_table):
