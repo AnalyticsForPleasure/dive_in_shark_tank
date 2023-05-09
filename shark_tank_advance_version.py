@@ -4,11 +4,11 @@ import numpy as np
 import pandas as pd
 
 
-def convert_to_number(text_row):
+def convert_to_number(text_row, symbol_to_replace):
     if text_row is np.nan:
         return 0
 
-    value_cap = text_row.replace('$', '').replace(',', '')
+    value_cap = text_row.replace(symbol_to_replace, '').replace(',', '')
 
     return value_cap
 
@@ -85,23 +85,35 @@ def retriving_info_about_royalty_equity_and_loans(df):
     return dict_royalties_loans_equities
 
 
-if __name__ == '__main__':
-    pd.set_option('display.max_rows', 500)
-    df = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",
-                       sheet_name='Sheet1')  # header=[0, 1]
-
-    print('*')
-    # retriving_info_about_royalty_equity_and_loans(df)
-    # print('*')
-    ##########################################################################################################################
-    # In order to do the the dynamic Waffle chart :
+def generate_table_for_deal_eqauty(df_input):
     all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
     all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
-    print('*')
 
-    all_the_deals_closed['DEAL'] = all_the_deals_closed['DEAL'].apply(lambda x: convert_to_number(x))
-    all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['DEAL'] != '', :]
-    all_the_deals_closed['DEAL'] = all_the_deals_closed['DEAL'].astype('int')
+    # Handle missing values and strange symbols and finaly converting to int
+    all_the_deals_closed['DEAL_Equity'] = all_the_deals_closed['DEAL_Equity'].apply(
+        lambda x: convert_to_number(x, symbol_to_replace='%'))
+    all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['DEAL_Equity'] != '', :]
+    all_the_deals_closed['DEAL_Equity'] = all_the_deals_closed['DEAL_Equity'].astype('float').astype('int')
+
+    investors_matrix = all_the_deals_closed.iloc[:, 17:24]
+    investors_matrix = investors_matrix.replace('', 0)
+    investors_matrix = investors_matrix.astype('int')
+
+    res_new_equity = np.multiply(investors_matrix.T,
+                                 all_the_deals_closed['DEAL_Equity'])
+    res_new_equity = res_new_equity.T
+    res_new_equity['Gender'] = all_the_deals_closed['Entrepreneur Gender']
+    print()
+
+
+def prepare_df_for_each_season_for_waffle_chart(df_input):
+    all_the_deals_closed = df_input.loc[df_input['Deal'] == 'Yes', :]
+    all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
+    print('*')
+    all_the_deals_closed['DEAL_Amount'] = all_the_deals_closed['DEAL_Amount'].apply(
+        lambda x: convert_to_number(x, symbol_to_replace='$'))
+    all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['DEAL_Amount'] != '', :]
+    all_the_deals_closed['DEAL_Amount'] = all_the_deals_closed['DEAL_Amount'].astype('int')
     column_headers = list(all_the_deals_closed.columns.values)
     groups_by_season = all_the_deals_closed.groupby('Season')
     for season_number, mini_df_season_number in groups_by_season:
@@ -111,47 +123,33 @@ if __name__ == '__main__':
         investors_matrix = investors_matrix.replace('', 0)
         investors_matrix = investors_matrix.astype('int')
         mini_df_season_number['number_of_investors'] = investors_matrix.sum(axis=1)
-        mini_df_season_number['investment_per_investor'] = mini_df_season_number['DEAL'] / \
+        mini_df_season_number['investment_per_investor'] = mini_df_season_number['DEAL_Amount'] / \
                                                            mini_df_season_number['number_of_investors']
 
         infinite_investment = mini_df_season_number['investment_per_investor'] == np.inf
         mini_df_season_number.loc[infinite_investment, 'investment_per_investor'] = 0
         res = np.multiply(investors_matrix.T,
                           mini_df_season_number['investment_per_investor'])
+
         res2 = res.sum(axis=1)
         print(f'Season #{season_number}:\n {res2}')
         print('*' * 50)
 
-    # result = retrieving_negotiation_details(df)
+
+if __name__ == '__main__':
+    pd.set_option('display.max_rows', 500)
+    df = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",
+                       sheet_name='Sheet1')
+
+    # retriving_info_about_royalty_equity_and_loans(df_input)
+    # print('*')
+
+    generate_table_for_deal_eqauty(df_input=df)
+
+    ##########################################################################################################################
+    # In order to do the the dynamic Waffle chart :
+    prepare_df_for_each_season_for_waffle_chart(df)
+
+    # result = retrieving_negotiation_details(df_input)
     # print('*')
     # https://towardsdatascience.com/9-visualizations-to-show-proportions-or-percentages-instead-of-a-pie-chart-4e8d81617451
-
-    # check the column 'willing_to_invest' it over the seasons
-    # ratio_ask_to_deal_valiation
-    # print('*')
-
-    # pal_ = list(sns.color_palette(palette='plasma_r',
-    #                               n_colors=len(res.measurement)).as_hex())
-    # # create a laebls list for each bubble
-    # label = [i + '<br>' + str(j) + '<br>' + str(k) + '%' for i, j, k in zip(res.measurement,
-    #                                                                         res.counter_measurement,
-    #                                                                         res.percentage_measurement)]
-    # #
-    # fig = px.scatter(res, x='X', y='Y',
-    #                  color='measurement',
-    #                  color_discrete_sequence=pal_,
-    #                  size='counter_measurement',
-    #                  text=label,
-    #                  size_max=90)
-    # fig.update_layout(width=900,
-    #                   height=320,
-    #                   margin=dict(t=50, l=0, r=0, b=0),
-    #                   showlegend=False)
-    # fig.update_traces(textposition='top center')
-    # fig.update_xaxes(showgrid=False, zeroline=False, visible=False)
-    # fig.update_yaxes(showgrid=False, zeroline=False, visible=False)
-    # fig.update_layout({'plot_bgcolor': 'white',
-    #                    'paper_bgcolor': 'white'})
-    # fig.show()
-    #
-    # print('*')
