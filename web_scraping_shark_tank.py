@@ -74,6 +74,7 @@ if __name__ == '__main__':
             # in the last table the rating appears before the last column:
             for episode_number, row in enumerate(all_episodes, start=1):
                 num_viewers = row.contents[-2].text
+                # In next row tells we can't find "[" , then it will gives as (-1)
                 if num_viewers.find('[') != -1:
                     num_viewers = num_viewers[:num_viewers.find('[')]
                 episode_number_list.append(episode_number)
