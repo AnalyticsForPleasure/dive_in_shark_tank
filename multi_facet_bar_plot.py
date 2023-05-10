@@ -2,30 +2,34 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+
+def counting_the_number_of_investments_grouped_by_gender_for_each_shark(df):
+
+    all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
+    all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['Entrepreneur Gender'] != 'Mixed Team']
+    res = []
+    sharks_name_list = ['Barbara\nCorcoran', 'Mark\nCuban', 'Lori\nGreiner', 'Robert Herjavec', 'Daymond\nJohn',
+                        "Kevin\nO'Leary", 'Guest']
+    groups_by_gender = all_the_deals_closed.groupby('Entrepreneur Gender')
+    for gender, mini_df_gender in groups_by_gender:
+        print("The gender is: ", gender)
+        print(mini_df_gender)
+        print('*')
+        for shark_names in sharks_name_list:
+            sum_of_investment_by_each_shark = mini_df_gender.loc[2:, shark_names].sum()
+            # res=res.append(number_of_investments_by_shark)
+            print('*')
+    return sum_of_investment_by_each_shark
+
 if __name__ == '__main__':
 
     df = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",
                        sheet_name='Sheet1')
     df = df.fillna(' ')
 
-
-    all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
-    df = df.loc[df['Entrepreneur Gender'] != 'Mixed Team']
-    res = []
-
-
-    sharks_name_list = ['Barbara\nCorcoran', 'Mark\nCuban', 'Lori\nGreiner', 'Robert Herjavec', 'Daymond\nJohn', "Kevin\nO'Leary", 'Guest']
-
-    groups_by_gender = df.groupby('Entrepreneur Gender')
-    for gender , mini_df_gender in groups_by_gender:
-        print("The gender is: ", gender)
-        print(mini_df_gender)
-        print('*')
-        for shark_names in sharks_name_list:
-            number_of_investments_by_shark = mini_df_gender.loc[:,shark_names].sum()
-            #res=res.append(number_of_investments_by_shark)
-            print('*')
-
+    counting_the_number_of_investments_grouped_by_gender_for_each_shark(df)
+    print('*')
+    ##########################################################################################################################
     numpyArray = np.random.randint(20, size=(6, 2))
     # gender_column = np.array(['F', 'M', 'F', 'M', 'M', 'M'])
     # res = np.concatenate((gender_column.reshape(6, 1), numpyArray), axis=1)
