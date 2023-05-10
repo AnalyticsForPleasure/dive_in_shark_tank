@@ -8,7 +8,6 @@ import pandas as pd
 # input:
 # return value:
 # ******************************************************************************************************************
-
 def counting_the_number_of_investments_grouped_by_gender_for_each_shark(df):
     all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
     all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
@@ -37,6 +36,12 @@ def counting_the_number_of_investments_grouped_by_gender_for_each_shark(df):
     print('*')
     return gender_table
 
+# ******************************************************************************************************************
+# Function  name: grouping_by_gender_to_create_subplots_for_each_shark(gender_table):
+# input:
+# return value:
+# ******************************************************************************************************************
+
 
 def grouping_by_gender_to_create_subplots_for_each_shark(gender_table):
 
@@ -44,7 +49,7 @@ def grouping_by_gender_to_create_subplots_for_each_shark(gender_table):
     # Therefore we get in ax a list of subplots of two axis
     # you can unpack it, more easier:
     fig, all_6_axis = plt.subplots(nrows=1, ncols=7, sharey=True)
-    fontdict_input = {'fontsize': 18, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'black'}
+    fontdict_input = {'fontsize': 16, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'White'}
     fontdict_input2 = {'fontsize': 13, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'Gray'}
     for axis, shark_name in zip(all_6_axis, list(gender_table.index)):
         female_val = gender_table.loc[shark_name, 'Female']
@@ -60,7 +65,7 @@ def grouping_by_gender_to_create_subplots_for_each_shark(gender_table):
         axis.text(x=1, y=female_val, s=female_val, ha='left', va='bottom', fontdict=fontdict_input2)
         axis.text(x=3, y=male_val, s=male_val, ha='left', va='bottom', fontdict=fontdict_input2)
 
-        axis.set_title(shark_name)
+        axis.set_title(shark_name,fontsize=14, weight='bold')
 
         axis.set_xticks([])
     plt.show()
