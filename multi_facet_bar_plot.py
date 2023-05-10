@@ -3,34 +3,47 @@ import numpy as np
 import pandas as pd
 
 
-def counting_the_number_of_investments_grouped_by_gender_for_each_shark(df):
+# ******************************************************************************************************************
+# Function  name: counting the number of investments grouped by gender for each shark
+# input:
+# return value:
+# ******************************************************************************************************************
 
+def counting_the_number_of_investments_grouped_by_gender_for_each_shark(df):
     all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
     all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
+
+    # Filter for gender and group by gender
     all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['Entrepreneur Gender'].isin(['Male', 'Female'])]
 
-    print('*')
-    sharks_name_list = ['Barbara\nCorcoran', 'Mark\nCuban', 'Lori\nGreiner', 'Robert Herjavec', 'Daymond\nJohn',"Kevin\nO'Leary", 'Guest']
+
+    # Initialize table dataframe
+    gender_table = pd.DataFrame()
+
+    # Loop through gender groups and calculating the number of investments made by each shark
     groups_by_gender = all_the_deals_closed.groupby('Entrepreneur Gender')
     for gender, mini_df_gender in groups_by_gender:
-        print("The gender is: ", gender)
-        print(mini_df_gender)
         mini_df_gender.reset_index(inplace=True, drop=True)
-        gender_table_matrix = mini_df_gender.loc[:, 'Barbara\nCorcoran':'Guest']
+        gender_table_matrix = mini_df_gender.loc[:, 'Barbara\nCorcoran':'Daymond John']# :'Guest'
         gender_table_matrix = gender_table_matrix.replace('', 0)
         gender_table_matrix = gender_table_matrix.astype('int')
         gender_table_matrix = gender_table_matrix.sum()
-        res = gender_table_matrix.reset_index(level=0)
-        res.rename(columns={res.columns[0]: 'sharks'}, inplace=True)
-        res.rename(columns={res.columns[1]: f'number of investments into {gender} entrepreneur'}, inplace=True)
 
-    return 3
+        # Here below I entered the entire input, of a specific gender, to a df column:
+        gender_table[gender] = gender_table_matrix
+
+    # Rename index (['Barbara Corcoran', 'Kevin O’Leary', 'Lori Greiner', 'Robert Herjavec', 'Mark Cuban', 'Daymond John', 'Guest'])
+    gender_table.index = ['Barbara', 'Kevin', 'Lori', 'Robert', 'Mark', 'Daymond']#, 'Guest']
+
+    return gender_table
+
+
 
 if __name__ == '__main__':
 
     df = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",
                        sheet_name='Sheet1')
-    #df = df.fillna(' ')
+    df = df.fillna(' ')
 
     counting_the_number_of_investments_grouped_by_gender_for_each_shark(df)
     print('*')
