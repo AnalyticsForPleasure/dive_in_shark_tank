@@ -91,21 +91,23 @@ def creating_the_equity_subplot(gender_equity_table):
     fontdict_input2 = {'fontsize': 13, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'Gray'}
     for axis, shark_name in zip(all_7_axis, list(gender_equity_table.index)):
         female_val = gender_equity_table.loc[shark_name, 'Female Avg equity']
+
         male_val = gender_equity_table.loc[shark_name, 'Male Avg equity']
-        axis.bar(1, female_val, width=2, label='RMSE', color='lightblue')
-        axis.bar(3, male_val, width=2, label='MAE')
+        axis.bar(1, female_val, width=2, label='RMSE', color='darkblue')
+        axis.bar(3, male_val, width=2, label='MAE' , color='dodgerblue',hatch='.O')
 
         # Text for each bar either 'Male' or 'Female':
-        axis.text(x=1, y=0.5, s='F', ha='left', va='bottom', fontdict=fontdict_input)
-        axis.text(x=3, y=0.5, s='M', ha='left', va='bottom', fontdict=fontdict_input)
+        axis.text(x=1, y=0.15, s='F', ha='left', va='bottom', fontdict=fontdict_input)
+        axis.text(x=3, y=0.15, s='M', ha='left', va='bottom', fontdict=fontdict_input)
 
         # above each bar the height of each bar:
         axis.text(x=0.75, y=female_val, s=female_val, ha='left', va='bottom', fontdict=fontdict_input2,)
         axis.text(x=2.75, y=male_val, s=male_val, ha='left', va='bottom', fontdict=fontdict_input2)
 
         axis.set_title(shark_name,fontsize=14, weight='bold',loc='center')
+        plt.suptitle('The avg equity each shark invested in a entrepreneur', y=0.93, fontsize=22, fontweight='heavy')
         #axis.invert_yaxis() ( blood up to down )
-
+        #plt.bar(x, y, fill=False, hatch='.O')
         axis.set_xticks([])
     plt.show()
 
