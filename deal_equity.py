@@ -111,13 +111,12 @@ def creating_the_equity_subplot(gender_equity_table):
         axis.text(x=0.75, y=female_val, s=female_val_labels, ha='left', va='bottom', fontdict=fontdict_input2,)
         axis.text(x=2.75, y=male_val, s=male_val_labels, ha='left', va='bottom', fontdict=fontdict_input2)
 
-    axis.set_ylabel('The avg equity (%)', fontsize=16,fontweight='bold')
 
-    axis.set_title(shark_name,fontsize=14, weight='bold',loc='center')
-    plt.suptitle('The average equity invested by each shark in entrepreneurs, broken down by gender', y=0.93, fontsize=22, fontweight='heavy')
-    #axis.invert_yaxis() ( blood up to down )
-        #plt.bar(x, y, fill=False, hatch='.O')
-        #axis.set_ylim(max= 45  , min=20)
+
+    axis.set_title('The average equity invested by each shark in entrepreneurs, broken down by gender',fontsize=22, weight='bold',loc='right')
+    #plt.suptitle('The average equity invested by each shark in entrepreneurs, broken down by gender', y=0.93, fontsize=10, fontweight='heavy')
+
+    axis.set_ylabel('The avg equity (%)', fontsize=16,fontweight='bold')
     axis.set_xticks([])
     plt.show()
 
