@@ -10,6 +10,8 @@ if __name__ == '__main__':
 
     df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',
                        sheet_name='Sheet1')
+########################################################################################################################
+    #path 1 : retireiving the data from wiki web page:
 
     # Scrape the Wikipedia page
     # Get the HTML for the Wikipedia page
@@ -68,4 +70,6 @@ if __name__ == '__main__':
                  }
 
     df = pd.DataFrame(data_dict)
-    print()
+    print(*'')
+########################################################################################################################
+# #Path 2 : Scaling the data of top 10 episodes viewer of each year
