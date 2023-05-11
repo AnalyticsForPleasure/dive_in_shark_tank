@@ -90,8 +90,7 @@ def generate_table_for_deal_equity(df_input):
     all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
 
     # Handle missing values and strange symbols and finaly converting to int
-    all_the_deals_closed['DEAL_Equity'] = all_the_deals_closed['DEAL_Equity'].apply(
-        lambda x: convert_to_number(x, symbol_to_replace='%'))
+    all_the_deals_closed['DEAL_Equity'] = all_the_deals_closed['DEAL_Equity'].apply(lambda x: convert_to_number(x, symbol_to_replace='%'))
     all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['DEAL_Equity'] != '', :]
     all_the_deals_closed['DEAL_Equity'] = all_the_deals_closed['DEAL_Equity'].astype('float').astype('int')
 
@@ -103,27 +102,25 @@ def generate_table_for_deal_equity(df_input):
                                  all_the_deals_closed['DEAL_Equity'])
     res_new_equity = res_new_equity.T
     res_new_equity['Gender'] = all_the_deals_closed['Entrepreneur Gender']
-    res_new_equity_after_filter = res_new_equity.loc[res_new_equity['Gender'].isin(['Female','Male'])]
-    #res_new_equity_after_filter_with_out_zeros = res_new_equity_after_filter.replace(0,'' , regex=True)
 
+    res_new_equity_after_filter = res_new_equity.loc[res_new_equity['Gender'].isin(['Female', 'Male'])]
     list_names_sharks = ['Barbara\nCorcoran', 'Mark\nCuban', 'Lori\nGreiner', 'Robert Herjavec', 'Daymond\nJohn', "Kevin\nO'Leary", 'Guest']
+
     final_table_equity = pd.DataFrame()
+
     grouping_by_gender = res_new_equity_after_filter.groupby('Gender')
+
     for gender_entrepreneur, mini_df_gender_entrepreneur in grouping_by_gender:
         print(gender_entrepreneur)
         print(mini_df_gender_entrepreneur)
         mini_df_gender_entrepreneur = mini_df_gender_entrepreneur.loc[:, 'Barbara\nCorcoran':'Guest']
 
         for shark_name in list_names_sharks:
-            final_table_equity[f'{shark_name} Avg equity' ] = mini_df_gender_entrepreneur.loc[mini_df_gender_entrepreneur[shark_name] != 0, shark_name].mean()
-        print('*')
+            avg_equity = mini_df_gender_entrepreneur.loc[mini_df_gender_entrepreneur[shark_name] != 0, shark_name].mean()
+            final_table_equity.loc[shark_name, f'{gender_entrepreneur} Avg equity'] = float(avg_equity)
+            final_table_equity.loc[shark_name, f'{gender_entrepreneur} Avg equity'] = f"{final_table_equity.loc[shark_name, f'{gender_entrepreneur} Avg equity']/100:.1%}"
 
-        #final_table_equity[shark_name] = final_table_equity
-
-
-        final_table_equity.index = ['Barbara', 'Kevin', 'Lori', 'Robert', 'Mark', 'Daymond', 'Guest']
-        print('*')
-
+    print(final_table_equity)
     return final_table_equity
 
 
@@ -166,7 +163,7 @@ if __name__ == '__main__':
     # print('*')
 
     generate_table_for_deal_equity(df_input=df)
-
+    print('*')
     ##########################################################################################################################
     # In order to do the the dynamic Waffle chart :
     prepare_df_for_each_season_for_waffle_chart(df)
