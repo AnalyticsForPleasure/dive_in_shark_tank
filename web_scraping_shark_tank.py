@@ -73,3 +73,13 @@ if __name__ == '__main__':
     print(*'')
 ########################################################################################################################
 # #Path 2 : Scaling the data of top 10 episodes viewer of each year
+
+    final_table = []
+    grouping_by_seasons = df.groupby('season')
+    for season_num , mini_df_season_num in grouping_by_seasons:
+        print(season_num)
+        print(mini_df_season_num)
+        mini_df_season_num.sort_values(by='viewers', inplace=True, ascending=False)
+        sorting_the_season_by_viewers = df.sort_values(by='viewers')
+        top_eight_episode = sorting_the_season_by_viewers.head(n=8)
+        print('*')
