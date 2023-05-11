@@ -85,7 +85,7 @@ def retriving_info_about_royalty_equity_and_loans(df):
     return dict_royalties_loans_equities
 
 
-def generate_table_for_deal_eqauty(df_input):
+def generate_table_for_deal_equity(df_input):
     all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
     all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
 
@@ -104,20 +104,25 @@ def generate_table_for_deal_eqauty(df_input):
     res_new_equity = res_new_equity.T
     res_new_equity['Gender'] = all_the_deals_closed['Entrepreneur Gender']
     res_new_equity_after_filter = res_new_equity.loc[res_new_equity['Gender'].isin(['Female','Male'])]
-    res_new_equity_after_filter_with_out_zeros = res_new_equity_after_filter.replace(0,'' , regex=True)
+    #res_new_equity_after_filter_with_out_zeros = res_new_equity_after_filter.replace(0,'' , regex=True)
 
+    list_names_sharks = ['Barbara\nCorcoran', 'Mark\nCuban', 'Lori\nGreiner', 'Robert Herjavec', 'Daymond\nJohn', "Kevin\nO'Leary", 'Guest']
     final_table_equity = pd.DataFrame()
-    grouping_by_gender = res_new_equity_after_filter_with_out_zeros.groupby('Gender')
-    for gender_enrepreneur, mini_df_gender_enrepreneur in grouping_by_gender:
-        print(gender_enrepreneur)
-        print(mini_df_gender_enrepreneur)
-        mini_df_gender_enrepreneur = mini_df_gender_enrepreneur.loc[:, 'Barbara\nCorcoran':'Guest']
-        avg_investment_equity_by_a_shark =  mini_df_gender_enrepreneur.mean(axis=0)
-        final_table_equity[gender_enrepreneur] = avg_investment_equity_by_a_shark
+    grouping_by_gender = res_new_equity_after_filter.groupby('Gender')
+    for gender_entrepreneur, mini_df_gender_entrepreneur in grouping_by_gender:
+        print(gender_entrepreneur)
+        print(mini_df_gender_entrepreneur)
+        mini_df_gender_entrepreneur = mini_df_gender_entrepreneur.loc[:, 'Barbara\nCorcoran':'Guest']
+
+        for shark_name in list_names_sharks:
+            final_table_equity[f'{shark_name} Avg equity' ] = mini_df_gender_entrepreneur.loc[mini_df_gender_entrepreneur[shark_name] != 0, shark_name].mean()
+        print('*')
+
+        #final_table_equity[shark_name] = final_table_equity
 
 
-    final_table_equity.index = ['Barbara', 'Kevin', 'Lori', 'Robert', 'Mark', 'Daymond', 'Guest']
-    print('*')
+        final_table_equity.index = ['Barbara', 'Kevin', 'Lori', 'Robert', 'Mark', 'Daymond', 'Guest']
+        print('*')
 
     return final_table_equity
 
@@ -160,7 +165,7 @@ if __name__ == '__main__':
     # retriving_info_about_royalty_equity_and_loans(df_input)
     # print('*')
 
-    generate_table_for_deal_eqauty(df_input=df)
+    generate_table_for_deal_equity(df_input=df)
 
     ##########################################################################################################################
     # In order to do the the dynamic Waffle chart :
