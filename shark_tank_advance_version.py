@@ -103,7 +103,23 @@ def generate_table_for_deal_eqauty(df_input):
                                  all_the_deals_closed['DEAL_Equity'])
     res_new_equity = res_new_equity.T
     res_new_equity['Gender'] = all_the_deals_closed['Entrepreneur Gender']
-    print()
+    res_new_equity_after_filter = res_new_equity.loc[res_new_equity['Gender'].isin(['Female','Male'])]
+    res_new_equity_after_filter_with_out_zeros = res_new_equity_after_filter.replace(0,'' , regex=True)
+
+    final_table_equity = pd.DataFrame()
+    grouping_by_gender = res_new_equity_after_filter_with_out_zeros.groupby('Gender')
+    for gender_enrepreneur, mini_df_gender_enrepreneur in grouping_by_gender:
+        print(gender_enrepreneur)
+        print(mini_df_gender_enrepreneur)
+        mini_df_gender_enrepreneur = mini_df_gender_enrepreneur.loc[:, 'Barbara\nCorcoran':'Guest']
+        avg_investment_equity_by_a_shark =  mini_df_gender_enrepreneur.mean(axis=0)
+        final_table_equity[gender_enrepreneur] = avg_investment_equity_by_a_shark
+
+
+    final_table_equity.index = ['Barbara', 'Kevin', 'Lori', 'Robert', 'Mark', 'Daymond', 'Guest']
+    print('*')
+
+    return final_table_equity
 
 
 def prepare_df_for_each_season_for_waffle_chart(df_input):
@@ -149,7 +165,7 @@ if __name__ == '__main__':
     ##########################################################################################################################
     # In order to do the the dynamic Waffle chart :
     prepare_df_for_each_season_for_waffle_chart(df)
-
+    print('*')
     # result = retrieving_negotiation_details(df_input)
     # print('*')
     # https://towardsdatascience.com/9-visualizations-to-show-proportions-or-percentages-instead-of-a-pie-chart-4e8d81617451
