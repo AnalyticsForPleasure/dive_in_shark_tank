@@ -3,25 +3,25 @@
 # 2. show it in a circle, each circle size presents the amount of viewers
 
 import pandas as pd
-import requests
-from bs4 import BeautifulSoup
 import plotly.express as px
+import requests
 import seaborn as sns
+from bs4 import BeautifulSoup
 
-if __name__ == '__main__':
 
-    df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',
-                       sheet_name='Sheet1')
-########################################################################################################################
-    #path 1 : retireiving the data from wiki web page:
+# ******************************************************************************************************************
+# Function  name: Part 1 -- "scraping_the_wiki_web_page_of_sark_tank_viewers"
+# input:
+# return value:
+# ******************************************************************************************************************
 
+def scraping_the_wiki_web_page_of_sark_tank_viewers(url):
+    global df
     # Scrape the Wikipedia page
     # Get the HTML for the Wikipedia page
     url = 'https://en.wikipedia.org/w/index.php?title=List_of_Shark_Tank_episodes&oldid=911241643'
     page = requests.get(url)
-
     soup = BeautifulSoup(page.text, 'html.parser')
-
     all_tables = soup.findAll('table', attrs={'class': 'wikitable plainrowheaders wikiepisodetable'})
     episode_number_list = []
     season_number_list = []
@@ -63,61 +63,95 @@ if __name__ == '__main__':
                     print(e)
 
         season_number_list += len(all_episodes) * [season_number]
-
     num_viewers_list = num_viewers_list[:problematic_index] + [6.15] + num_viewers_list[problematic_index:]
-
     data_dict = {"season": season_number_list,
                  "episode": episode_number_list,
                  "viewers": num_viewers_list
                  }
-
     df = pd.DataFrame(data_dict)
     print(*'')
-########################################################################################################################
-# #Path 2 : Scaling the data of top 10 episodes viewer of each year
 
-    final_table = []
-    grouping_by_seasons = df.groupby('season')
-    for season_num , mini_df_season_num in grouping_by_seasons:
-        print(season_num)
-        print(mini_df_season_num)
-        mini_df_season_num.sort_values(by='viewers', inplace=True, ascending=True)
-        sorting_the_season_by_viewers = mini_df_season_num.sort_values(by='viewers')
-        top_eight_episode = sorting_the_season_by_viewers.head(n=8)
-
-        # Adding another column - "Percent" :
-        top_eight_episode['Percent'] = [round(i * 100 / sum(top_eight_episode.viewers), 1) for i in top_eight_episode.viewers]
-        top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
-
-        # Adding "M" for the viewers:
-        top_eight_episode['viewers'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x)) +'M'
-
-        # Adding X, Y coordinates scale :
-        top_eight_episode['Y Position'] = [1]*len(top_eight_episode)
-        list_x = list(range(0,len(top_eight_episode)))
-        top_eight_episode['X Position'] = list_x
+    return df
 
 
-        top_eight_episode
+# ******************************************************************************************************************
+# Function  name: Part 2 -- "sciling_the_scraping_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason"
+# input:
+# return value:
+# ******************************************************************************************************************
 
-        pal_ = list(sns.color_palette(palette='plasma_r', n_colors=len(top_eight_episode)).as_hex())
+def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(df):
+    # final_table = []
+    # grouping_by_seasons = df.groupby('season')
+    # for season_num, mini_df_season_num in grouping_by_seasons:
+    # print(season_num)
+    # print(mini_df_season_num)
+    mini_df_season_num = df.loc[df['season'] == 1, :]
+    mini_df_season_num.sort_values(by='viewers', inplace=True, ascending=True)
+    sorting_the_season_by_viewers = mini_df_season_num.sort_values(by='viewers')
+    top_eight_episode = sorting_the_season_by_viewers.head(n=8)
+    # Adding another column - "Percent" :
+    top_eight_episode['Percent'] = [round(i * 100 / sum(top_eight_episode.viewers), 1) for i in
+                                    top_eight_episode.viewers]
+    top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
+    # Adding "M" for the viewers:
+    top_eight_episode['viewers'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x))  # +'M'
+    # Adding X, Y coordinates scale :
+    top_eight_episode['Y Position'] = [1] * len(top_eight_episode)
+    list_x = list(range(0, len(top_eight_episode)))
+    top_eight_episode['X Position'] = list_x
+    print('*')
 
-        #create a laebls list for each bubble
-        label = [i+'/n'+str(j)+'/n'+str(k) for i,j,k in zip(top_eight_episode.episode,
-                                                                    top_eight_episode.viewers,
-                                                                    top_eight_episode.Percent)]
+    return top_eight_episode
 
-        fig = px.scatter(top_eight_episode, x='X Position', y='Y Position',
-                         color='episode', color_discrete_sequence=pal_,
-                         size='viewers', text=label, size_max=90)
+# ******************************************************************************************************************
+# Function  name: Part 3 -- "visualizing_the_number_of_viewers_for_each_season_with_bubble_chart"
+# input:
+# return value:
+# ******************************************************************************************************************
+def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eight_episode):
+    pal_ = list(sns.color_palette(palette='crest', n_colors=len(top_eight_episode)).as_hex())
+    # Now' let's go to the charting part:
+    # create a labels list for each bubble
+    label = [f'Episode{i}' '/n' + str(j) + 'M' '/n' + str(k) for i, j, k in zip(top_eight_episode['episode'],
+                                                                                top_eight_episode['viewers'],
+                                                                                top_eight_episode['Percent'])]
+    fig = px.scatter(top_eight_episode,
+                     x=list(top_eight_episode.loc[:, 'X Position']),
+                     y=list(top_eight_episode.loc[:, 'Y Position']),
+                     color=list(top_eight_episode.loc[:, 'episode']),
+                     color_discrete_sequence=pal_,
+                     size=top_eight_episode['viewers'],
+                     text=label,
+                     size_max=90)
+    fig.update_layout(width=900, height=320,
+                      margin=dict(t=50, l=0, r=0, b=0),
+                      showlegend=False)
+    fig.update_traces(textposition='top center')
+    fig.update_xaxes(showgrid=False, zeroline=False, visible=False)
+    fig.update_yaxes(showgrid=False, zeroline=False, visible=False)
+    fig.update_layout({'plot_bgcolor': 'white',
+                       'paper_bgcolor': 'white'})
+    fig.show()
+    print('*')
 
-        fig.update_layout(width=900, height=320,
-                          margin = dict(t=50, l=0, r=0, b=0),
-                          showlegend=False)
-        fig.update_traces(textposition='top center')
-        fig.update_xaxes(showgrid=False, zeroline=False, visible=False)
-        fig.update_yaxes(showgrid=False, zeroline=False, visible=False)
-        fig.update_layout({'plot_bgcolor': 'white',
-                           'paper_bgcolor': 'white'})
-        fig.show()
+
+
+
+if __name__ == '__main__':
+
+
+
+    # df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',
+    #                    sheet_name='Sheet1')
+    ########################################################################################################################
+    # path 1 : retireiving the data from wiki web page:
+    url = 'https://en.wikipedia.org/w/index.php?title=List_of_Shark_Tank_episodes&oldid=911241643'
+
+    res=scraping_the_wiki_web_page_of_sark_tank_viewers(url)
+    ########################################################################################################################
+    # #Path 2 : Scaling the data of top 10 episodes viewer of each year
+
+    res_2 =scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(res)
+    visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2)
     print('*')
