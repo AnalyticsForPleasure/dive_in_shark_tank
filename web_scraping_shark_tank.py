@@ -73,3 +73,25 @@ if __name__ == '__main__':
     print(*'')
 ########################################################################################################################
 # #Path 2 : Scaling the data of top 10 episodes viewer of each year
+
+    final_table = []
+    grouping_by_seasons = df.groupby('season')
+    for season_num , mini_df_season_num in grouping_by_seasons:
+        print(season_num)
+        print(mini_df_season_num)
+        mini_df_season_num.sort_values(by='viewers', inplace=True, ascending=True)
+        sorting_the_season_by_viewers = mini_df_season_num.sort_values(by='viewers')
+        top_eight_episode = sorting_the_season_by_viewers.head(n=8)
+
+        # Adding another column - "Percent" :
+        top_eight_episode['Percent'] = [round(i * 100 / sum(top_eight_episode.viewers), 1) for i in top_eight_episode.viewers]
+        top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
+
+        # Adding X, Y coordinates scale :
+        top_eight_episode['Y'] = [1]*len(top_eight_episode)
+        list_x = list(range(0,len(top_eight_episode)))
+        top_eight_episode['X'] = list_x
+
+
+        top_eight_episode
+        print('*')
