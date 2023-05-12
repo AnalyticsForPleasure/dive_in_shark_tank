@@ -5,6 +5,8 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+import plotly.express as px
+import seaborn as sns
 
 if __name__ == '__main__':
 
@@ -87,11 +89,35 @@ if __name__ == '__main__':
         top_eight_episode['Percent'] = [round(i * 100 / sum(top_eight_episode.viewers), 1) for i in top_eight_episode.viewers]
         top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
 
+        # Adding "M" for the viewers:
+        top_eight_episode['viewers'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x)) +'M'
+
         # Adding X, Y coordinates scale :
-        top_eight_episode['Y'] = [1]*len(top_eight_episode)
+        top_eight_episode['Y Position'] = [1]*len(top_eight_episode)
         list_x = list(range(0,len(top_eight_episode)))
-        top_eight_episode['X'] = list_x
+        top_eight_episode['X Position'] = list_x
 
 
         top_eight_episode
-        print('*')
+
+        pal_ = list(sns.color_palette(palette='plasma_r', n_colors=len(top_eight_episode)).as_hex())
+
+        #create a laebls list for each bubble
+        label = [i+'/n'+str(j)+'/n'+str(k) for i,j,k in zip(top_eight_episode.episode,
+                                                                    top_eight_episode.viewers,
+                                                                    top_eight_episode.Percent)]
+
+        fig = px.scatter(top_eight_episode, x='X Position', y='Y Position',
+                         color='episode', color_discrete_sequence=pal_,
+                         size='viewers', text=label, size_max=90)
+
+        fig.update_layout(width=900, height=320,
+                          margin = dict(t=50, l=0, r=0, b=0),
+                          showlegend=False)
+        fig.update_traces(textposition='top center')
+        fig.update_xaxes(showgrid=False, zeroline=False, visible=False)
+        fig.update_yaxes(showgrid=False, zeroline=False, visible=False)
+        fig.update_layout({'plot_bgcolor': 'white',
+                           'paper_bgcolor': 'white'})
+        fig.show()
+    print('*')
