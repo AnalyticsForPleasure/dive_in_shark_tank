@@ -88,20 +88,24 @@ def creating_the_equity_subplot(gender_equity_table):
     # Therefore we get in ax a list of subplots of two axis
     # you can unpack it, more easier:
     fig, all_7_axis = plt.subplots(nrows=1, ncols=7, sharey=True)
-    fontdict_input = {'fontsize': 16, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'White'}
-    fontdict_input2 = {'fontsize': 13, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'Gray'}
+    fontdict_input = {'fontsize': 18, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'White'}
+    fontdict_input2 = {'fontsize': 13, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'gray'}
+
 
 
     #res['Female Avg equity'] = (res['Female Avg equity']).apply(lambda r:"{:.2%}".format(r))
     for axis, shark_name in zip(all_7_axis, list(gender_equity_table.index)):
         female_val = gender_equity_table.loc[shark_name, 'Female Avg equity']
-        female_val_labels = "{:.2f}".format(female_val)
-        #female_val['Female Avg equity'] =female_val['Female Avg equity'].apply(lambda x: "{0:.2f}".format(x))
+        female_val_labels = "{:.1f}".format(female_val)
+
         male_val = gender_equity_table.loc[shark_name, 'Male Avg equity']
-        male_val_labels = "{:.2f}".format(male_val)
-        #male_val['Female Avg equity'] =male_val['Female Avg equity'].apply(lambda x: "{0:.2f}".format(x))
+        male_val_labels = "{:.1f}".format(male_val)
+
         axis.bar(1, female_val, width=2, label='RMSE', color='darkblue')
         axis.bar(3, male_val, width=2, label='MAE' , color='dodgerblue',hatch='.O')
+
+
+        all_7_axis[0].set_ylabel('The avg equity (%)', fontsize=19,fontweight='bold')
 
         # Text for each bar either 'Male' or 'Female':
         axis.text(x=1, y=0.15, s='F', ha='left', va='bottom', fontdict=fontdict_input)
@@ -116,7 +120,7 @@ def creating_the_equity_subplot(gender_equity_table):
     axis.set_title('The average equity invested by each shark in entrepreneurs, broken down by gender',fontsize=22, weight='bold',loc='right')
     #plt.suptitle('The average equity invested by each shark in entrepreneurs, broken down by gender', y=0.93, fontsize=10, fontweight='heavy')
 
-    axis.set_ylabel('The avg equity (%)', fontsize=16,fontweight='bold')
+
     axis.set_xticks([])
     plt.show()
 
