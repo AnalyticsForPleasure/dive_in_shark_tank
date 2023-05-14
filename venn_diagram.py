@@ -7,7 +7,6 @@ import numpy as np
 
 
 if __name__ == '__main__':
-    df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')
 
     Course1=['A','B','C' ,'E','F','G','I','P','Q']
     Course2=['B','E','F','H','K','Q','R','S','T','U','V','Z']
@@ -28,16 +27,66 @@ if __name__ == '__main__':
 
 
 
-
+    # How to set colors and opacity ?
     venn2([set(Course1), set(Course2)],
           set_labels=('Course1', 'Course2'),
-          set_colors=('orange', 'darkgrey'),
+          set_colors=('Green', 'darkgrey'),
           alpha = 0.8)
     plt.show()
 
-    # venn2_circles([set(dataset1), set(dataset2)],
-    #               linestyle='-.',
-    #               linewidth=2,
-    #               color='black')
+
+########################################################################################################################
 
 
+    # How change the circles?
+    vd2=venn2([set(Course1),set(Course2)],
+               set_labels=('Course1', 'Course2'),
+               set_colors=('Green', 'darkgrey'),
+               alpha = 0.8)
+    venn2_circles([set(Course1), set(Course2)],
+                   linestyle='-.',
+                   linewidth=2,
+                    color='black')
+    plt.show()
+
+########################################################################################################################
+
+    # How to change the siae of the label and numbers?
+    vd2=venn2([set(Course1),set(Course2)],
+              set_labels=('Course1', 'Course2'),
+              set_colors=('Green', 'darkgrey'),
+              alpha = 0.8)
+    venn2_circles([set(Course1), set(Course2)],
+              linestyle='-.',
+              linewidth=2,
+              color='black')
+    for text in vd2.set_labels:  #change label size
+        text.set_fontsize(29);
+    for text in vd2.subset_labels:  #change number size
+        text.set_fontsize(16)
+    plt.show()
+########################################################################################################################
+
+    # How to add a title?
+    vd2=venn2([set(Course1),set(Course2)],
+              set_labels=('Course1', 'Course2'),
+              set_colors=('Green', 'darkgrey'),
+              alpha = 0.8)
+    venn2_circles([set(Course1), set(Course2)],
+                  linestyle='-.',
+                  linewidth=2,
+                  color='black')
+    for text in vd2.set_labels:  #change label size
+        text.set_fontsize(29);
+    for text in vd2.subset_labels:  #change number size
+        text.set_fontsize(16)
+    plt.title('Venn Diagram for Course1 and Course2',
+              fontname='Times New Roman',
+              fontweight='bold',
+              fontsize=20,
+              pad=30,
+              backgroundcolor='#cbe7e3',
+              color='black',style='italic');
+    plt.show()
+
+########################################################################################################################
