@@ -49,10 +49,10 @@ if __name__ == '__main__':
     # The total amount of agreements made by each shark:
     Barbara_total_investment = panda_df.iloc[0,:].to_list()
     Mark_total_investment = panda_df.iloc[1, :].to_list()
-    Lori_total_investment = panda_df.iloc[0, :].to_list()
-    Robert_total_investment = panda_df.iloc[0, :].to_list()
-    Daymond_total_investment = panda_df.iloc[0, :].to_list()
-    Kevin_total_investment = panda_df.iloc[0, :].to_list()
+    Lori_total_investment = panda_df.iloc[2, :].to_list()
+    Robert_total_investment = panda_df.iloc[3, :].to_list()
+    Daymond_total_investment = panda_df.iloc[4, :].to_list()
+    Kevin_total_investment = panda_df.iloc[5, :].to_list()
 
     # The  amount of total agreements made:
     Total_equity_investments_agreements_made_by_all_sharks = panda_df.iloc[:,0].to_list()
