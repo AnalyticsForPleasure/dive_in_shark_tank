@@ -1,5 +1,4 @@
 #install the package "matplotlib-venn"
-from matplotlib_venn import venn3, venn3_circles
 from matplotlib_venn import venn2, venn2_circles
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -8,23 +7,37 @@ import numpy as np
 
 
 if __name__ == '__main__':
-    df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',
-                         sheet_name='Sheet1')
+    df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')
+
+    Course1=['A','B','C' ,'E','F','G','I','P','Q']
+    Course2=['B','E','F','H','K','Q','R','S','T','U','V','Z']
+    Course3=['C','E','G','H','J','K','O','Q','Z']
 
 
-    groupA =['person1','person2','person3','person4','person5','person6','person7']
-    groupB = ['person1','person2','person3', 'person8','person9']
-    groupC = ['person1','person2', 'person4', 'person9','person10']
+    #Method1: put two datasets directly
+    venn2([set(Course1), set(Course3)])
+    plt.show()
 
-    print('*')
-    #Let's now create 3 (each date one column) dataframe.
-    dfA = pd.DataFrame(data=groupA,columns=['groupA'])
-    dfB = pd.DataFrame(data= groupB,columns=['groupB'])
-    dfC = pd.DataFrame(data =groupC,columns=['groupC'])
-    print('*')
+    #Method 2:
+    venn2(subsets = (5, 8, 4))
+    plt.show()
 
-    # AB_overlap = A & B  #compute intersection of set A & set B
-    # AC_overlap = A & C
-    # BC_overlap = B & C
-    # ABC_overlap = A & B & C
-#https://medium.com/towards-data-science/how-to-create-and-beautify-venn-diagrams-in-python-331129bd4ed3
+    #Method 3:  you need to pass a dictionary to the parameter subset.
+    venn2(subsets = {'10': 5, '01': 8, '11': 4})
+    plt.show()
+
+
+
+
+    venn2([set(Course1), set(Course2)],
+          set_labels=('Course1', 'Course2'),
+          set_colors=('orange', 'darkgrey'),
+          alpha = 0.8)
+    plt.show()
+
+    # venn2_circles([set(dataset1), set(dataset2)],
+    #               linestyle='-.',
+    #               linewidth=2,
+    #               color='black')
+
+
