@@ -124,7 +124,8 @@ if __name__ == '__main__':
 
 
     fig, ax = plt.subplots(1, figsize=(16,16))
-    # # plot texts
+       # Path number 1 :
+    # # plot texts - the for here below gives up the vertical names of each shark
     # for idx, txt_idx in enumerate(txt_indexes):
     #     plt.subplot(6, 6, txt_idx)
     #     plt.text(0.5,0.5,
@@ -132,14 +133,17 @@ if __name__ == '__main__':
     #              ha='center', va='center', color='#1F764B')
     #     plt.axis('off')
 
+    # Path number 2 :
     # plot top plots (the ones with a title) - The for here below give us the diagonal venn diagrams
     for idx, title_idx in enumerate(title_indexes):
         plt.subplot(6, 6, title_idx)
         venn2(title_sets[idx], set_colors=c, set_labels = (' ', ' '))
         plt.title(labels[idx], fontsize=10, color='#1F4576')
     print('*')
-
-    #     # plot the rest of the diagrams
+    
+    
+    # Path number 3 :
+    # plot the rest of the diagrams-  The for here below gives us the rest of the venn diagrams, under the diagonal venn diagrams.
     # for idx, plot_idx in enumerate(plot_indexes):
     #     plt.subplot(6, 6, plot_idx)
     #     venn2(plot_sets[idx], set_colors=c, set_labels = (' ', ' '))
