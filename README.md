@@ -1,5 +1,3 @@
-# dive_in_shark_tank
-
 <p align="center">
   <img src="images/shark_tank_header.jpg" />
 </p>
