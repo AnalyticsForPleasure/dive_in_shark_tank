@@ -1,41 +1,20 @@
 # dive_in_shark_tank
 
-Today we will work on the dataset taken from the kaggle website.
-The dataset that we will dive into today would be on the “Shark Tank” TV show.
-For some of you, who aren’t similar with the TV show “Shark Tank” series, the show is a show where entrepreneurs present their product or service to a panel of lenders or “sharks” for money. Then, they do a presentation in front of the panel of sharks. After the presentation, the entrepreneurs will seek money in return for a percentage of their company.
 
-This mainstreaming of angel investment (  = a high net worth individual who invests their own money along with their time) in this entertaining format , gives us a bigger picture of how we can learn from the discussion of equity, funding, valuation and growth strategies.
+Today, we will be working with a dataset obtained from the Kaggle website. The dataset we are focusing on pertains to the popular TV show called "Shark Tank." For those unfamiliar with the show, it features entrepreneurs who present their products or services to a panel of lenders known as "sharks" in exchange for financial investment. The entrepreneurs deliver presentations to the panel, seeking monetary backing in return for a percentage of their company.
 
-Now, Let’s see a glimpse of the **angel investor** process
+This televised format, showcasing angel investment (where high net worth individuals invest their own money and time), provides valuable insights into discussions on equity, funding, valuation, and growth strategies.
 
-This data presents us with useful information about the show series taken on the ABC channel.
-As we can see below, the dataset includes 18 columns 450 rows ( matrix of 450 *18 ). Each row gives us information about the next entrepreneur who is willing to succeed in the big world,
+Now, let's take a brief look at the angel investor process.
 
+The dataset we are working with contains information about the "Shark Tank" series aired on the ABC channel. It comprises 18 columns and 450 rows, forming a matrix of 450 * 18. Each row provides information about an aspiring entrepreneur venturing into the business world.
 
-Here are the columns names:
-'Deal'
-'description'
- 'Episode'
- 'Category'
- 'Entrepreneurs'
- 'Location',
- 'website' 
-'Askedfor'
- 'Exchangeforstake'
- 'Valuation'
- 'Season'
- 'shark1', 'shark2' 'shark3' 'shark4' 'shark5'
- 'Title'
- 'Episode_season',
- 'multiple_entreprenuers'
+The column names include: 'Deal,' 'description,' 'Episode,' 'Category,' 'Entrepreneurs,' 'Location,' 'website,' 'Askedfor,' 'Exchangeforstake,' 'Valuation,' 'Season,' 'shark1,' 'shark2,' 'shark3,' 'shark4,' 'shark5,' 'Title,' 'Episode_season,' and 'multiple_entrepreneurs.'
 
 
 
 
-
-
-
-In the next chart I would like to know the number of investments made by the sharks in each season. Therefore, I would reveal this element and illustrate it by using  the pie chart.
+We will start with the next chart I would like to know the number of investments made by the sharks in each season. Therefore, I would reveal this element and illustrate it by using  the pie chart.
 We can notice, there is an increase in the number of investments made by the sharks as the TV show progressed over the seasons.
 As we can see, the number of investments taken in the first and second season was 27 and 19 .
 And on the opposite side, in the fifth season  and sixth season we can notice a big increase in numbers : 61 and 63.
