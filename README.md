@@ -65,6 +65,9 @@ The “DEAL”columns present the same aspects, but after a negotiation between 
 
 Therefore, I decided to drill down, and to focus on the negotiation part.
 
+
+The chart below displays the number of deals made by each shark in the panel over the years during entrepreneur presentations. Specifically, we are interested in determining the number of closed deals made by each shark, categorized by gender (male and female). For instance, Kavin had the highest number of deals with 132, this number doesn’t excluding those made with multiple entrepreneurs. Out of these, 93 deals (70.4%) were with male entrepreneurs, while the remaining 39 (29.6%) were with female entrepreneurs.
+
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/3fa16a8b-5c46-4e9a-9d3c-bb828af803aa)
 
 
