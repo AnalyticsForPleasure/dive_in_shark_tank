@@ -42,6 +42,8 @@ And on the opposite side, in the fifth season  and sixth season we can notice a 
 Seasons 1+2  = 27+19 = 46
 Seasons 5+6 = 61 + 63 = 124
 
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/ba36aab0-718a-4310-b7cc-68b869f5a7c8)
+
 
 
 One intriguing aspect we want to delve into is the level of investment made by each shark or guest on the show. Essentially, we aim to determine how much personal capital each individual is willing to invest in new entrepreneurial ideas. To shed light on this question, we conducted an analysis for each season, spanning from the first to the tenth. The chart below allows us to examine the percentage of investments made by a specific shark or guest in each season individua
