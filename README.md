@@ -52,7 +52,7 @@ One intriguing aspect we want to delve into is the level of investment made by e
 
 The chart below displays the number of deals made by each shark in the panel over the years during entrepreneur presentations. Specifically, we are interested in determining the number of closed deals made by each shark, categorized by gender (male and female). For instance, Kavin had the highest number of deals with 132, this number doesn’t excluding those made with multiple entrepreneurs. Out of these, 93 deals (70.4%) were with male entrepreneurs, while the remaining 39 (29.6%) were with female entrepreneurs.
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/3fa16a8b-5c46-4e9a-9d3c-bb828af803aa)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/cb3534ad-fd37-4580-bc62-2ae04acf3297)
 
 
 The next thing we are willing to find out is out the investments made ny each shark upon the entrepreneurs. This mean we ae willing to know which shark preference to invest apon a solo entrepreneurs VS  multiple entreprenuers.
