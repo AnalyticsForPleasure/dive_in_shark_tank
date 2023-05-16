@@ -50,21 +50,6 @@ One intriguing aspect we want to delve into is the level of investment made by e
 
 
 
-
-# Analysis the new data 
-As we go over the multiindex data we can notice an hierarchical indexing under the header of “ASK” and “DEAL” multiindex.
-The “ASK” columns presents all the aspects ( Amount, acuity and valuation ) given by the entrepreneurs as they give their peches offer to the sharks.
-The “DEAL”columns present the same aspects, but after a negotiation between the entrepreneurs and the sharks. Usually the sharks will try to “cut off “ the asking price valuation or reduce the amount of money they are willing to pay, In order to hedge their investments.
-
-Therefore, I decided to drill down, and to focus on the negotiation part.
-
-As we go over the multiindex data we can notice an hierarchical indexing under the header of “ASK” and “DEAL” multiindex.
-The “ASK” columns presents all the aspects ( Amount, acuity and valuation ) given by the entrepreneurs as they give their peches offer to the sharks.
-The “DEAL”columns present the same aspects, but after a negotiation between the entrepreneurs and the sharks. Usually the sharks will try to “cut off “ the asking price valuation or reduce the amount of money they are willing to pay, In order to hedge their investments.
-
-Therefore, I decided to drill down, and to focus on the negotiation part.
-
-
 The chart below displays the number of deals made by each shark in the panel over the years during entrepreneur presentations. Specifically, we are interested in determining the number of closed deals made by each shark, categorized by gender (male and female). For instance, Kavin had the highest number of deals with 132, this number doesn’t excluding those made with multiple entrepreneurs. Out of these, 93 deals (70.4%) were with male entrepreneurs, while the remaining 39 (29.6%) were with female entrepreneurs.
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/3fa16a8b-5c46-4e9a-9d3c-bb828af803aa)
@@ -86,4 +71,4 @@ The next thing that we would like to dive into is to find out for each deal whic
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/ecc19377-a3da-41f0-b224-ffd21aab5f29)
 
 
-
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/8c45ac2a-fb30-445e-9eef-7cbd433ad536)
