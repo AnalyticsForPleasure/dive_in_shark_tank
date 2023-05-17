@@ -69,6 +69,16 @@ The next thing that we would like to dive into is to find out for each deal whic
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/ecc19377-a3da-41f0-b224-ffd21aab5f29)
 
+
+Over the course of the first ten years, the show has been televised, numerous pitch presentations have taken place in front of the sharks panel. These pitches spanned various industries, ranging from “online services” to the "baby and Child care" sector. As a result, our upcoming research aims to uncover the industries that have experienced shifts in temperature over the ten-year period. By addressing this question, we can identify which industries have reached their peak or declined from their peak.
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/7b52a4cf-3c3e-4b27-871e-20d6cb2fcf27)
+
+
+
+
+
+
 As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
 
 In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. For example, Daymond has invested his funds in three different fields: electronics (650,000 USD), novelties (500,000 USD), and specialty food (380 USD).
