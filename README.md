@@ -3,6 +3,21 @@
 </p>
 
 
+<div id="user-content-toc">
+  <ul>
+
+* introduction 
+* Number of Investments Made over the Seasons
+* Investment Percentage: Sharks vs. Rest of the Panel in Each Season
+* Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons
+* Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments
+* Average Equity of Each Shark over Closing Deals, Divided by Gender
+* Industries that Have Experienced Temperature Changes over 10 Seasons
+* Preferred Industries for Shark Investments over the Seasons, and Investment Amounts.
+
+  </ul>
+</div>
+
 Today, we will be working with a dataset obtained from the Kaggle website. The dataset we are focusing on pertains to the popular TV show called "Shark Tank." For those unfamiliar with the show, it features entrepreneurs who present their products or services to a panel of lenders known as "sharks" in exchange for financial investment. The entrepreneurs deliver presentations to the panel, seeking monetary backing in return for a percentage of their company.
 
 This televised format, showcasing angel investment (where high net worth individuals invest their own money and time), provides valuable insights into discussions on equity, funding, valuation, and growth strategies.
