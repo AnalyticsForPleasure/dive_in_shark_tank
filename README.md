@@ -72,7 +72,9 @@ The next thing that we would like to dive into is to find out for each deal whic
 
 Over the course of the first ten years, the show has been televised, numerous pitch presentations have taken place in front of the sharks panel. These pitches spanned various industries, ranging from “online services” to the "baby and Child care" sector. As a result, our upcoming research aims to uncover the industries that have experienced shifts in temperature over the ten-year period. By addressing this question, we can identify which industries have reached their peak or declined from their peak.
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/6b5757ce-613f-4844-861d-881d9f4cbd85)
+
+ ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/0a43c527-2f6b-41e9-a12a-f0a8811f333b)
+
 
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/7b52a4cf-3c3e-4b27-871e-20d6cb2fcf27)
