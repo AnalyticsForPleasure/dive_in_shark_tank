@@ -6,14 +6,14 @@
 <div id="user-content-toc">
   <ul>
 
-* introduction 
-* Number of Investments Made over the Seasons
-* Investment Percentage: Sharks vs. Rest of the Panel in Each Season
-* Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons
-* Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments
-* Average Equity of Each Shark over Closing Deals, Divided by Gender
-* Industries that Have Experienced Temperature Changes over 10 Seasons
-* Preferred Industries for Shark Investments over the Seasons, and Investment Amounts.
+* [introduction](#introduction) 
+* [Number of Investments Made over the Seasons](#Number of Investments Made over the Seasons)
+* [Investment Percentage: Sharks vs. Rest of the Panel in Each Season](#Investment Percentage: Sharks vs. Rest of the Panel in Each Season)
+* [Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons](#Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons)
+* [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments)
+* [Average Equity of Each Shark over Closing Deals, Divided by Gender](#Average Equity of Each Shark over Closing Deals, Divided by Gender)
+* [Industries that Have Experienced Temperature Changes over 10 Seasons](#Industries that Have Experienced Temperature Changes over 10 Seasons)
+* [Preferred Industries for Shark Investments over the Seasons, and Investment Amounts](#Preferred Industries for Shark Investments over the Seasons, and Investment Amounts)
 
   </ul>
 </div>
