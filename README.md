@@ -5,12 +5,9 @@
 
 
 
-* [introduction](#introduction) 
-
+* [Introduction](#Introduction)
 * [Number of Investments Made over the Seasons](#Number of Investments Made over the Seasons)
-* 
 * [Investment Percentage: Sharks vs. Rest of the Panel in Each Season](#Investment Percentage: Sharks vs. Rest of the Panel in Each Season)
-* 
 * [Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons](#Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons)
 * [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments)
 * [Average Equity of Each Shark over Closing Deals, Divided by Gender](#Average Equity of Each Shark over Closing Deals, Divided by Gender)
@@ -42,7 +39,7 @@ Seasons 5+6 = 61 + 63 = 124
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/ba36aab0-718a-4310-b7cc-68b869f5a7c8)
 
 
-
+## #Investment Percentage: Sharks vs. Rest of the Panel in Each Season
 One intriguing aspect we want to delve into is the level of investment made by each shark or guest on the show. Essentially, we aim to determine how much personal capital each individual is willing to invest in new entrepreneurial ideas. To shed light on this question, we conducted an analysis for each season, spanning from the first to the tenth. The chart below allows us to examine the percentage of investments made by a specific shark or guest in each season individual
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/a280c684-2525-4342-ad40-39aafb2fce31)
@@ -85,7 +82,7 @@ Over the course of the first ten years, the show has been televised, numerous pi
 
 
 
-
+## Preferred Industries for Shark Investments over the Seasons, and Investment Amounts
 As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
 
 In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. For example, Daymond has invested his funds in three different fields: electronics (650,000 USD), novelties (500,000 USD), and specialty food (380 USD).
