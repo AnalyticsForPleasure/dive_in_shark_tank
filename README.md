@@ -31,7 +31,7 @@ The column names include: 'Deal,' 'description,' 'Episode,' 'Category,' 'Entrepr
 
 
 
-#Number of Investments Made over the Seasons
+## Number of Investments Made over the Seasons
 We will start with the next chart I would like to know the number of investments made by the sharks in each season. Therefore, I would reveal this element and illustrate it by using  the pie chart.
 We can notice, there is an increase in the number of investments made by the sharks as the TV show progressed over the seasons.
 As we can see, the number of investments taken in the first and second season was 27 and 19 .
@@ -51,7 +51,7 @@ One intriguing aspect we want to delve into is the level of investment made by e
 
 
 
-#Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons
+## Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons
 The chart below displays the number of deals made by each shark in the panel over the years during entrepreneur presentations. Specifically, we are interested in determining the number of closed deals made by each shark, categorized by gender (male and female). For instance, Kavin had the highest number of deals with 132, this number doesn’t excluding those made with multiple entrepreneurs. Out of these, 93 deals (70.4%) were with male entrepreneurs, while the remaining 39 (29.6%) were with female entrepreneurs.
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/cb3534ad-fd37-4580-bc62-2ae04acf3297)
@@ -66,7 +66,7 @@ Interestingly, we observe that all sharks show a clear inclination towards inves
 
 ![image](https://user-images.githubusercontent.com/28948369/236793307-0a116837-577a-4398-abc6-d9108eb23819.png)
 
-
+## Average Equity of Each Shark over Closing Deals, Divided by Gender
 The next thing that we would like to dive into is to find out for each deal which has been closed by each shark, what was the amount of equity settled during the negotiation process between the entrepreneur VS the shark. Therefore, we decided to add another element to the equation - for each closed deal by each shark we will divide the deals by the gender of the entrepreneur. For example : Mark Cuban, during 10 seasons of the show that has been aired on TV, he made 68 investment deals with entrepreneurs over the show. As we can notice below, The average equity (%) for a male entrepreneur was 28.6%, while the average equity (%) for a female entrepreneur was 26.4%.
 
 
