@@ -24,8 +24,11 @@ Now, let's take a brief look at the angel investor process.
 
 The dataset we are working with contains information about the "Shark Tank" series aired on the ABC channel. It comprises 18 columns and 450 rows, forming a matrix of 450 * 18. Each row provides information about an aspiring entrepreneur venturing into the business world.
 
-The column names include: 'Deal,' 'description,' 'Episode,' 'Category,' 'Entrepreneurs,' 'Location,' 'website,' 'Askedfor,' 'Exchangeforstake,' 'Valuation,' 'Season,' 'shark1,' 'shark2,' 'shark3,' 'shark4,' 'shark5,' 'Title,' 'Episode_season,' and 'multiple_entrepreneurs.'
+The column names include: 'Deal,' 'Deal,' 'Episode,' 'Category,' 'Entrepreneurs,' 'Location,' 'website,' 'Askedfor,' 'Exchangeforstake,' 'Valuation,' 'Season,' 'shark1,' 'shark2,' 'shark3,' 'shark4,' 'shark5,' 'Title,' 'Episode_season,' and 'multiple_entrepreneurs.'
 
+- [x] Deal
+- [x] Deal
+- [x] Episode
 
 
 ## Number of Investments Made over the Seasons
