@@ -18,7 +18,7 @@
 * [Preferred Industries for Shark Investments over the Seasons, and Investment Amounts](#Preferred Industries for Shark Investments over the Seasons, and Investment Amounts)
 
 
-
+## Introduction
 Today, we will be working with a dataset obtained from the Kaggle website. The dataset we are focusing on pertains to the popular TV show called "Shark Tank." For those unfamiliar with the show, it features entrepreneurs who present their products or services to a panel of lenders known as "sharks" in exchange for financial investment. The entrepreneurs deliver presentations to the panel, seeking monetary backing in return for a percentage of their company.
 
 This televised format, showcasing angel investment (where high net worth individuals invest their own money and time), provides valuable insights into discussions on equity, funding, valuation, and growth strategies.
@@ -31,7 +31,7 @@ The column names include: 'Deal,' 'description,' 'Episode,' 'Category,' 'Entrepr
 
 
 
-
+#Number of Investments Made over the Seasons
 We will start with the next chart I would like to know the number of investments made by the sharks in each season. Therefore, I would reveal this element and illustrate it by using  the pie chart.
 We can notice, there is an increase in the number of investments made by the sharks as the TV show progressed over the seasons.
 As we can see, the number of investments taken in the first and second season was 27 and 19 .
@@ -51,7 +51,7 @@ One intriguing aspect we want to delve into is the level of investment made by e
 
 
 
-
+#Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons
 The chart below displays the number of deals made by each shark in the panel over the years during entrepreneur presentations. Specifically, we are interested in determining the number of closed deals made by each shark, categorized by gender (male and female). For instance, Kavin had the highest number of deals with 132, this number doesn’t excluding those made with multiple entrepreneurs. Out of these, 93 deals (70.4%) were with male entrepreneurs, while the remaining 39 (29.6%) were with female entrepreneurs.
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/cb3534ad-fd37-4580-bc62-2ae04acf3297)
