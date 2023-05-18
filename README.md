@@ -7,9 +7,9 @@
 
 * [Introduction](#Introduction)
 * [<strong>Number of Investments Made over the Seasons<strong>](#Number-of-Investments-Made-over-the-Seasons)
-* [Investment Percentage: Sharks vs. Rest of the Panel in Each Season](#Investment-Percentage:-Sharks-vs.-Rest-of-the-Panel-in-Each-Season)
+* [Investment Percentage: Sharks vs. Rest of the Panel in Each Season](#Investment-Percentage-Sharks-vs-Rest-of-the-Panel-in-Each-Season)
 * [Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons](#Number-of-Investments-Made-by-Each-Shark-Divided-by-Gender-during-the-10-Seasons)
-* [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark-Preferences:-Multi-Entrepreneur-vs.-Solo-Entrepreneur-Investments)
+* [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark-Preferences-Multi-Entrepreneur-vs-Solo-Entrepreneur-Investments)
 * [Average Equity of Each Shark over Closing Deals, Divided by Gender](#Average-Equity-of-Each-Shark-over-Closing-Deals,-Divided-by-Gender)
 * [Industries that Have Experienced Temperature Changes over 10 Seasons](#Industries-that-Have-Experienced-Temperature-Changes-over-10-Seasons)
 * [Preferred Industries for Shark Investments over the Seasons, and Investment Amounts](#Preferred-Industries-for-Shark-Investments-over-the-Seasons,-and-Investment-Amounts)
@@ -39,7 +39,7 @@ Seasons 5+6 = 61 + 63 = 124
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/ba36aab0-718a-4310-b7cc-68b869f5a7c8)
 
 
-## #Investment Percentage: Sharks vs. Rest of the Panel in Each Season
+## **Investment Percentage: Sharks vs. Rest of the Panel in Each Season**
 One intriguing aspect we want to delve into is the level of investment made by each shark or guest on the show. Essentially, we aim to determine how much personal capital each individual is willing to invest in new entrepreneurial ideas. To shed light on this question, we conducted an analysis for each season, spanning from the first to the tenth. The chart below allows us to examine the percentage of investments made by a specific shark or guest in each season individual
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/a280c684-2525-4342-ad40-39aafb2fce31)
@@ -48,18 +48,18 @@ One intriguing aspect we want to delve into is the level of investment made by e
 
 
 
-## Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons
+## **Number of Investments Made by Each Shark Divided by Gender during the 10 Seasons**
 The chart below displays the number of deals made by each shark in the panel over the years during entrepreneur presentations. Specifically, we are interested in determining the number of closed deals made by each shark, categorized by gender (male and female). For instance, Kavin had the highest number of deals with 132, this number doesn’t excluding those made with multiple entrepreneurs. Out of these, 93 deals (70.4%) were with male entrepreneurs, while the remaining 39 (29.6%) were with female entrepreneurs.
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/cb3534ad-fd37-4580-bc62-2ae04acf3297)
 
-## Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments
+## **Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments**
 Our next objective is to determine the number of investments made by each shark with regards to entrepreneurs. Specifically, we want to understand the sharks' preferences when it comes to investing in solo entrepreneurs versus multiple entrepreneurs.
 Interestingly, we observe that all sharks show a clear inclination towards investing in companies that have multiple partners rather than those led by a single individual. They tend to allocate a higher number of investments to companies with several stakeholders compared to those primarily led by a single person.
 
 ![image](https://user-images.githubusercontent.com/28948369/236793307-0a116837-577a-4398-abc6-d9108eb23819.png)
 
-## Average Equity of Each Shark over Closing Deals, Divided by Gender
+## **Average Equity of Each Shark over Closing Deals, Divided by Gender**
 The next thing that we would like to dive into is to find out for each deal which has been closed by each shark, what was the amount of equity settled during the negotiation process between the entrepreneur VS the shark. Therefore, we decided to add another element to the equation - for each closed deal by each shark we will divide the deals by the gender of the entrepreneur. For example : Mark Cuban, during 10 seasons of the show that has been aired on TV, he made 68 investment deals with entrepreneurs over the show. As we can notice below, The average equity (%) for a male entrepreneur was 28.6%, while the average equity (%) for a female entrepreneur was 26.4%.
 
 
@@ -68,7 +68,7 @@ The next thing that we would like to dive into is to find out for each deal whic
 
 
 
-## Industries that Have Experienced Temperature Changes over 10 Seasons
+## **Industries that Have Experienced Temperature Changes over 10 Seasons**
 
 Over the course of the first ten years, the show has been televised, numerous pitch presentations have taken place in front of the sharks panel. These pitches spanned various industries, ranging from “online services” to the "baby and Child care" sector. As a result, our upcoming research aims to uncover the industries that have experienced shifts in temperature over the ten-year period. By addressing this question, we can identify which industries have reached their peak or declined from their peak.
 
@@ -83,7 +83,7 @@ Over the course of the first ten years, the show has been televised, numerous pi
 
 
 
-## Preferred Industries for Shark Investments over the Seasons, and Investment Amounts
+## **Preferred Industries for Shark Investments over the Seasons, and Investment Amounts**
 As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
 
 In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. For example, Daymond has invested his funds in three different fields: electronics (650,000 USD), novelties (500,000 USD), and specialty food (380 USD).
