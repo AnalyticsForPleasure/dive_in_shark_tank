@@ -12,7 +12,7 @@
 * [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark-Preferences-Multi-Entrepreneur-vs-Solo-Entrepreneur-Investments)
 * [Average Equity of Each Shark over Closing Deals, Divided by Gender](#Average-Equity-of-Each-Shark-over-Closing-Deals,-Divided-by-Gender)
 * [Industries that Have Experienced Temperature Changes over 10 Seasons](#Industries-that-Have-Experienced-Temperature-Changes-over-10-Seasons)
-* [Sharks' Preferred Industries for Investments](#Sharks'-Preferred-Industries-for-Investments)
+* [Sharks' Preferred Industries for Investments](#sharks-preferred-industries-for-investments)
 
 
 ## **Introduction** 
