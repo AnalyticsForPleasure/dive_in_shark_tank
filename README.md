@@ -12,7 +12,7 @@
 * [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark-Preferences-Multi-Entrepreneur-vs-Solo-Entrepreneur-Investments)
 * [Average Equity of Each Shark over Closing Deals, Divided by Gender](#Average-Equity-of-Each-Shark-over-Closing-Deals,-Divided-by-Gender)
 * [Industries that Have Experienced Temperature Changes over 10 Seasons](#Industries-that-Have-Experienced-Temperature-Changes-over-10-Seasons)
-* [Preferred Industries for Shark Investments over the Seasons, and Investment Amounts](#Preferred-Industries-for-Shark-Investments-over-the-Seasons,-and-Investment-Amounts)
+* [Sharks' Preferred Industries for Investments](#Sharks'-Preferred-Industries-for-Investments)
 
 
 ## **Introduction** 
@@ -83,7 +83,7 @@ Over the course of the first ten years, the show has been televised, numerous pi
 
 
 
-## **Preferred Industries for Shark Investments over the Seasons, and Investment Amounts**
+## Sharks' Preferred Industries for Investments
 As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
 
 In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. For example, Daymond has invested his funds in three different fields: electronics (650,000 USD), novelties (500,000 USD), and specialty food (380 USD).
