@@ -62,7 +62,8 @@ The chart below displays the number of deals made by each shark in the panel ove
 Our next objective is to determine the number of investments made by each shark with regards to entrepreneurs. Specifically, we want to understand the sharks' preferences when it comes to investing in solo entrepreneurs versus multiple entrepreneurs.
 Interestingly, we observe that all sharks show a clear inclination towards investing in companies that have multiple partners rather than those led by a single individual. They tend to allocate a higher number of investments to companies with several stakeholders compared to those primarily led by a single person.
 
-![image](https://user-images.githubusercontent.com/28948369/236793307-0a116837-577a-4398-abc6-d9108eb23819.png)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/4deb1b6c-c7c4-440c-bb53-4132d4822100)
+
 
 ---
 
