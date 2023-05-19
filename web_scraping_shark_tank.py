@@ -16,7 +16,6 @@ from bs4 import BeautifulSoup
 # ******************************************************************************************************************
 
 def scraping_the_wiki_web_page_of_sark_tank_viewers(url):
-    global df
     # Scrape the Wikipedia page
     # Get the HTML for the Wikipedia page
     url = 'https://en.wikipedia.org/w/index.php?title=List_of_Shark_Tank_episodes&oldid=911241643'
@@ -93,13 +92,19 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     # Adding another column - "Percent" :
     top_eight_episode['Percent'] = [round(i * 100 / sum(top_eight_episode.viewers), 1) for i in
                                     top_eight_episode.viewers]
-    top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
+    top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x))+'%'
     # Adding "M" for the viewers:
+    top_eight_episode['viewers'] = top_eight_episode['viewers'].astype(float)
     top_eight_episode['viewers'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x))  # +'M'
     # Adding X, Y coordinates scale :
     top_eight_episode['Y Position'] = [1] * len(top_eight_episode)
     list_x = list(range(0, len(top_eight_episode)))
     top_eight_episode['X Position'] = list_x
+
+    #top_eight_episode['episode'] = top_eight_episode['episode'].astype(str)
+
+
+    top_eight_episode.dtypes
     print('*')
 
     return top_eight_episode
@@ -111,22 +116,28 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
 # ******************************************************************************************************************
 def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eight_episode):
     pal_ = list(sns.color_palette(palette='crest', n_colors=len(top_eight_episode)).as_hex())
+    #cmap = sns.color_palette("Blues", as_cmap=True).as_hex()
     # Now' let's go to the charting part:
     # create a labels list for each bubble
-    label = [f'Episode{i}' '/n' + str(j) + 'M' '/n' + str(k) for i, j, k in zip(top_eight_episode['episode'],
+    label = [f'Episode{i}'+'<br>'+ str(j) +'<br>'+ str(k) for i, j, k in zip(top_eight_episode['episode'],
                                                                                 top_eight_episode['viewers'],
                                                                                 top_eight_episode['Percent'])]
+
+    # label = [f'Episode{i}'+'<br>'+ str(j) +'Millions'+'<br>'+ str(k) for i, j, k in zip(top_eight_episode['episode'],
+    #                                                                                     top_eight_episode['viewers'],
+    #                                                                                     top_eight_episode['Percent'])]
+
+
+
     fig = px.scatter(top_eight_episode,
-                     x=list(top_eight_episode.loc[:, 'X Position']),
-                     y=list(top_eight_episode.loc[:, 'Y Position']),
-                     color=list(top_eight_episode.loc[:, 'episode']),
-                     color_discrete_sequence=pal_,
-                     size=top_eight_episode['viewers'],
-                     text=label,
-                     size_max=90)
-    fig.update_layout(width=900, height=320,
-                      margin=dict(t=50, l=0, r=0, b=0),
-                      showlegend=False)
+                         x=list(top_eight_episode.loc[:, 'X Position']),
+                         y=list(top_eight_episode.loc[:, 'Y Position']),
+                         color=top_eight_episode['episode'],
+                         color_discrete_sequence=pal_,
+                         size=top_eight_episode['viewers'],
+                         text=label,
+                         size_max=15)
+    fig.update_layout(width=900, height=320,margin=dict(t=50, l=0, r=0, b=0),showlegend=False)
     fig.update_traces(textposition='top center')
     fig.update_xaxes(showgrid=False, zeroline=False, visible=False)
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False)
@@ -155,3 +166,5 @@ if __name__ == '__main__':
     res_2 =scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(res)
     visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2)
     print('*')
+#trying to dubug untill line 130. chan
+
