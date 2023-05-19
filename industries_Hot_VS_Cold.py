@@ -12,7 +12,7 @@ import seaborn as sns
 # input:
 # return value:
 # ****************************************************************************************************************
-def which_industries_have_gotten_hotter_or_colder_over_6_seasons(df_2):
+def which_industries_have_gotten_hotter_or_colder_over_10_seasons(df_2):
     closed_deals_first_season = df_2.loc[(df_2['Deal'] == 'Yes') & (df_2['Season'] == 1)]  # 27 closed deals in season 1
     counter_1_season = closed_deals_first_season['Industry'].value_counts()
     #counter_1_season = counter_1_season.drop( ['Fitness Equipment'])  # dropping one category in order to compare to season 6
@@ -36,7 +36,7 @@ def which_industries_have_gotten_hotter_or_colder_over_6_seasons(df_2):
     # Lets nerge the two data together:
     final_res = counter_1_season.merge(counter_6_season, on='categories', how='inner')
     print('*')
-    dfi.export(final_res, 'slope_chart.png')
+    dfi.export(final_res, 'images/slope_chart.png')
     final_table_result = final_res.loc[[0,2, 4, 6, 7], :]
     print('*')
     return final_table_result
@@ -47,7 +47,7 @@ def which_industries_have_gotten_hotter_or_colder_over_6_seasons(df_2):
 
 def newline(p1, p2, color='black'):
     ax = plt.gca()
-    l = mlines.Line2D([p1[0], p2[0]], [p1[1], p2[1]], color='red' if p1[1] - p2[1] > 0 else 'green', marker='o',
+    l = mlines.Line2D([p1[0], p2[0]], [p1[1], p2[1]], color='darkblue' if p1[1] - p2[1] > 0 else 'deepskyblue', marker='o',
                       markersize=6)  # coloring the line by condition
     ax.add_line(l)
     return l
@@ -59,7 +59,9 @@ def newline(p1, p2, color='black'):
 # input:
 # return value:
 # ****************************************************************************************************************
-def slope_chart_for_industries_have_gotten_hotter_or_colder_over_6_seasons(final_table):
+def slope_chart_for_industries_have_gotten_hotter_or_colder_over_10_seasons(final_table):
+
+    plt.style.use('seaborn')
 
     left_label = [str(c) + ' - '+ str(round(y)) for c, y in zip(final_table.categories, final_table['Amount of investments by categories - Season 1'])]
     right_label = [str(c) + ' - '+ str(round(y)) for c, y in zip(final_table.categories, final_table['Amount of investments by categories - Season 10'])]
@@ -67,8 +69,8 @@ def slope_chart_for_industries_have_gotten_hotter_or_colder_over_6_seasons(final
     fig, ax = plt.subplots(1, 1, figsize=(14, 14), dpi=80)
 
     # Vertical Lines
-    ax.vlines(x=1, ymin=500, ymax=13000, color='black', alpha=0.5, linewidth=1, linestyles='dotted')
-    ax.vlines(x=3, ymin=500, ymax=13000, color='black', alpha=1, linewidth=3, linestyles='dotted')
+    ax.vlines(x=1, ymin=1, ymax=18, color='black', alpha=1, linewidth=3, linestyles='dotted')
+    ax.vlines(x=3, ymin=1, ymax=18, color='black', alpha=1, linewidth=3, linestyles='dotted')
 
 
     # Points
@@ -86,16 +88,20 @@ def slope_chart_for_industries_have_gotten_hotter_or_colder_over_6_seasons(final
                 fontdict={'size': 14})
 
     # 'Before' and 'After' Annotations
-    ax.text(1 - 0.05, 6, 'Season 1\n lead categories', horizontalalignment='right', verticalalignment='center',
-            fontdict={'size': 18, 'weight': 700})
-    ax.text(3 + 0.05, 6, 'Season 10 \n lead categories', horizontalalignment='left', verticalalignment='center',
+    ax.text(x=1 - 0.05, y=16.5, s='Season 1\n lead categories', horizontalalignment='right', verticalalignment='center',fontname='Franklin Gothic Medium Cond',weight='bold',
+            fontdict={'size': 18, 'weight': 700})  # the position of the 'y' will be less the 18
+    ax.text(x=3 + 0.05, y=16.5 ,s= 'Season 10 \n lead categories', horizontalalignment='left', verticalalignment='center',fontname='Franklin Gothic Medium Cond',weight='bold',
             fontdict={'size': 18, 'weight': 700})
 
     # Decoration
-    #ax.set_title("Which industries have gotten hotter or colder over 10 seasons?", fontdict={'size': 22},  weight='bold' ,color = 'royalblue')
-    ax.set(xlim=(0, 4), ylim=(0, 7), ylabel='Number of investments made by the sharks')
+    ax.set_title("Which industries have gotten hotter or colder over 10 seasons?", fontdict={'size': 27},
+                 weight='bold' ,
+                 color = 'royalblue',
+                 fontname='Franklin Gothic Medium Cond')
+    #the next row is Extrimly  important
+    ax.set(xlim=(0, 4), ylim=(0, 18), ylabel='Number of investments made by the sharks')
     ax.set_xticks([1, 3])
-    #ax.set_xticklabels(["Season 1\n lead categories", "Season 6 \n lead categories"])
+    ax.set_xticklabels(["Season 1\n lead categories", "Season 6 \n lead categories"])
     plt.yticks(np.arange(1, 1, 7), fontsize=12)
 
     # Lighten borders
@@ -115,6 +121,6 @@ if __name__ == '__main__':
     df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv')  # six seasons
     df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')  # Ten seasons
 
-    res = which_industries_have_gotten_hotter_or_colder_over_6_seasons(df_2)
-    slope_chart_for_industries_have_gotten_hotter_or_colder_over_6_seasons(res)
+    res = which_industries_have_gotten_hotter_or_colder_over_10_seasons(df_2)
+    slope_chart_for_industries_have_gotten_hotter_or_colder_over_10_seasons(res)
     print('*')
