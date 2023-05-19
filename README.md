@@ -22,13 +22,28 @@ This televised format, showcasing angel investment (where high net worth individ
 
 Now, let's take a brief look at the angel investor process.
 
-The dataset we are working with contains information about the "Shark Tank" series aired on the ABC channel. It comprises 18 columns and 450 rows, forming a matrix of 450 * 18. Each row provides information about an aspiring entrepreneur venturing into the business world.
+The dataset we are working with contains information about the "Shark Tank" series aired on the ABC channel. It comprises 18 columns and 960 rows, forming a matrix of 450 * 18. Each row provides information about an aspiring entrepreneur venturing into the business world.
 
-The column names include: 'Deal,' 'Deal,' 'Episode,' 'Category,' 'Entrepreneurs,' 'Location,' 'website,' 'Askedfor,' 'Exchangeforstake,' 'Valuation,' 'Season,' 'shark1,' 'shark2,' 'shark3,' 'shark4,' 'shark5,' 'Title,' 'Episode_season,' and 'multiple_entrepreneurs.'
+The column names include: 
 
-- [x] Deal
-- [x] Deal
+- [x] Season                            
+- [x] No. in series
 - [x] Episode
+- [x] Company
+- [x] Description
+- [x] Deal
+- [x] Industry
+- [x] Entrepreneur Gender
+- [x] ASK
+- [x] DEAL
+- [x] Barbara Corcoran
+- [x] Mark Cuban
+- [x] Lori Greiner
+- [x] Robert Herjavec
+- [x] Daymond john 
+- 
+- 
+- 
 
 
 ## Number of Investments Made over the Seasons
