@@ -4,7 +4,7 @@ import pandas as pd
 from matplotlib_venn import venn2, venn2_circles
 
 if __name__ == '__main__':
-    pd.set_option('display.max_rows', 900)
+    pd.set_option('display.max_rows', 1000)
     df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',
                          sheet_name='Sheet1')
     df_2 = df_2.fillna(' ')
@@ -24,8 +24,8 @@ if __name__ == '__main__':
     print('*')
     panda_df = pd.DataFrame(data=numpyArray,
                             index=["Barbara", "Mark", "Lori", "Robert", "Daymond", "Kevin"],
-                            columns=["Equity investment agreement", "Convertible note agreement",
-                                     "Revenue-sharing agreement", "Royalty agreement", "Loan agreement"])
+                            columns=["Equity investment \n agreement", "Convertible note \n agreement",
+                                     "Revenue-sharing \n agreement", "Royalty \n agreement", "Loan \n agreement"])
 
     print('*')
 
@@ -57,6 +57,7 @@ if __name__ == '__main__':
 
     # The total amount of agreements made by each shark:
     Barbara_total_investment = panda_df.iloc[0, :].to_list()
+    Barbara_sum_of_investments =np.sum(Barbara_total_investment)
     Mark_total_investment = panda_df.iloc[1, :].to_list()
     Lori_total_investment = panda_df.iloc[2, :].to_list()
     Robert_total_investment = panda_df.iloc[3, :].to_list()
@@ -65,6 +66,7 @@ if __name__ == '__main__':
 
     # The  amount of total agreements made:
     Total_equity_investments_agreements_made_by_all_sharks = panda_df.iloc[:, 0].to_list()
+    Total_equity_investments_of_all_sharks =np.sum(Total_equity_investments_agreements_made_by_all_sharks)
     Total_convertible_note_agreements_made_by_all_sharks = panda_df.iloc[:, 1].to_list()
     Total_revenue_sharing_agreement_made_by_all_sharks = panda_df.iloc[:, 2].to_list()
     Total_royalty_agreement_made_by_all_sharks = panda_df.iloc[:, 3].to_list()
@@ -97,55 +99,58 @@ if __name__ == '__main__':
     c = ('#3E64AF', '#3EAF5D')
 
     # subplot indexes
-    txt_indexes = [1, 7, 13, 19, 25]  # the index of each txt will be on the matrix 6 on 6.
-                                      # Therefore   the 7,14,19,25 position would be the first position in each line.
-                                      # 1+6 = 7 , 7+6=13, 13+6= 19, 19+6= 25
+    txt_indexes = np.arange(0,5,1)
+    # txt_indexes = [1, 7, 13, 19, 25]  # the index of each txt will be on the matrix 6 on 6.
+    #                                   # Therefore   the 7,14,19,25 position would be the first position in each line.
+    #                                   # 1+6 = 7 , 7+6=13, 13+6= 19, 19+6= 25
     # title_indexes = [2, 9, 16, 23, 30] # The index of the diagonal venn diagrams - We what to change this
-    title_indexes = [1, 2, 3, 3, 4, 5 ]
+    title_indexes = [0, 1, 2, 3,4]
     plot_indexes = [8, 14, 20, 26, 15, 21, 27, 22, 28, 29]
 
     #
     # # combinations of sets
-    title_sets = [[set(Barbara_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)],
-                   [set(Barbara_total_investment), set(Total_convertible_note_agreements_made_by_all_sharks)],
-                   [set(Barbara_total_investment), set(Total_revenue_sharing_agreement_made_by_all_sharks)],
-                   [set(Barbara_total_investment), set(Total_royalty_agreement_made_by_all_sharks)],
-                   [set(Barbara_total_investment), set(Total_loan_agreement_made_by_all_sharks)]]
+    title_sets = [[set(Barbara_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)]]
+                   # [set(Barbara_total_investment), set(Total_convertible_note_agreements_made_by_all_sharks)],
+                   # [set(Barbara_total_investment), set(Total_revenue_sharing_agreement_made_by_all_sharks)],
+                   # [set(Barbara_total_investment), set(Total_royalty_agreement_made_by_all_sharks)],
+                   # [set(Barbara_total_investment), set(Total_loan_agreement_made_by_all_sharks)]]
 
-    plot_sets = [[set(Barbara_total_investment), set(Total_royalty_agreement_made_by_all_sharks)],
-                 [set(Barbara_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)],
-                 [set(Barbara_total_investment), set(Total_revenue_sharing_agreement_made_by_all_sharks)],
-                 [set(Barbara_total_investment), set(Total_convertible_note_agreements_made_by_all_sharks)],
-                 [set(Mark_total_investment), set(Total_royalty_agreement_made_by_all_sharks)],
-                 [set(Mark_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)],
-                 [set(Mark_total_investment), set(Total_convertible_note_agreements_made_by_all_sharks)],
-                 [set(Lori_total_investment), set(Total_royalty_agreement_made_by_all_sharks)],
-                 [set(Lori_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)],
-                 [set(Daymond_total_investment), set(Total_royalty_agreement_made_by_all_sharks)]]
+    plot_sets = [[set(Barbara_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)]]
+                 # [set(Barbara_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)],
+                 # [set(Barbara_total_investment), set(Total_revenue_sharing_agreement_made_by_all_sharks)],
+                 # [set(Barbara_total_investment), set(Total_convertible_note_agreements_made_by_all_sharks)],
+                 # [set(Mark_total_investment), set(Total_royalty_agreement_made_by_all_sharks)],
+                 # [set(Mark_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)],
+                 # [set(Mark_total_investment), set(Total_convertible_note_agreements_made_by_all_sharks)],
+                 # [set(Lori_total_investment), set(Total_royalty_agreement_made_by_all_sharks)],
+                 # [set(Lori_total_investment), set(Total_equity_investments_agreements_made_by_all_sharks)],
+                 # [set(Daymond_total_investment), set(Total_royalty_agreement_made_by_all_sharks)]]
 
-    fig, ax = plt.subplots(1, figsize=(16, 16))
+    fig, ax = plt.subplots(1,figsize=(5, 1)) #figsize=(16, 16))
     # Path number 1 :
     # plot texts - the for here below gives up the vertical names of each shark
     for idx, txt_idx in enumerate(txt_indexes):
-        plt.subplot(6, 6, txt_idx)
+        #plt.subplot(6, 6, txt_idx)
+        plt.subplot(1, 5, txt_idx)
         plt.text(0.5, 0.5,
                  labels_sharks[idx],  # labels[idx+1],
                  ha='center', va='center', color='#1F764B')
         plt.axis('off')
-
-    # Path number 2 :
-    ##plot top plots (the ones with a title) - The for here below give us the diagonal venn diagrams
-    for idx, title_idx in enumerate(title_indexes):
-        plt.subplot(6, 6, title_idx)
-        venn2(title_sets[idx], set_colors=c, set_labels = (' ', ' '))
-        plt.title(labels_agreements[idx], fontsize=10, color='#1F4576')
-        print('*')
-
-    # Path number 3 :
-    ## plot the rest of the diagrams-  The for here below gives us the rest of the venn diagrams, under the diagonal venn diagrams.
-    for idx, plot_idx in enumerate(plot_indexes):
-        plt.subplot(6, 6, plot_idx)
-        venn2(plot_sets[idx], set_colors=c, set_labels = (' ', ' '))
+    #
+    # # Path number 2 :
+    # ##plot top plots (the ones with a title) - The for here below give us the diagonal venn diagrams
+    # for idx, title_idx in enumerate(title_indexes):
+    #     plt.subplot(6, 6, title_idx)
+    #     # plt.subplot(6, 6, title_idx)
+    #     venn2(title_sets[idx], set_colors=c, set_labels = (' ', ' '))
+    #     plt.title(labels_agreements[idx], fontsize=10, color='#1F4576')
+    #     print('*')
+    #
+    # # Path number 3 :
+    # ## plot the rest of the diagrams-  The for here below gives us the rest of the venn diagrams, under the diagonal venn diagrams.
+    # for idx, plot_idx in enumerate(plot_indexes):
+    #     plt.subplot(6, 6, plot_idx)
+    #     venn2(plot_sets[idx], set_colors=c, set_labels = (' ', ' '))
 
 
     plt.show()
