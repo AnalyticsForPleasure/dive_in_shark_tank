@@ -85,7 +85,8 @@ Over the course of the first ten years, the show has been televised, numerous pi
 
 
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/7b52a4cf-3c3e-4b27-871e-20d6cb2fcf27)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/6a449aee-3478-453b-b346-579cf2de9381)
+
 
 
 
