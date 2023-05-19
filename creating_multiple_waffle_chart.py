@@ -40,7 +40,7 @@ def creating_the_input_data_for_the_multi_whaffle_chart(df):
     all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
     all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
     print('*')
-    all_the_deals_closed['Close_DEAL'] = all_the_deals_closed['DEAL_Amount'].apply(lambda x: convert_to_number(x))
+    all_the_deals_closed['Close_DEAL'] = all_the_deals_closed['DEAL'].apply(lambda x: convert_to_number(x))
     all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['Close_DEAL'] != '', :]
     all_the_deals_closed['Close_DEAL'] = all_the_deals_closed['Close_DEAL'].astype('int')
 
@@ -74,7 +74,7 @@ def creating_the_input_data_for_the_multi_whaffle_chart(df):
         res2['Amount_of_investments']=res2['Amount_of_investments'].apply(lambda x:int(x))
         # Adding another column - "Percent" :
         res2['Percent'] = [round(i * 100 / sum(res2.Amount_of_investments), 1) for i in res2.Amount_of_investments]
-        res2['Percent'] = (res2['Percent']).apply(lambda x: "{0:.2f}".format(x))   + '%'
+        res2['Percent'] = (res2['Percent']).apply(lambda x: "{0:.2f}".format(x))  # + '%'
         # Adding another column - "season_number" :
         res2['season_number'] = season_number
         dfi.export(res2, 'multi_whaffle_10.png')
@@ -114,8 +114,7 @@ def generate_plot_per_season(mini_df_season_number, season_number):
 
         dict_subplots_data[current_k] = {
             'values': {'Cat1': int(float(per)), 'Rest': total_squares - int(float(per))},
-            'labels': [investor_name + ' ' + str(per) + ' %',
-                       'Rest of the sharks' + ' ' + str(100 - float(per)) + ' %'],
+            'labels': [investor_name + ' ' + str(per) + ' %', 'Rest of the sharks' + ' ' + str(100 - float(per)) + ' %'],
             'legend': {'loc': 'upper left', 'bbox_to_anchor': (1.05, 1), 'fontsize': 8},
             'title': {'label': f'{investor_name}' ' invesments', 'loc': 'left', 'fontsize': 12},
             'colors': [color, "#EEEEEE"]
@@ -131,7 +130,7 @@ def generate_plot_per_season(mini_df_season_number, season_number):
     )
 
     fig.suptitle(f'Season {season_number}', fontsize=14, fontweight='bold')
-    fig.supxlabel('Each square present 1% of the investments made by the total group of sharks', fontsize=8, x=0.36,
+    fig.supxlabel('The investments made by the entire group of sharks are distributed \n in such a manner that each square represents a 1% portion', fontsize=8, x=0.36,
                   style='italic')
     fig.set_facecolor('#ffffff')
     # plt.savefig(f'{waffle_season_1[:-4]}.jpg', dpi=250)
@@ -153,3 +152,4 @@ if __name__ == '__main__':
     for season_number, mini_df_season_number in groups_by_season:
         generate_plot_per_season(mini_df_season_number, season_number)
     print('*')
+
