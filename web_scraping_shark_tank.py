@@ -126,11 +126,11 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
 
     # Before passing the array of viewers into into the scatter plot we should
     # cast into float since it was string:
-    # [3.56 3.96 4.23 4.3  4.4  4.44 4.65 4.79]
+    # [3.56, 3.96 ,4.23, 4.3, 4.4, 4.44, 4.65, 4.79]
     # but the numbers are very close to each other, so we would like to rescale it using Exponential function:
     top_eight_episode['viewers'] = 50 ** top_eight_episode['viewers'].astype(float)
 
-    # Now we got a better seperation between the numbers so we will be able to see the difference sizes much more
+    # Now we got a better separation between the numbers so we will be able to see the difference sizes much more
     # clearly, output:
     # [1117720.497, 5344673.95, 15368911.80 , 20210218.95, 29886015.61, 34948361.49, 79471337.11, 137425181.99)
 

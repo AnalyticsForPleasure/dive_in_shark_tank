@@ -102,7 +102,9 @@ def generate_plot_per_season(mini_df_season_number, season_number):
     total_squares = 100
     rows = list(range(1, 7))
 
+    pal = plt.cm.tab20c
     pal = list(sns.color_palette(palette='plasma_r', n_colors=len(mini_df_season_number.Investor_name)).as_hex())
+    #pal = sns.color_palette("Blues", as_cmap=True)
     # Loop for creating dictionary
     for number_image, col, row, per, investor_name, color in zip(number_of_images,
                                                                  col_number,

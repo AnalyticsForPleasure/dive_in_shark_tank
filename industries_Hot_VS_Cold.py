@@ -109,6 +109,7 @@ def slope_chart_for_industries_have_gotten_hotter_or_colder_over_10_seasons(fina
     plt.gca().spines["bottom"].set_alpha(.0)
     plt.gca().spines["right"].set_alpha(.0)
     plt.gca().spines["left"].set_alpha(.0)
+    plt.savefig('hot_vs_cold.jpg', dpi=250, bbox_inches='tight')
     plt.show()
 
 
@@ -120,6 +121,10 @@ if __name__ == '__main__':
     pd.set_option('display.max_rows', 900)
     df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv')  # six seasons
     df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')  # Ten seasons
+
+
+
+    column_headers = list(df_2.columns.values)
 
     res = which_industries_have_gotten_hotter_or_colder_over_10_seasons(df_2)
     slope_chart_for_industries_have_gotten_hotter_or_colder_over_10_seasons(res)
