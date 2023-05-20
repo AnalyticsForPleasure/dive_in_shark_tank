@@ -79,13 +79,13 @@ def scraping_the_wiki_web_page_of_sark_tank_viewers(url):
 # return value:
 # ******************************************************************************************************************
 
-def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(df):
+def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,season_number):
     # final_table = []
     # grouping_by_seasons = df.groupby('season')
     # for season_num, mini_df_season_num in grouping_by_seasons:
     # print(season_num)
     # print(mini_df_season_num)
-    mini_df_season_num = df.loc[df['season'] == 1, :]
+    mini_df_season_num = mini_df_season_number.loc[mini_df_season_number['season'] == season_number, :]
     mini_df_season_num.sort_values(by='viewers', inplace=True, ascending=True)
     sorting_the_season_by_viewers = mini_df_season_num.sort_values(by='viewers')
     top_eight_episode = sorting_the_season_by_viewers.head(n=8)
@@ -161,9 +161,21 @@ if __name__ == '__main__':
     url = 'https://en.wikipedia.org/w/index.php?title=List_of_Shark_Tank_episodes&oldid=911241643'
 
     res = scraping_the_wiki_web_page_of_sark_tank_viewers(url)
+
     ########################################################################################################################
     # #Path 2 : Scaling the data of top 10 episodes viewer of each year
 
-    res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(res)
+
+    # # creating dynamic Bubble Multi chart :
+    groups_by_season = res.groupby('season')
+    for season_number, mini_df_season_number in groups_by_season:
+        res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,season_number)
+
     visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2)
     print('*')
+    # # creating dynamic Waffle Multi chart :
+    # df_all = creating_the_input_data_for_the_multi_whaffle_chart(df)
+    # df_all.to_csv('whole_seasons.csv', index = False)
+    # groups_by_season = df_all.groupby('season_number')
+    # for season_number, mini_df_season_number in groups_by_season:
+    #     generate_plot_per_season(mini_df_season_number, season_number)
