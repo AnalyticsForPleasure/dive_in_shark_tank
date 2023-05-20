@@ -94,8 +94,9 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
                                     top_eight_episode.viewers]
     top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
     # Adding "M" for the viewers:
-    top_eight_episode['viewers'] = top_eight_episode['viewers'].astype(float)
+
     top_eight_episode['viewers'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x))  # +'M'
+    top_eight_episode['viewers'] = top_eight_episode['viewers'].astype(float)
     # Adding X, Y coordinates scale :
     top_eight_episode['Y Position'] = [1] * len(top_eight_episode)
     list_x = list(range(0, len(top_eight_episode)))
