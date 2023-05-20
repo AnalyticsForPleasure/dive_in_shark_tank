@@ -41,9 +41,6 @@ The column names include:
 - [x] Lori Greiner
 - [x] Robert Herjavec
 - [x] Daymond john 
-- 
-- 
-- 
 
 
 ## Number of Investments Made over the Seasons
@@ -62,7 +59,11 @@ One intriguing aspect we want to delve into is the level of investment made by e
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/a280c684-2525-4342-ad40-39aafb2fce31)
 
-![image](htt![waffle_plot](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2f070d70-4f63-40cd-82a1-e59d87118750)
+
+
+<p align="center">
+  <img src="images/whaffle_seasons/waffle_plot.gif">
+</p>
 
 
 ---
