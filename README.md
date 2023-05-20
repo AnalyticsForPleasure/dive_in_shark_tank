@@ -62,7 +62,8 @@ One intriguing aspect we want to delve into is the level of investment made by e
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/a280c684-2525-4342-ad40-39aafb2fce31)
 
-![image](https://user-images.githubusercontent.com/28948369/234967869-da3aeb9b-3e4a-4710-9ff1-7a20b988f1ff.png)
+![image](htt![waffle_plot](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2f070d70-4f63-40cd-82a1-e59d87118750)
+
 
 ---
 
