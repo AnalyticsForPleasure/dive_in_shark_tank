@@ -2,12 +2,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+
 # **************************************************************************************************************
 # Function  name: counting_close_deal_by_gender
 # input:
 # return value:
 # ****************************************************************************************************************
 def counting_close_deal_by_gender(df_2):
+
+    # Chart number 1 :
+    gender_shark_gave_a_pitch = df_2['Entrepreneur Gender'].value_counts()
+    gender_shark_gave_a_pitch = gender_shark_gave_a_pitch.reset_index(level=0)
+    gender_shark_gave_a_pitch.rename(columns={gender_shark_gave_a_pitch.columns[0]: 'Gender'}, inplace=True)
+    gender_shark_gave_a_pitch.rename(columns={gender_shark_gave_a_pitch.columns[1]: 'Counter gender gave pitch'}, inplace=True)
+
+    # Chart Number 2:
     all_the_deals_closed = df_2.loc[df_2['Deal'] == 'Yes', :]
     res = all_the_deals_closed['Entrepreneur Gender'].value_counts()
     res = res.reset_index(level=0)
@@ -15,14 +24,17 @@ def counting_close_deal_by_gender(df_2):
     res.rename(columns={res.columns[1]: 'Counter close deals by gender'}, inplace=True)
     print('*')
 
-    list_of_sharks_who_gave_pitch_by_gender = [535,221,139]
+    list_of_sharks_who_gave_pitch_by_gender = [535, 221, 139]
     grouping_by_gender_who_got_funded = np.zeros(len(list_of_sharks_who_gave_pitch_by_gender))
-    index = 1
-    for index in list_of_sharks_who_gave_pitch_by_gender:
-        grouping_by_gender_who_got_funded[index] = res.loc[index,'Counter close deals by gender'] / list_of_sharks_who_gave_pitch_by_gender[index]
-        index += 1
-        print('*')
-    return 3
+
+    for idx,elem in enumerate(list_of_sharks_who_gave_pitch_by_gender):
+        grouping_by_gender_who_got_funded[idx] = res.loc[idx, 'Counter close deals by gender'] / elem
+    print('*')
+
+    # for idx, elem in enumerate(list_of_sharks_who_gave_pitch_by_gender):
+#     print(f'{idx}){elem}')
+
+
 # **************************************************************************************************************
 # Function  name: creating_the_data_gender
 # input:
@@ -43,30 +55,31 @@ def creating_the_data_gender(df_2):
     print('*')
     return pos_gender_chart, gender_counts, genders_df_new
 
+
 # **************************************************************************************************************
 # Function  name: horizontal_bar_plot_for_gender_enterpreneur
 # input:
 # return value:
 # ****************************************************************************************************************
-def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter, genders_df_new):
+def horizontal_bar_plot_for_gender_enterpreneur(pos_gender_chart, gender_counter, genders_df_new):
     plt.style.use('seaborn')  # This line is responsible for the gray background
     fig, ax = plt.subplots(figsize=(12, 4))
     w = 0.6
-    barlist = ax.bar(pos_gender, gender_counter, width=w, alpha=0.9)
+    barlist = ax.bar(pos_gender_chart, gender_counter, width=w, alpha=0.9)
     # TODO:need to check the different between those 2 lines below
     ax.set_xticklabels(genders_df_new)
     # ax.set_xticklabels(genders_df_new, weight='heavy', fontsize=12)
 
     # Plot the metric
     ax.set_ylim([-2, 62])
-    ax.set_xticks(pos_gender)
+    ax.set_xticks(pos_gender_chart)
     ax.set_yticks(np.arange(0, 61, 20))
     ax.set_ylabel('Percent of entrepreneurs', fontsize=12)
     ax.tick_params(labelsize=12)
 
     ax.set_xticklabels([])
     xlim = ax.get_xlim()
-    for X in pos_gender:  # Plot a horizontal line under each bar
+    for X in pos_gender_chart:  # Plot a horizontal line under each bar
         ax.plot([X - w / 2, X + w / 2], [0, 0], 'gray', alpha=0.25)
     ax.set_xlim(xlim)
 
@@ -78,7 +91,8 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter, gend
     # plt.title('Deaths per Country \n' + str(df1.index[iv].strftime('%y-%m-%d'))) # taken from  https://medium.com/towards-data-science/learn-how-to-create-animated-graphs-in-python-fce780421afe
 
     for n in np.arange(len(pos_gender_chart)):
-        ax.text(x=pos_gender_chart[n], y=3.5, s="{g}".format(g=genders_df_new[n]), va='bottom', fontsize=12, # this line is correct
+        ax.text(x=pos_gender_chart[n], y=3.5, s="{g}".format(g=genders_df_new[n]), va='bottom', fontsize=12,
+                # this line is correct
                 ha='center', color='w', weight='heavy', alpha=1)
 
     #   Instead of writing this 3 lines bellow, we wrote here above one line using a loop
@@ -96,7 +110,6 @@ def horizontal_bar_plot_for_gender_enterpreneur(pos_gender, gender_counter, gend
     ax.text(x=xlim[-1] - 0.03, y=y, s='AnalyticsForPleasure', fontdict=params, alpha=0.4, ha='right')
 
     plt.show()
-
 
 
 if __name__ == '__main__':
