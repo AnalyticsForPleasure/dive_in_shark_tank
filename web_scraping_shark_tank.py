@@ -126,7 +126,7 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
     # cast into float since it was string:
     # [3.56, 3.96 ,4.23, 4.3, 4.4, 4.44, 4.65, 4.79]
     # but the numbers are very close to each other, so we would like to rescale it using Exponential function:
-    top_eight_episode['viewers'] = 50 ** top_eight_episode['viewers'].astype(float)
+    top_eight_episode['viewers'] = 60 ** top_eight_episode['viewers'].astype(float)
 
     # Now we got a better separation between the numbers so we will be able to see the difference sizes much more
     # clearly, output:
@@ -164,9 +164,9 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
 
     fig.update_layout(
         title={
-            'text': f'{season_number_scrap} Season',
+            'text': f'The 8 episodes with the highest audience viewership - {season_number_scrap} Season',
             'font': {
-                'size': 42,  # Adjust the size of the title font
+                'size': 34,  # Adjust the size of the title font
                 'family': 'Franklin Gothic Medium Cond',  # Specify the font family
                 'color':'gray'
             },
@@ -198,4 +198,3 @@ if __name__ == '__main__':
         res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,season_number)
         visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2,season_number)
         print('*')
-        #kaleido
