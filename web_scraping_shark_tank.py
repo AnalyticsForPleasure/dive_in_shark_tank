@@ -171,11 +171,5 @@ if __name__ == '__main__':
     for season_number, mini_df_season_number in groups_by_season:
         res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,season_number)
 
-    visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2)
-    print('*')
-    # # creating dynamic Waffle Multi chart :
-    # df_all = creating_the_input_data_for_the_multi_whaffle_chart(df)
-    # df_all.to_csv('whole_seasons.csv', index = False)
-    # groups_by_season = df_all.groupby('season_number')
-    # for season_number, mini_df_season_number in groups_by_season:
-    #     generate_plot_per_season(mini_df_season_number, season_number)
+        visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2)
+        print('*')
