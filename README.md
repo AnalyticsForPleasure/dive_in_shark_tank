@@ -12,6 +12,7 @@
 * [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark-Preferences-Multi-Entrepreneur-vs-Solo-Entrepreneur-Investments)
 * [Average Equity of Each Shark over Closing Deals, Divided by Gender](#Average-Equity-of-Each-Shark-over-Closing-Deals,-Divided-by-Gender)
 * [Industries that Have Experienced Temperature Changes over 10 Seasons](#Industries-that-Have-Experienced-Temperature-Changes-over-10-Seasons)
+* [Web Scraping](#Web-Scraping)
 * [Sharks' Preferred Industries for Investments](#sharks-preferred-industries-for-investments)
 
 
@@ -108,6 +109,13 @@ Over the course of the first ten years, the show has been televised, numerous pi
 
 
 ---
+## Web Scraping
+
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/bec288b0-24da-4509-844e-646e8dbe64ca)
+
+
+
 
 ## Sharks' Preferred Industries for Investments
 As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
