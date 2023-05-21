@@ -112,7 +112,8 @@ Over the course of the first ten years, the show has been televised, numerous pi
 ## Web Scraping
 
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/bec288b0-24da-4509-844e-646e8dbe64ca)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/06908ef2-6ef8-41bf-ad4d-e8aff974618f)
+
 
 
 
