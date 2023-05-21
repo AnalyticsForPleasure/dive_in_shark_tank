@@ -12,7 +12,7 @@
 * [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark-Preferences-Multi-Entrepreneur-vs-Solo-Entrepreneur-Investments)
 * [Average Equity of Each Shark over Closing Deals, Divided by Gender](#Average-Equity-of-Each-Shark-over-Closing-Deals,-Divided-by-Gender)
 * [Industries that Have Experienced Temperature Changes over 10 Seasons](#Industries-that-Have-Experienced-Temperature-Changes-over-10-Seasons)
-* [Web Scraping](#Web-Scraping)
+* [Top episodes with the highest audience viewership – Using Web Scraping](#Top-episodes-with-the-highest-audience-viewership–Using-Web-Scraping)
 * [Sharks' Preferred Industries for Investments](#sharks-preferred-industries-for-investments)
 
 
@@ -109,8 +109,16 @@ Over the course of the first ten years, the show has been televised, numerous pi
 
 
 ---
-## Web Scraping
+## Top episodes with the highest audience viewership – Using Web Scraping
 
+We wanted to gather information about the top episodes from each season of Shark Tank, spanning from the first season to the tenth season, which have been broadcasted on TV. Since this data was not available in our dataset, we conducted a web search and found the relevant information on the Wikipedia page for Shark Tank.
+
+To extract the necessary details, we scraped the data from the Wikipedia page, specifically focusing on the following fields:
+
+Season number
+Episode
+Number of viewers (audience)
+After retrieving this data, we proceeded to select the top 8 episodes for each season. We then visualized the results using a multi-bubble chart design created with Plotly.
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/06908ef2-6ef8-41bf-ad4d-e8aff974618f)
 
