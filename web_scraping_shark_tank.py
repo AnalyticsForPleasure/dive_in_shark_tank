@@ -1,12 +1,9 @@
-# TODO: Finish the circles
-# 1. Get 10 most viewed episodes in each season
-# 2. show it in a circle, each circle size presents the amount of viewers
-
 import pandas as pd
 import plotly.express as px
 import requests
 import seaborn as sns
 from bs4 import BeautifulSoup
+import kaleido
 
 
 # ******************************************************************************************************************
@@ -115,7 +112,7 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
 # input:
 # return value:
 # ******************************************************************************************************************
-def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eight_episode):
+def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eight_episode,season_number_scrap):
     pal_ = list(sns.color_palette(palette='crest', n_colors=len(top_eight_episode)).as_hex())
     # cmap = sns.color_palette("Blues", as_cmap=True).as_hex()
     # Now' let's go to the charting part:
@@ -149,13 +146,42 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
     fig.update_yaxes(showgrid=False, zeroline=False, visible=False)
     fig.update_layout({'plot_bgcolor': 'white',
                        'paper_bgcolor': 'white'})
+
+    # fig.update_layout(
+    #     title=dict(text=f'{season_number_scrap} Season.jpg', font=dict(size=50), automargin=True, yref='paper',)
+    #
+    # )
+
+    # fig.update_layout(
+    #     title={
+    #         'text' : f'{season_number_scrap} Season',
+    #         'x':0.5,
+    #         'y':0.9,
+    #         'xanchor': 'center'
+    #         'yanchor': 'top',
+    #         'title_font_color':'Gray',
+    #     })
+
+    fig.update_layout(
+        title={
+            'text': f'{season_number_scrap} Season',
+            'font': {
+                'size': 42,  # Adjust the size of the title font
+                'family': 'Franklin Gothic Medium Cond',  # Specify the font family
+                'color':'gray'
+            },
+            'y':0.9,
+            'x':0.5,
+            'xanchor': 'center',
+            'yanchor': 'top'})
+
+    fig.write_image(f'scraping_Bubble_{season_number_scrap}_season.jpg')
     fig.show()
     print('*')
 
 
 if __name__ == '__main__':
-    # df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',
-    #                    sheet_name='Sheet1')
+
     ########################################################################################################################
     # path 1 : retireiving the data from wiki web page:
     url = 'https://en.wikipedia.org/w/index.php?title=List_of_Shark_Tank_episodes&oldid=911241643'
@@ -170,6 +196,6 @@ if __name__ == '__main__':
     groups_by_season = res.groupby('season')
     for season_number, mini_df_season_number in groups_by_season:
         res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,season_number)
-
-        visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2)
+        visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2,season_number)
         print('*')
+        #kaleido
