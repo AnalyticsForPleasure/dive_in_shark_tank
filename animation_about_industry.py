@@ -1,10 +1,4 @@
-import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-import dataframe_image as dfi
-
-
-
 
 if __name__ == '__main__':
 
@@ -14,13 +8,25 @@ if __name__ == '__main__':
 
     list_of_sharks = ['Barbara\nCorcoran', 'Mark\nCuban', 'Lori\nGreiner', 'Robert Herjavec', 'Daymond\nJohn', "Kevin\nO'Leary"]
 
+    unique_industries=df['Industry'].unique()
+    shark_table =pd.DataFrame({'Industry':[unique_industries],
+                               'Counter_shark':[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]})
+
+
+    print('*')
 
     for shark_name in list_of_sharks :
         investment_made_by_shark = df.loc[df[shark_name]== 1,:]
         res= investment_made_by_shark['Industry'].value_counts()
-        #result =res.rename(columns={res[0]: res.index[0]},inplace=False)
-        res = res.rename({res.index[0]: f'{shark_name}'}, inplace=True) #TODO need to work on this line
+        result = res.reset_index(level=0)
+        result.rename(columns={result.columns[1]: f'Counter_{shark_name}'},inplace=True)
+        result.rename(columns={result.columns[0]: 'Industry'}, inplace=True)
+
+        #merged_result = pd.merge(result, shark_table, on='Industry', how='inner')
         print('*')
+
+
+    print('*')
 
 
 #column_headers = list(df.columns.values) 'Barbara\nCorcoran', 'Mark\nCuban', 'Lori\nGreiner', 'Robert Herjavec', 'Daymond\nJohn', "Kevin\nO'Leary",
