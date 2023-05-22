@@ -119,6 +119,7 @@ Season number
 Episode
 Number of viewers (audience)
 After retrieving this data, we proceeded to select the top 8 episodes for each season. We then visualized the results using a multi-bubble chart design created with Plotly.
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/c842ed9a-a41b-468f-98fa-70a614a1c10b)
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/06908ef2-6ef8-41bf-ad4d-e8aff974618f)
 
