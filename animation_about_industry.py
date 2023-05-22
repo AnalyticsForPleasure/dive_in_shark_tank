@@ -42,7 +42,10 @@ if __name__ == '__main__':
         investment_made_by_shark = df.loc[df[shark_name] == 1, :]
         res = investment_made_by_shark['Industry'].value_counts()
         result = res.reset_index(level=0)
-        result.rename(columns={result.columns[1]: f'Counter_{shark_name}'}, inplace=True)
+        result.rename(columns={result.columns[1]: f'{shark_name}'}, inplace=True)
+        result.columns = result.columns.str.replace('\n', '')
+
+        #result.rename(columns={result.columns[1]: f'Counter_{shark_name}'}, inplace=True)
         result.rename(columns={result.columns[0]: 'Industry'}, inplace=True)
 
         # Merge shark_table with result
