@@ -133,3 +133,8 @@ As we are aware, in each episode of every season, the sharks make multiple inves
 In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. For example, Daymond has invested his funds in three different fields: electronics (650,000 USD), novelties (500,000 USD), and specialty food (380 USD).
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/8c45ac2a-fb30-445e-9eef-7cbd433ad536)
+
+
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/3abf4460-c900-4fc9-9587-3593a5f91c75)
+
