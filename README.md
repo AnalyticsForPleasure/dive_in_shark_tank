@@ -134,7 +134,20 @@ In our upcoming analysis, we aim to gain a deeper understanding of the specific 
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/8c45ac2a-fb30-445e-9eef-7cbd433ad536)
 
-
+I would like to explore the investment patterns of each shark in different industries. By analyzing the data, I aim to determine which shark has a strong preference for investing in the technology sector, or who shows a particular interest in the food industry. Additionally, I want to identify any industries that the sharks tend to avoid investing in or where they show minimal interest. Moreover, I am curious to know which shark has made the highest number of investments in total. 
+Hence, I have chosen to visualize these findings by creating a 3-D plot. The plot will incorporate three dimensions:
+1.	The names of each shark will represent the first dimension.
+2.	The names of the industries in which the sharks have made investments over the years will form the second dimension.
+3.	The third dimension will represent the amount of investment made by each shark in a particular industry.
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/3abf4460-c900-4fc9-9587-3593a5f91c75)
+
+
+
+
+
+
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/23abf148-adf8-4045-9ba0-f295d7b8e306)
+
 
