@@ -142,3 +142,12 @@ Hence, I have chosen to visualize these findings by creating a 3-D plot. The plo
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/3abf4460-c900-4fc9-9587-3593a5f91c75)
 
+
+
+
+
+
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/23abf148-adf8-4045-9ba0-f295d7b8e306)
+
+
