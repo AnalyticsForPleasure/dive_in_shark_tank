@@ -74,3 +74,60 @@ if __name__ == '__main__':
 # ax.set_zlabel('Z')
 #
 # plt.show()
+
+########################################################################################################################
+    
+    # This code work perfectly - only need to add the colors - we have matrix (4*6)
+    df = pd.read_csv('data/part_one_3d.csv')
+
+    print('*')
+
+    data = df.loc[:3, 'BarbaraCorcoran':"KevinO'Leary"]
+    data = data.to_numpy()
+    # res_specific_column = data.iloc[:,'BarbaraCorcoran'].to_numpy()
+    print('*')
+
+    # Define the data
+    #data = np.random.randint(1, 10, size=(3, 6))
+
+    # Define the colors for each series
+    #colors = ['red', 'green', 'blue','Yellow']
+
+    # Create a figure and axes
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Create positions for the bars
+    x_pos = np.arange(6)
+    y_pos = np.arange(4)
+    x_pos, y_pos = np.meshgrid(x_pos, y_pos)
+    x_pos = x_pos.flatten()
+    y_pos = y_pos.flatten()
+    z_pos = np.zeros_like(x_pos)
+
+    # Create the bars
+    dx = 0.5
+    dy = 0.05
+    dz = data.flatten()
+
+    # Plot the bars
+    ax.bar3d(x_pos, y_pos, z_pos, dx, dy, dz)#, color=colors)
+
+
+    # Set tick labels
+    ax.set_xticks(np.arange(6) + 0.05)
+    ax.set_yticks(np.arange(4) + 0.05)
+
+    # The position of the categories ( names of the sharks + Industries )
+    ax.set_xticklabels(['Barbara ', 'Mark', 'Lori', 'Robert', 'Daymond', 'Kevin'])
+    ax.set_yticklabels(['Health', 'Food', 'Lifestyle','Children'])
+
+
+    # Set labels and title
+    ax.set_xlabel('shark names')
+    ax.set_ylabel('Industries')
+    ax.set_zlabel('Number of investments made')
+    ax.set_title('3D Bar Plot')
+
+    # Show the plot
+    plt.show()
