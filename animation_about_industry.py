@@ -2,7 +2,7 @@ import pandas as pd
 import dataframe_image as dfi
 import numpy as np
 import matplotlib.pyplot as plt
-
+from mpl_toolkits.mplot3d import Axes3D
 
 # ******************************************************************************************************************
 # Function  name: creating_the_data_for_the_3d_plot
@@ -36,8 +36,9 @@ def creating_the_data_for_the_3d_plot(df):
     shark_table.iloc[:, 1:7] = shark_table.iloc[:, 1:7].apply(lambda x: x.astype(int))
     shark_table.drop(0, axis=0, inplace=True)  # remove the first row
     dfi.export(shark_table, 'shark_table.png')
+    shark_table.to_csv('part_one_3d.csv', index = False)
     print('*')
-
+    return shark_table
 
 # ******************************************************************************************************************
 # Function  name: creating_the_data_for_the_3d_plot
@@ -45,40 +46,64 @@ def creating_the_data_for_the_3d_plot(df):
 # return value:
 # ******************************************************************************************************************
 
-    df = pd.read_csv("sample_datasets/auto_clean.csv")
+def creating_the_3D_chart(df):
+    data = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/part_one_3d.csv')
+    data = data.set_index('Industry')
+    res = data.to_numpy()
 
-    print(np.unique(df['body-style']))
+    shark_names = ['Barbara ', 'Mark', 'Lori', 'Robert', 'Daymond', 'Kevin']
+    industries_names = ['Health', 'Food', 'LifeStyle', 'Children','Fashion','Business Services',
+                        'Fitness','Pet Products','Tech','Media','Travel','CleanTech','Autoemotive','Other' ]
 
-    df['body-style1'] = df['body-style'].replace({'convertible': 1,
-                                                  'hardtop': 2,
-                                                  'hatchback': 3,
-                                                  'sedan': 4,
-                                                  'wagon': 5
-                                                  })
+    number_of_industries = 5
 
-    gr = df.groupby("body-style1")["city-mpg", "price"].agg('median')
+    df = pd.DataFrame(data=res[:number_of_industries],#actual_bar_heights,
+                      columns=shark_names,
+                      index=industries_names[:number_of_industries])
+    res = df.to_numpy()
+    print('*')
+    # The coordinates of the anchor point of the bars:
 
-    x = gr.index
-    y = gr['city-mpg']
-    z = [0] * 5
+    x = [idx + 0.5 for idx, _ in enumerate(shark_names, start=1)]
+    y = [idx + 0.5 for idx, _ in enumerate(industries_names[:number_of_industries], start=1)]
 
-    colors = ['skyblue', 'g', 'r', 'pink', 'coral']
+    xx, yy = np.meshgrid(x, y)
 
-    dx = [0.3] * 5
-    dy = [1] * 5
-    dz = gr['price']  # Number of investments for category
+    xx = xx.flatten()
+    yy = yy.flatten()
+    zz = [0] * len(industries_names[:number_of_industries]) * len(shark_names)
+
+    colors = sorted(['skyblue', 'dodgerblue', 'lightseagreen','palegreen','navy'] * len(shark_names)) # 'lightsteelblue', 'black']
+
+    # dx, dy, dz : float or array-like
+    # The width, depth, and height of the bars, respectively:
+    bar_width = 0.05
+    bar_depth = 0.4
+
+    width_vec = [bar_width] * len(xx)
+    depth_vec = [bar_depth] * len(yy)
+    heights_vec = res.flatten()
 
     plt.figure(figsize=(0, 12))
     ax = plt.axes(projection='3d')
-    ax.bar3d(x, y, z, dx, dy, dz, color=colors)
-    #ax.set_xticklabels(['convertible', 'hardtop', 'hatchback', 'sedan', 'wagon'])
-    ax.set_xticklabels(['Barbara ', 'Mark', 'Lori', 'Robert', 'Daymond',"Kevin"])
+    ax.bar3d(x=xx - bar_width / 2,
+             y=yy - bar_depth / 2,
+             z=zz,
+             dx=width_vec,
+             dy=depth_vec,
+             dz=heights_vec,
+             color=colors)
 
-    ax.set_xlim(0, 5.5)
-    ax.set_xlabel("shark names", labelpad=12)
-    ax.set_ylabel("Categories", labelpad=12)
-    ax.set_zlabel("Number of investments", labelpad=12)
-    ax.set_title("Number of investments by categories")
+    ax.xaxis.set_ticks(x)
+    ax.set_xticklabels(shark_names)
+    ax.yaxis.set_ticks(y)
+    ax.set_yticklabels(industries_names[:number_of_industries])
+
+    ax.set_xlabel("Shark Name", labelpad=12)
+    ax.set_ylabel("Industry name", labelpad=12)
+    ax.set_zlabel("Number of times invested", labelpad=12)
+
+    ax.set_title("Investments per Industry per shark")
     plt.show()
 
 
@@ -88,5 +113,6 @@ if __name__ == '__main__':
     df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')
     print('*')
 
-    creating_the_data_for_the_3d_plot(df)
+    res = creating_the_data_for_the_3d_plot(df)
+    creating_the_3D_chart(res)
     print('*')
