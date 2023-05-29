@@ -140,7 +140,9 @@ Hence, I have chosen to visualize these findings by creating a 3-D plot. The plo
 2.	The names of the industries in which the sharks have made investments over the years will form the second dimension.
 3.	The third dimension will represent the amount of investment made by each shark in a particular industry.
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/3abf4460-c900-4fc9-9587-3593a5f91c75)
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/a80869d4-1c8c-4487-87a3-1338fc4e04b9)
+
 
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/fa1f56af-f8f6-4ef1-893a-fd89e81c7951)
