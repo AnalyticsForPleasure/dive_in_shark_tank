@@ -144,7 +144,7 @@ Hence, I have chosen to visualize these findings by creating a 3-D plot. The plo
 
 
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/432768b3-ee54-47bb-b6b0-eba51bfc6228)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/bce868a2-e0f7-4182-b03e-dc2eb24af89f)
 
 
 
