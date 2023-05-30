@@ -27,34 +27,34 @@ def get_number_of_investments_each_season_over_the_years(df):
 # ****************************************************************************************************************
 def creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(table):
     print('*')
-    number_of_season = list(table.iloc[:,'season_number'])
-    number_of_investments_over_each_season = list(table.iloc[:,'number_of_investments_over_each_season'])
-    plt.fill_between(number_of_season,#np.arange(10)+1,
+    number_of_season = list(table.loc[:,'season_number'])
+    number_of_investments_over_each_season = list(table.loc[:,'Amount_of_investments_over_each_season'])
+    plt.fill_between(number_of_season,
                      number_of_investments_over_each_season,
                      color="skyblue",
                      alpha=0.4)
-    plt.plot(np.arange(10)+1,
+    plt.plot(number_of_season,
              number_of_investments_over_each_season,
              color="Slateblue",
              alpha=0.6,
              linewidth=2)
     plt.tick_params(labelsize=12)
-    plt.xticks(np.arange(10)+1, np.arange(10)+1)
+    #plt.xticks(np.arange(10)+1, np.arange(10)+1)
     plt.xlabel('Season Number', size=17)
     plt.ylabel('Number of Investments made over each season', size=17)
     plt.ylim(bottom=0)
 
+    # Displaying the chart
+    plt.show()
 
 if __name__ == '__main__':
     pd.set_option('display.max_rows', 900)
 
     df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')  # Ten seasons
 
-
     my_result =get_number_of_investments_each_season_over_the_years(df)
     creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(my_result)
     print('*')
-
 
 
 
