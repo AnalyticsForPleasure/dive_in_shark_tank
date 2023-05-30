@@ -52,6 +52,10 @@ def creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(table)
              linewidth=3)
     plt.tick_params(labelsize=12)
     plt.xticks(number_of_season, number_of_season)
+    #Adding vertical lines:
+    vertical_lines = np.arange(2, 10, 1)
+    for vline in vertical_lines:
+        plt.axvline(x=vline, color='White',linestyle='-.')
 
     plt.xlabel('Season Number', fontsize=14,fontweight='bold',fontname='Franklin Gothic Medium Cond')
     plt.ylabel('Number of Investments', fontsize=14,fontweight='bold',fontname='Franklin Gothic Medium Cond')
