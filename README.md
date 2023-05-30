@@ -52,7 +52,7 @@ And on the opposite side, in the fifth season  and sixth season we can notice a 
 Seasons 1+2  = 27+19 = 46
 Seasons 5+6 = 61 + 63 = 124
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/f1609696-7643-4924-9ddf-30c310292d06)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/b1a8d41f-1c6a-4b15-b3f8-0a69a320d4dd)
 
 
 ## Investment Percentage: Sharks vs. Rest of the Panel in Each Season
