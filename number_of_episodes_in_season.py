@@ -36,7 +36,7 @@ def creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(table)
     y1= np.array(number_of_investments_over_each_season)
     y2= np.repeat(0, 10)
     print('*')
-    cm1 = LinearSegmentedColormap.from_list('Temperature Map', ['navy','skyblue'])
+    cm1 = LinearSegmentedColormap.from_list('Temperature Map', ['navy','dodgerblue','skyblue']) # We can add here several colors
     polygon = plt.fill_between(x, y1, y2, lw=0, color='none')
     xlim = (x.min(), x.max())
     ylim = plt.ylim()
@@ -52,20 +52,28 @@ def creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(table)
              linewidth=3)
     plt.tick_params(labelsize=12)
     plt.xticks(number_of_season, number_of_season)
-    #Adding vertical lines:
-    vertical_lines = np.arange(2, 10, 1)
+
+    #Adding 2 vertical lines for each season:
+    vertical_lines = np.arange(2, 10, 1)+0.03
     for vline in vertical_lines:
-        plt.axvline(x=vline, color='White',linestyle='-.')
+        plt.axvline(x=vline, color='White',linestyle=':')
+
+    vertical_lines_2 = np.arange(2, 10, 1)-0.03
+    for vline_2 in vertical_lines_2:
+        plt.axvline(x=vline_2, color='White',linestyle=':')
+
+
 
     plt.xlabel('Season Number', fontsize=14,fontweight='bold',fontname='Franklin Gothic Medium Cond')
     plt.ylabel('Number of Investments', fontsize=14,fontweight='bold',fontname='Franklin Gothic Medium Cond')
     plt.ylim(bottom=0)
-    plt.title('Number of investments made during each season' ,fontsize=22, weight='bold',fontname='Franklin Gothic Medium Cond')
+    plt.title('How many investments were made for each season of the TV show?' ,fontsize=26, weight='bold',fontname='Franklin Gothic Medium Cond')
     print('*')
     plt.xlim(xlim)
     plt.ylim(ylim)
 
-# annotate
+    # TODO:Need to add annotation
+    # annotate
     # for x, v in table.iterrows():
     #     cs = v.cumsum()[::-1]  # get the cumulative sum of the row and reverse it to provide the correct y position
     #     for i, a in enumerate(v[::-1]):  # reverse the row values for the correct annotation
