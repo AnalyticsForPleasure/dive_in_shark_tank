@@ -73,9 +73,14 @@ def creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(table)
     plt.ylim(ylim)
 
     # Adding annotation values
+    offset_x = 0.08
+    offset_y = 0.75
     fontdict_input = {'fontsize': 13, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'Gray'}
     for season,amount_investment in zip(number_of_season,number_of_investments_over_each_season):
-        plt.text(x=season - 0.08, y=amount_investment+0.75, s=amount_investment, ha='left', va='bottom', fontdict=fontdict_input)
+        plt.text(x=season - offset_x, y=amount_investment + offset_y, s=amount_investment, ha='left', va='bottom', fontdict=fontdict_input)
+
+    # Save the image
+    plt.savefig('area_chart.jpg',dpi=450, bbox_inches='tight')
 
     # Displaying the chart
     plt.show()
