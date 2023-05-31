@@ -45,12 +45,10 @@ The column names include:
 
 
 ## Number of Investments Made over the Seasons
-We will start with the next chart I would like to know the number of investments made by the sharks in each season. Therefore, I would reveal this element and illustrate it by using  the pie chart.
-We can notice, there is an increase in the number of investments made by the sharks as the TV show progressed over the seasons.
-As we can see, the number of investments taken in the first and second season was 27 and 19 .
-And on the opposite side, in the fifth season  and sixth season we can notice a big increase in numbers : 61 and 63.
-Seasons 1+2  = 27+19 = 46
-Seasons 5+6 = 61 + 63 = 124
+Our initial objective is to analyse the dataset and gather information on the total number of investments made by the panel of sharks in each season. To accomplish this, we aim to present this data visually using an area chart.
+
+Upon examining the data, we observe a significant surge in the number of investments over the years, particularly between the second and sixth seasons. During this period, there was a remarkable increase of almost  ~250%, with investments rising from 19 in the second season to 66 in the sixth season.
+
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2865a78f-c59f-4e52-8452-c883aa7481ca)
 
