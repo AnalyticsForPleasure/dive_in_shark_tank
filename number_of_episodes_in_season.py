@@ -17,6 +17,11 @@ def get_number_of_investments_each_season_over_the_years(df):
     res.rename(columns={res.columns[1]: 'Amount_of_investments_over_each_season'}, inplace=True)
     res['season_number'] = res['season_number'].apply(lambda x: int(x))
     res.sort_values(by='season_number', inplace=True, ascending=True)
+
+    # TOD0: Need to check the diff + pct_change()
+    res['Change Percentage %'] = res['Amount_of_investments_over_each_season'].diff()
+    res['Change Percentage %'] = res['Change Percentage %'].pct_change()
+    res['Change Percentage %'].round(2)
     dfi.export(res,'result_investment_per_season.png')
     print('*')
 
@@ -92,7 +97,7 @@ if __name__ == '__main__':
     df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')  # Ten seasons
 
     my_result =get_number_of_investments_each_season_over_the_years(df)
-    creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(my_result)
+    #creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(my_result)
     print('*')
 
 
