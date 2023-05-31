@@ -36,7 +36,7 @@ def creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(table)
     y1= np.array(number_of_investments_over_each_season)
     y2= np.repeat(0, 10)
     print('*')
-    cm1 = LinearSegmentedColormap.from_list('Temperature Map', ['navy','dodgerblue','skyblue']) # We can add here several colors
+    cm1 = LinearSegmentedColormap.from_list('Temperature Map', ['navy','skyblue']) # We can add here several colors
     polygon = plt.fill_between(x, y1, y2, lw=0, color='none')
     xlim = (x.min(), x.max())
     ylim = plt.ylim()
@@ -72,12 +72,10 @@ def creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(table)
     plt.xlim(xlim)
     plt.ylim(ylim)
 
-    # TODO:Need to add annotation
-    # annotate
-    # for x, v in table.iterrows():
-    #     cs = v.cumsum()[::-1]  # get the cumulative sum of the row and reverse it to provide the correct y position
-    #     for i, a in enumerate(v[::-1]):  # reverse the row values for the correct annotation
-    #         plt.annotate(text=f'${a:0.2f}', xy=(x, cs[i]))
+    # Adding annotation values
+    fontdict_input = {'fontsize': 13, 'weight': 'heavy', 'ha': 'left', 'alpha': 0.9, 'color': 'Gray'}
+    for season,amount_investment in zip(number_of_season,number_of_investments_over_each_season):
+        plt.text(x=season - 0.08, y=amount_investment+0.75, s=amount_investment, ha='left', va='bottom', fontdict=fontdict_input)
 
     # Displaying the chart
     plt.show()
