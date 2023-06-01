@@ -13,13 +13,10 @@ if __name__ == '__main__':
                        'D': [-5,np.nan,5,np.nan,-5,5,-5,np.nan,np.nan,5]})
     df
 
-    #
+
     ########################################################################################################################
     # Example 1: Remove row indices
-
-    df_1 = df.style.highlight_max()
     df_1 = df.style.hide(axis="index")
-
     dfi.export(df_1, filename='hide_index.png')
 
 
@@ -32,11 +29,11 @@ if __name__ == '__main__':
                                       'border-width': '1px',
                                       'border-style': 'solid'})
 
-    dfi.export(df_2, filename='Example_Format Table.png')
+    dfi.export(df_2, filename='output_images/Example_Format Table.png')
 
     ########################################################################################################################
 
-    # Example 3: Highlight Specific Number under constrains
+    # Example 3: Highlight Specific number under constrains
     def highlight_number(number):
         criteria = number == 7
 
@@ -44,7 +41,7 @@ if __name__ == '__main__':
 
     df_3 = df.style.apply(highlight_number)
 
-    dfi.export(df_3, filename='Highlight_Specific_Number.png')
+    dfi.export(df_3, filename='output_images/Highlight_Specific_Number.png')
 
     ########################################################################################################################
 
@@ -57,13 +54,13 @@ if __name__ == '__main__':
 
     # looks at each value to find negative numbers
     df_4 =df.style.applymap(color_negative_red)
-    dfi.export(df_4, filename='Make_Negative_Numbers_Red.png')
+    dfi.export(df_4, filename='output_images/Make_Negative_Numbers_Red.png')
 
     ########################################################################################################################
 
     # Example 5: Highlight NAN
     df_5 =df.style.highlight_null(null_color='red')
-    dfi.export(df_5, filename='Highlight_NAN.png')
+    dfi.export(df_5, filename='output_images/Highlight_NAN.png')
 
 
     ########################################################################################################################
@@ -76,11 +73,11 @@ if __name__ == '__main__':
 
     # to html with style
     html = highlight.render()
-    with open('highlight.html', 'w') as f:
+    with open('output_images/highlight.html', 'w') as f:
         f.write(html)
 
     df_6 = highlight
-    dfi.export(df_6, filename='size_of_bar_corresponds.png')
+    dfi.export(df_6, filename='../size_of_bar_corresponds.png')
 
     ########################################################################################################################
 
@@ -90,7 +87,7 @@ if __name__ == '__main__':
     # 0 = down the rows for each column
     # 1 = across the columns for each row
     df_7 =df.style.highlight_max(axis=0)
-    dfi.export(df_7, filename='max_value_colored.png')
+    dfi.export(df_7, filename='output_images/max_value_colored.png')
 
 
 ########################################################################################################################
@@ -100,18 +97,18 @@ if __name__ == '__main__':
     # 0 = down the rows for each column
     # 1 = across the columns for each row
     df_8 =df.style.highlight_min(axis=0)
-    dfi.export(df_8, filename='min_value_colored.png')
+    dfi.export(df_8, filename='output_images/min_value_colored.png')
 
 ########################################################################################################################
 
     # Example 9: painting relevant columns highlighter
 
     def relevant_columns_highlighter(x):
-        my_style = "background-color: #40E0D0; " \
+        my_style = "background-color: #1E90FF; " \
                    "color: white; " \
                    "font-weight: bold;"
         return [my_style] * len(x)
 
     df_9 = df.style.apply(func=relevant_columns_highlighter, subset=['A', 'D'])
 
-    dfi.export(df_9, filename='highlight_columns.png')
+    dfi.export(df_9, filename='output_images/highlight_columns.png')
