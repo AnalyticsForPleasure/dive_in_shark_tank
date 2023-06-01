@@ -1,65 +1,99 @@
-import matplotlib.pyplot as plt
-import seaborn as sns
-import dataframe_image as dfi
 import numpy as np
 import pandas as pd
-from IPython.display import display
-import openpyxl
-import xlsxwriter
+import dataframe_image as dfi
 
-#The data.style.applymap() - function is used in pandas to apply a formatting or styling function element-wise on a DataFrame.
-# Example number 1:
 
-def highlight_cells(value):
-    if value > 25:
-        color = 'yellow'
-    else:
-        color = ''
-    return 'background-color: {}'.format(color)
-
-########################################################################################################################
-#Example number 2:
-
-    def highlight_cells(value, color_true, color_false, criteria):
-        if value == criteria:
-            color = color_true
-        else:
-            color = color_false
-        return 'background-color: {}'.format(color)
 
 if __name__ == '__main__':
-    # create the DataFrame
-    y1=[26.8,24.97,25.69,24.07]
-    y2=[21.74,19.58,20.7,21.09]
-    y3=[13.1,12.45,12.75,10.79]
-    y4=[9.38,8.18,8.79,6.75]
-    y5=[12.1,10.13,10.76,8.03]
-    y6=[4.33,3.73,3.78,3.75]
 
-    values = [y1, y2, y3, y4, y5, y6]
-    labels = ["Medical", "Surgical", "Physician Services", "Newborn", "Maternity", "Mental Health"]
-    years = [2011, 2012, 2013, 2014]
-    data = dict(zip(labels, values))
-    df = pd.DataFrame(data=data, index=years)
+    # Example 1:
+    df = pd.DataFrame({'A': [1,-2,3,-4,5,-6,7,-8,9,-10],
+                       'B': np.random.rand(10),
+                       'C': np.arange(10),
+                       'D': [-5,np.nan,5,np.nan,-5,5,-5,np.nan,np.nan,5]})
+    df
 
+    #
+    ########################################################################################################################
+    df_1 = df.style.highlight_max()
 
-
-    df.style.highlight_min()
-    print('*')
-##################################################################################################
+    dfi.export(df_1, filename='example_1.png')
 
 
-    #The data.style.applymap() - function is used in pandas to apply a formatting or styling function element-wise on a DataFrame.
-    # Example number 1:
+    ########################################################################################################################
+    # Example 2: Format Table
+    df_2 = df.style.set_properties(**{'background-color': 'dodgerblue',
+                                      'color': 'white',
+                                      'border-color': 'white',
+                                      'border-width': '1px',
+                                      'border-style': 'solid'})
 
-    df.style.applymap(highlight_cells)
-    print('*')
+    dfi.export(df_2, filename='Example_Format Table.png')
+
+    ########################################################################################################################
+
+    # Example 3: Highlight Specific Number under constrains
+    def highlight_number(number):
+        criteria = number == 7
+
+        return ['background-color: springgreen' if i else '' for i in criteria] # Color kind - springgreen
+
+    df_3 = df.style.apply(highlight_number)
+
+    dfi.export(df_3, filename='Highlight_Specific_Number.png')
+
+    ########################################################################################################################
+
+    # Example 4: Make Negative Numbers Red
+    # red if negative
+    def color_negative_red(number):
+        # returns a string with the css property 'color: red' for negative strings, black otherwise
+        color = 'red' if number < 0 else 'black'
+        return f'color: {color}'
+
+    # looks at each value to find negative numbers
+    df_4 =df.style.applymap(color_negative_red)
+    dfi.export(df_4, filename='Make_Negative_Numbers_Red.png')
+
+    ########################################################################################################################
+
+    # Example 5: Highlight NAN
+    df_5 =df.style.highlight_null(null_color='red')
+    dfi.export(df_5, filename='Highlight_NAN.png')
 
 
-########################################################################################################################
-#Example number 2:
+    ########################################################################################################################
+
+    # Example 8:Size Bars
+
+    # size of bar corresponds to number in cell - in the specific column
+    highlight = df.style.bar(subset=['A', 'B', 'C'], color='yellow')
+    #highlight = df.style.bar(subset=['B'], color='yellow') <-- we can choose only one column
+
+    # to html with style
+    html = highlight.render()
+    with open('highlight.html', 'w') as f:
+        f.write(html)
+
+    df_6 = highlight
+    dfi.export(df_6, filename='size_of_bar_corresponds.png')
+
+    ########################################################################################################################
+
+    # Example 7: Highlight Max
+
+    # highlight max
+    # 0 = down the rows for each column
+    # 1 = across the columns for each row
+    df_7 =df.style.highlight_max(axis=0)
+    dfi.export(df_7, filename='max_value_colored.png')
 
 
-    df.style.applymap(highlight_cells, color_true = 'green', color_false = 'yellow', criteria = 2.55)
-    print('*')
+    ########################################################################################################################
 
+    # Example 8: Highlight Min
+
+    # 0 = down the rows for each column
+    # 1 = across the columns for each row
+    df_8 =df.style.highlight_min(axis=0)
+    dfi.export(df_8, filename='min_value_colored.png')
