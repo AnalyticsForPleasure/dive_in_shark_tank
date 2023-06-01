@@ -96,9 +96,6 @@ The next thing that we would like to dive into is to find out for each deal whic
 
 Over the course of the first ten years, the show has been televised, numerous pitch presentations have taken place in front of the sharks panel. These pitches spanned various industries, ranging from “online services” to the "baby and Child care" sector. As a result, our upcoming research aims to uncover the industries that have experienced shifts in temperature over the ten-year period. By addressing this question, we can identify which industries have reached their peak or declined from their peak.
 
-
- ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/0a43c527-2f6b-41e9-a12a-f0a8811f333b)
-
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/6b410e8c-7537-46e0-b870-f2b622123023)
 
 
@@ -119,6 +116,7 @@ Episode
 Number of viewers (audience)
 After retrieving this data, we proceeded to select the top 8 episodes for each season. We then visualized the results using a multi-bubble chart design created with Plotly.
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/c842ed9a-a41b-468f-98fa-70a614a1c10b)
+
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/06908ef2-6ef8-41bf-ad4d-e8aff974618f)
 
