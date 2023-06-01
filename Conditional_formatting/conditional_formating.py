@@ -14,14 +14,14 @@ if __name__ == '__main__':
     df
 
 
-    ########################################################################################################################
+########################################################################################################################
     # Example 1: Remove row indices
     df_1 = df.style.hide(axis="index")
     dfi.export(df_1, filename='hide_index.png')
 
 
 
-    ########################################################################################################################
+########################################################################################################################
     # Example 2: Format Table
     df_2 = df.style.set_properties(**{'background-color': 'dodgerblue',
                                       'color': 'white',
@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     dfi.export(df_2, filename='output_images/Example_Format Table.png')
 
-    ########################################################################################################################
+########################################################################################################################
 
     # Example 3: Highlight Specific number under constrains
     def highlight_number(number):
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     dfi.export(df_3, filename='output_images/Highlight_Specific_Number.png')
 
-    ########################################################################################################################
+########################################################################################################################
 
     # Example 4: Make Negative Numbers Red
     # red if negative
@@ -56,14 +56,14 @@ if __name__ == '__main__':
     df_4 =df.style.applymap(color_negative_red)
     dfi.export(df_4, filename='output_images/Make_Negative_Numbers_Red.png')
 
-    ########################################################################################################################
+########################################################################################################################
 
     # Example 5: Highlight NAN
     df_5 =df.style.highlight_null(null_color='red')
     dfi.export(df_5, filename='output_images/Highlight_NAN.png')
 
 
-    ########################################################################################################################
+########################################################################################################################
 
     # Example 8:Size Bars
 
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     df_6 = highlight
     dfi.export(df_6, filename='../size_of_bar_corresponds.png')
 
-    ########################################################################################################################
+########################################################################################################################
 
     # Example 7: Highlight Max
 
@@ -112,3 +112,40 @@ if __name__ == '__main__':
     df_9 = df.style.apply(func=relevant_columns_highlighter, subset=['A', 'D'])
 
     dfi.export(df_9, filename='output_images/highlight_columns.png')
+
+########################################################################################################################
+
+    # Example 10: mean_highlighter
+
+    # Color the cell red if the value is less than or equal to the mean
+    # Color the cell green if the value is greater than the mean
+    # Make the text white and bold in cases
+
+    def mean_highlighter(x):
+        # lt = less than
+        style_lt = "background-color: #EE2E31; " \  
+                   "color: white; " \
+                   "font-weight: bold;"
+        # gt =greater than
+        style_gt = "background-color: #31D843; " \
+                    "color: white; " \
+                    "font-weight: bold;"
+        gt_mean = x > x.mean()
+        return [style_gt if i else style_lt for i in gt_mean]
+
+
+    df_10 = df.style.apply(mean_highlighter)
+    dfi.export(df_10, filename='output_images/mean_highlighter.png')
+
+
+########################################################################################################################
+
+    # Example 11: bold column  + color column + removing index column
+
+    def relevant_columns_highlighter(x):
+        my_style = "color: #1E90FF;" \
+                   "font-weight: bold;"
+        return [my_style] * len(x)
+
+    df_11 = df.style.apply(func=relevant_columns_highlighter, subset=['C']).hide_index()
+    dfi.export(df_10, filename='output_images/bold_color_without_index.png')
