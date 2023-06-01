@@ -6,7 +6,7 @@ import dataframe_image as dfi
 
 if __name__ == '__main__':
 
-    # Example 1:
+
     df = pd.DataFrame({'A': [1,-2,3,-4,5,-6,7,-8,9,-10],
                        'B': np.random.rand(10),
                        'C': np.arange(10),
@@ -15,9 +15,13 @@ if __name__ == '__main__':
 
     #
     ########################################################################################################################
-    df_1 = df.style.highlight_max()
+    # Example 1: Remove row indices
 
-    dfi.export(df_1, filename='example_1.png')
+    df_1 = df.style.highlight_max()
+    df_1 = df.style.hide(axis="index")
+
+    dfi.export(df_1, filename='hide_index.png')
+
 
 
     ########################################################################################################################
@@ -99,7 +103,6 @@ if __name__ == '__main__':
     dfi.export(df_8, filename='min_value_colored.png')
 
 ########################################################################################################################
-
 
     # Example 9: painting relevant columns highlighter
 
