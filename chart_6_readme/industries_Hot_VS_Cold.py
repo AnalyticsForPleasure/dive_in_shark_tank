@@ -6,7 +6,17 @@ import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
 import seaborn as sns
 
+# **************************************************************************************************************
+# Function  name: relevant_columns_highlighter
+# input: adding styles to our dataframe
+# return value:
+# ****************************************************************************************************************
+def relevant_columns_highlighter(x):
+    my_style = "color: #1E90FF;" \
+               "font-weight: bold;"
+    return [my_style] * len(x)
 
+#"background-color: #1E90FF; "
 # **************************************************************************************************************
 # Function  name: which_industries_have_gotten_hotter_or_colder_over_6_seasons
 # input:
@@ -36,7 +46,11 @@ def which_industries_have_gotten_hotter_or_colder_over_10_seasons(df_2):
     # Lets nerge the two data together:
     final_res = counter_1_season.merge(counter_6_season, on='categories', how='inner')
     print('*')
+
+    # Adding styles to our dataframe ( coloring the column + removing the index column together)
+    final_res = final_res.style.apply(func=relevant_columns_highlighter, subset=['categories']).hide_index()
     dfi.export(final_res, '../images/slope_chart/slope_chart.png')
+    print('*')
     final_table_result = final_res.loc[[0,2, 4, 6, 7], :]
     print('*')
     return final_table_result
@@ -119,7 +133,6 @@ def slope_chart_for_industries_have_gotten_hotter_or_colder_over_10_seasons(fina
 
 if __name__ == '__main__':
     pd.set_option('display.max_rows', 900)
-    df = pd.read_csv('/Data/shark_tank_companies.csv')  # six seasons
     df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')  # Ten seasons
 
 
@@ -127,5 +140,5 @@ if __name__ == '__main__':
     column_headers = list(df_2.columns.values)
 
     res = which_industries_have_gotten_hotter_or_colder_over_10_seasons(df_2)
-    slope_chart_for_industries_have_gotten_hotter_or_colder_over_10_seasons(res)
+    #slope_chart_for_industries_have_gotten_hotter_or_colder_over_10_seasons(res)
     print('*')
