@@ -22,7 +22,7 @@ def get_number_of_investments_each_season_over_the_years(df):
     res['Change Percentage %'] = res['Amount_of_investments_over_each_season'].diff()
     res['Change Percentage %'] = res['Change Percentage %'].pct_change()
     res['Change Percentage %'].round(2)
-    dfi.export(res,'result_investment_per_season.png')
+    dfi.export(res, '../images/area_chart/result_investment_per_season.png')
     print('*')
 
     return res

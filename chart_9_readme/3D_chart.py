@@ -4,7 +4,7 @@ import pandas as pd
 
 if __name__ == '__main__':
 
-    data = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/part_one_3d.csv')
+    data = pd.read_csv('/Data/part_one_3d.csv')
     data = data.set_index('Industry')
     res = data.to_numpy()
 
@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     number_of_industries = 5
 
-    df = pd.DataFrame(data=res[:number_of_industries],#actual_bar_heights,
+    df = pd.DataFrame(data=res[:number_of_industries],
                       columns=shark_names,
                       index=industries_names[:number_of_industries])
     res = df.to_numpy()

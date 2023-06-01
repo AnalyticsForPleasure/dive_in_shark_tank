@@ -10,7 +10,8 @@ import itertools
 
 if __name__ == '__main__':
 
-    df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/part_one_3d.csv')  # six seasons
+
+    df = pd.read_csv('/Data/part_one_3d.csv')  # six seasons
     print('*')
 
     data = df.loc[:6, 'BarbaraCorcoran':"KevinO'Leary"]
@@ -21,9 +22,9 @@ if __name__ == '__main__':
     ax = fig.add_subplot(111, projection='3d')
 
     #coloring each series of sharks by different color: TODO: make it work
-    group_colors_shark = ['skyblue', 'blue', 'paleturquoise', 'darkviolet', 'plum','lightgreen']
+    #group_colors_shark = ['skyblue', 'blue', 'paleturquoise', 'darkviolet', 'plum','lightgreen']
 
-
+    ypos = np.arange(7).reshape(-1, 1)
     # Set coordinates for the bars
     xpos, ypos = np.meshgrid(np.arange(6), np.arange(7))
     xpos = xpos.flatten()
@@ -42,7 +43,9 @@ if __name__ == '__main__':
     # # Plot the 3D bars for each group
     for pn in range(7):
         for i in range(6):
-            ax.bar3d(xpos[i], ypos[pn, 0], zpos[pn, i], dx[i], dy[pn], dz[pn, i], color=group_colors_shark[i])
+            ax.bar3d(xpos, ypos, zpos, dx, dy, dz) # ,group_colors_shark)
+            #ax.bar3d(xpos[i], ypos[pn, 0], zpos[pn, i], dx[i], dy[pn], dz[pn, i])#, color=group_colors_shark[i])
+            print('*')
 
 
     # Set labels and title

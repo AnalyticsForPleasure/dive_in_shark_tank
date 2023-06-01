@@ -102,13 +102,16 @@ def two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(individ
     # Giving the title for the plot
     # Number of investments made by each shark over \n team entrepreneur VS solo entrepreneur
     plt.title("Sharks' investments done through either Solo or with multiple entrepreneurs",
-              fontsize=16,
-              weight='bold')
+              fontsize=25,
+              weight='bold',
+              fontname='Franklin Gothic Medium Cond')
+    # Add in title and subtitle
+
     # Naming the x and y axis
-    plt.xlabel('Shark names', weight='bold')
-    plt.ylabel('Number of investments', weight='bold')
+    plt.xlabel('Shark names', weight='bold',fontsize=16)
+    plt.ylabel('Number of investments', weight='bold',fontsize=16)
     # Saving the plot as a 'png'
-    plt.savefig('4BarPlot.png')
+    plt.savefig('individual_vs_multi.png')
     # Displaying the bar plot
     plt.show()
 
@@ -123,7 +126,7 @@ def creating_bidirectional_bar_chart_by_categories(final_table):
     font_color = '#525252'
     hfont = {'fontname': 'Calibri'}
     facecolor = 'ghostwhite'
-    color_red = 'lightskyblue'
+    color_blue_sea = 'lightskyblue'
     color_blue = 'royalblue'
     index = final_table ['selected_categories']
     column0 = final_table['counter_closed_deals']
@@ -134,10 +137,12 @@ def creating_bidirectional_bar_chart_by_categories(final_table):
     fig, axes = plt.subplots(figsize=(10, 5), facecolor=facecolor, ncols=2, sharey=True)
     fig.tight_layout()
 
-    axes[0].barh(index, column0, align='center', color=color_red, zorder=10)
-    axes[0].set_title(title0, fontsize=18, pad=15, color=color_red, **hfont)
+
+
+    axes[0].barh(index, column0, align='center', color=color_blue_sea, zorder=10)
+    axes[0].set_title(title0, fontsize=18, pad=15, color=color_blue_sea, **hfont, weight='bold')
     axes[1].barh(index, column1, align='center', color=color_blue, zorder=10)
-    axes[1].set_title(title1, fontsize=18, pad=15, color=color_blue, **hfont)
+    axes[1].set_title(title1, fontsize=18, pad=15, color=color_blue, **hfont,weight='bold')
 
     # If you have positive numbers and want to invert the x-axis of the left plot
     axes[0].invert_xaxis()
@@ -160,7 +165,7 @@ def creating_bidirectional_bar_chart_by_categories(final_table):
     plt.subplots_adjust(wspace=0, top=0.85, bottom=0.1, left=0.18, right=0.95)
 
     filename = 'mpl-bidirectional'
-    plt.savefig(filename+'.png', facecolor=facecolor)
+    #plt.savefig(filename+'.png', facecolor=facecolor)
     plt.show()
 
 ########################################################################################################################

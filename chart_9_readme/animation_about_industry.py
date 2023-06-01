@@ -35,7 +35,7 @@ def creating_the_data_for_the_3d_plot(df):
     shark_table.fillna(0, inplace=True)  # Replace NA values with zeros
     shark_table.iloc[:, 1:7] = shark_table.iloc[:, 1:7].apply(lambda x: x.astype(int))
     shark_table.drop(0, axis=0, inplace=True)  # remove the first row
-    dfi.export(shark_table, 'shark_table.png')
+    dfi.export(shark_table, '../images/3D_chart/shark_table.png')
     shark_table.to_csv('part_one_3d.csv', index = False)
     print('*')
     return shark_table
@@ -47,7 +47,7 @@ def creating_the_data_for_the_3d_plot(df):
 # ******************************************************************************************************************
 
 def creating_the_3D_chart(df):
-    data = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/part_one_3d.csv')
+    data = pd.read_csv('/Data/part_one_3d.csv')
     data = data.set_index('Industry')
     res = data.to_numpy()
 
@@ -55,7 +55,7 @@ def creating_the_3D_chart(df):
     industries_names = ['Health', 'Food', 'LifeStyle', 'Children','Fashion','Business Services',
                         'Fitness','Pet Products','Tech','Media','Travel','CleanTech','Autoemotive','Other' ]
 
-    number_of_industries = 5
+    number_of_industries = 3
 
     df = pd.DataFrame(data=res[:number_of_industries],#actual_bar_heights,
                       columns=shark_names,
@@ -73,7 +73,7 @@ def creating_the_3D_chart(df):
     yy = yy.flatten()
     zz = [0] * len(industries_names[:number_of_industries]) * len(shark_names)
 
-    colors = sorted(['skyblue', 'dodgerblue', 'lightseagreen','palegreen','navy'] * len(shark_names)) # 'lightsteelblue', 'black']
+    colors = sorted(['skyblue', 'dodgerblue', 'lightsteelblue']* len(shark_names)) # 'lightsteelblue', 'black','palegreen','navy'] ]
 
     # dx, dy, dz : float or array-like
     # The width, depth, and height of the bars, respectively:
@@ -105,7 +105,6 @@ def creating_the_3D_chart(df):
 
     ax.set_title("Investments per Industry per shark")
     plt.show()
-
 
 if __name__ == '__main__':
 

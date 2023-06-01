@@ -34,7 +34,7 @@ def ratio_of_investments_of_each_shark_choose_between_multiple_entrepreneurs_VS_
     multiple_entrepreneur_df.rename(columns={multiple_entrepreneur_df.columns[1]: 'counter_of_multiple_entrepreneur'},
                                     inplace=True)
     multiple_entrepreneur_df.rename(columns={multiple_entrepreneur_df.columns[0]: 'chosen_shark'}, inplace=True)
-    dfi.export(individual_entrepreneur_df, 'images/individual_vs_multi/individual_entrepreneur_df.png')
+    dfi.export(individual_entrepreneur_df, '../images/individual_vs_multi/individual_entrepreneur_df.png')
     print('*')
 
     return individual_entrepreneur_df, multiple_entrepreneur_df
@@ -110,7 +110,7 @@ def two_bar_plot_shows_multiple_entrepreneurs_VS_individual_entrepreneur(individ
 
 
 if __name__ == '__main__':
-    df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv')
+    df = pd.read_csv('/Data/shark_tank_companies.csv')
     all_the_deals_closed = df.loc[df['deal'] == True, :]
     location_of_all_deals_closed = all_the_deals_closed['location'].value_counts()  # 19 closing deals were closed in L.A location
     print(f'The deals were closed over the states at:{location_of_all_deals_closed}')

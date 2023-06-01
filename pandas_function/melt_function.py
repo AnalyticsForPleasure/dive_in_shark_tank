@@ -5,17 +5,17 @@ import dataframe_image as dfi  # Should install: "dataframe-image"
 df_wide = pd.DataFrame(
     {"student": ["Andy", "Bernie", "Cindy", "Deb"],
      "school":  ["Z", "Y", "Z", "Y"],
-     "english": [10, 100, 1000, 10000],  # eng grades
-     "math":    [20, 200, 2000, 20000],  # math grades
-     "physics": [30, 300, 3000, 30000]   # physics grades
+     "english": [60, 70, 80, 76],  # eng grades
+     "math":    [89, 72, 76, 84],  # math grades
+     "physics": [91, 94, 84, 82]   # physics grades
      }
 )
-
+dfi.export(df_wide, 'df_wide_image1.png')
 print('*')
 
 
 output = df_wide.melt(id_vars=["student", "school"],
-             var_name="cLaSs",  # rename
-             value_name="gRaDe")  # rename
-
+             var_name="cLass",  # rename
+             value_name="grade")  # rename
+print('*')
 dfi.export(output, 'output_image1.png')

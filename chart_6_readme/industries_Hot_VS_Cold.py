@@ -36,7 +36,7 @@ def which_industries_have_gotten_hotter_or_colder_over_10_seasons(df_2):
     # Lets nerge the two data together:
     final_res = counter_1_season.merge(counter_6_season, on='categories', how='inner')
     print('*')
-    dfi.export(final_res, 'images/slope_chart.png')
+    dfi.export(final_res, '../images/slope_chart/slope_chart.png')
     final_table_result = final_res.loc[[0,2, 4, 6, 7], :]
     print('*')
     return final_table_result
@@ -119,7 +119,7 @@ def slope_chart_for_industries_have_gotten_hotter_or_colder_over_10_seasons(fina
 
 if __name__ == '__main__':
     pd.set_option('display.max_rows', 900)
-    df = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_companies.csv')  # six seasons
+    df = pd.read_csv('/Data/shark_tank_companies.csv')  # six seasons
     df_2 = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')  # Ten seasons
 
 

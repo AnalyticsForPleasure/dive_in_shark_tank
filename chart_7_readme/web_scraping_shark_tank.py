@@ -4,6 +4,7 @@ import requests
 import seaborn as sns
 from bs4 import BeautifulSoup
 import kaleido
+import dataframe_image as dfi
 
 
 # ******************************************************************************************************************
@@ -92,7 +93,7 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
     # Adding "M" for the viewers:
 
-    top_eight_episode['viewers'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x))  # +'M'
+    top_eight_episode['viewers'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x)) # +'M'
     top_eight_episode['viewers'] = top_eight_episode['viewers'].astype(float)
     # Adding X, Y coordinates scale :
     top_eight_episode['Y Position'] = [1] * len(top_eight_episode)
@@ -100,6 +101,7 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     top_eight_episode['X Position'] = list_x
 
     top_eight_episode['episode'] = top_eight_episode['episode'].astype(str)
+    dfi.export(top_eight_episode, '../images/scraping_bubble/top_eight_episode_season_10.png')
 
     top_eight_episode.dtypes
     print('*')

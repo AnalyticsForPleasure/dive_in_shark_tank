@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import dataframe_image as dfi
 
 
 # ******************************************************************************************************************
@@ -33,6 +34,7 @@ def counting_the_number_of_investments_grouped_by_gender_for_each_shark(df):
 
     # Rename index (['Barbara Corcoran', 'Kevin O’Leary', 'Lori Greiner', 'Robert Herjavec', 'Mark Cuban', 'Daymond John', 'Guest'])
     gender_table.index = ['Barbara', 'Kevin', 'Lori', 'Robert', 'Mark', 'Daymond', 'Guest']
+    dfi.export(gender_table, 'images/gender_table_conuter.png')
     print('*')
     return gender_table
 
@@ -54,8 +56,12 @@ def grouping_by_gender_to_create_subplots_for_each_shark(gender_table):
     for axis, shark_name in zip(all_6_axis, list(gender_table.index)):
         female_val = gender_table.loc[shark_name, 'Female']
         male_val = gender_table.loc[shark_name, 'Male']
-        axis.bar(1, female_val, width=2, label='RMSE', color='lightblue')
-        axis.bar(3, male_val, width=2, label='MAE')
+        axis.bar(1, female_val, width=2, label='RMSE', color='navy')
+        axis.bar(3, male_val, width=2, label='MAE',color = 'cornflowerblue')
+
+
+        all_6_axis[0].set_ylabel('Number of investments made by each shark', fontsize=17,
+                                 fontweight='bold',fontname='Franklin Gothic Medium Cond')
 
         # Text for each bar either 'Male' or 'Female':
         axis.text(x=1, y=0.5, s='F', ha='left', va='bottom', fontdict=fontdict_input)
@@ -65,7 +71,7 @@ def grouping_by_gender_to_create_subplots_for_each_shark(gender_table):
         axis.text(x=1, y=female_val, s=female_val, ha='left', va='bottom', fontdict=fontdict_input2)
         axis.text(x=3, y=male_val, s=male_val, ha='left', va='bottom', fontdict=fontdict_input2)
 
-        axis.set_title(shark_name,fontsize=14, weight='bold')
+        axis.set_title(shark_name,fontsize=21, weight='bold',fontname='Franklin Gothic Medium Cond')
 
         axis.set_xticks([])
     plt.show()

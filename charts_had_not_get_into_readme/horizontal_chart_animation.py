@@ -14,8 +14,13 @@ import matplotlib.lines as mlines
 if __name__ == '__main__':
 
     df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')
-    print('*')
+    df_2 = pd.read_csv('/Data/shark_tank_companies.csv')  # six seasons
+    column_headers = list(df.columns.values)
 
+    #res =df.loc['State']
+    #df = df.rename(index={'Unnamed: 8': 'state'})
+    df = df.rename(index={'8': 'state'})
+    print('*')
 
     all_the_deals_closed = df.loc[df['Deal'] == 'Yes',:]
     all_the_deals_closed = all_the_deals_closed.replace(np.nan, '', regex=True)
