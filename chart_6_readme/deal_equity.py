@@ -128,15 +128,10 @@ def creating_the_equity_subplot(gender_equity_table):
 
 if __name__ == '__main__':
     pd.set_option('display.max_rows', 1000)
-    # first method
-    plt.rcParams['font.family']='instrument'
-    # matplotlib.rcParams['font.family'] = ['instrument serif']
-    # plt.rcParams['Instrument Serif'] = ['Instrument Serif']
-    # print(plt.rcParams)
-    # exit(555)
 
-    df = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",
-                       sheet_name='Sheet1')
+
+
+    df = pd.read_excel(r"C:\Users\Gil\PycharmProjects\building-blocks-python\data\shark_tank_data.xlsx",sheet_name='Sheet1')
 
     plt.style.use('seaborn')
     res = generate_table_for_deal_equity(df)#(df_input=d f)
