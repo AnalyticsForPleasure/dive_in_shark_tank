@@ -89,7 +89,7 @@ if __name__ == '__main__':
     dfi.export(df_7, filename='max_value_colored.png')
 
 
-    ########################################################################################################################
+########################################################################################################################
 
     # Example 8: Highlight Min
 
@@ -97,3 +97,18 @@ if __name__ == '__main__':
     # 1 = across the columns for each row
     df_8 =df.style.highlight_min(axis=0)
     dfi.export(df_8, filename='min_value_colored.png')
+
+########################################################################################################################
+
+
+    # Example 9: painting relevant columns highlighter
+
+    def relevant_columns_highlighter(x):
+        my_style = "background-color: #40E0D0; " \
+                   "color: white; " \
+                   "font-weight: bold;"
+        return [my_style] * len(x)
+
+    df_9 = df.style.apply(func=relevant_columns_highlighter, subset=['A', 'D'])
+
+    dfi.export(df_9, filename='highlight_columns.png')
