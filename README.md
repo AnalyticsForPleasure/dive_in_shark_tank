@@ -99,6 +99,7 @@ Over the course of the first ten years, the show has been televised, numerous pi
 
  ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/0a43c527-2f6b-41e9-a12a-f0a8811f333b)
 
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/6b410e8c-7537-46e0-b870-f2b622123023)
 
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/6a449aee-3478-453b-b346-579cf2de9381)
