@@ -1,10 +1,9 @@
+import dataframe_image as dfi
 import pandas as pd
 import plotly.express as px
 import requests
 import seaborn as sns
 from bs4 import BeautifulSoup
-import kaleido
-import dataframe_image as dfi
 
 
 # **************************************************************************************************************
@@ -88,7 +87,8 @@ def scraping_the_wiki_web_page_of_sark_tank_viewers(url):
 # return value:
 # ******************************************************************************************************************
 
-def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,season_number):
+def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,
+                                                                                     season_number):
     # final_table = []
     # grouping_by_seasons = df.groupby('season')
     # for season_num, mini_df_season_num in grouping_by_seasons:
@@ -104,20 +104,22 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
     # Adding "M" for the viewers:
 
-    top_eight_episode['Viewers ( In Millions )'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x)) # +'M'
+    top_eight_episode['Viewers ( In Millions )'] = (top_eight_episode['viewers']).apply(
+        lambda x: "{0:.2f}".format(x))  # +'M'
     top_eight_episode['Viewers ( In Millions )'] = top_eight_episode['Viewers ( In Millions )'].astype(float)
     print('*')
 
     top_eight_episode['episode'] = top_eight_episode['episode'].astype(str)
-    #top_eight_episode=top_eight_episode.drop(['Counter_shark', 'Industry'], axis=1)
+    # top_eight_episode=top_eight_episode.drop(['Counter_shark', 'Industry'], axis=1)
 
     # droping 1 column - 'viewers' because we have  'Viewers ( In Millions )'
-    top_eight_episode=top_eight_episode.drop(['viewers'], axis=1)
+    top_eight_episode = top_eight_episode.drop(['viewers'], axis=1)
     print('*')
-    top_eight_episode = top_eight_episode.style.apply(func=relevant_columns_highlighter, subset=['Viewers ( In Millions )','Percent']).hide_index()
-    print('*')
-    #TODO: Can't get the 10 season image - try again
-    dfi.export(top_eight_episode, f'../images/scraping_bubble/top_eight_episode_season_{season_number}_conditional.png')
+    top_eight_episode_style = top_eight_episode.style.apply(func=relevant_columns_highlighter,
+                                                            subset=['Viewers ( In Millions )',
+                                                                    'Percent'])  # .hide_index()
+    dfi.export(top_eight_episode_style,
+               f'../images/scraping_bubble/top_eight_episode_season_{season_number}_conditional.png')
     print('*')
 
     # Adding X, Y coordinates scale :
@@ -125,8 +127,7 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     list_x = list(range(0, len(top_eight_episode)))
     top_eight_episode['X Position'] = list_x
 
-    #top_eight_episode.dtypes
-
+    # top_eight_episode.dtypes
 
     return top_eight_episode
 
@@ -136,7 +137,7 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
 # input:
 # return value:
 # ******************************************************************************************************************
-def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eight_episode,season_number_scrap):
+def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eight_episode, season_number_scrap):
     pal_ = list(sns.color_palette(palette='crest', n_colors=len(top_eight_episode)).as_hex())
     # cmap = sns.color_palette("Blues", as_cmap=True).as_hex()
     # Now' let's go to the charting part:
@@ -192,10 +193,10 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
             'font': {
                 'size': 34,  # Adjust the size of the title font
                 'family': 'Franklin Gothic Medium Cond',  # Specify the font family
-                'color':'gray'
+                'color': 'gray'
             },
-            'y':0.9,
-            'x':0.5,
+            'y': 0.9,
+            'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top'})
 
@@ -207,18 +208,19 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
 if __name__ == '__main__':
 
     ########################################################################################################################
-    # path 1 : retireiving the data from wiki web page:
-    url = 'https://en.wikipedia.org/w/index.php?title=List_of_Shark_Tank_episodes&oldid=911241643'
-
-    res = scraping_the_wiki_web_page_of_sark_tank_viewers(url)
+    # Path 1 : retrieving the data from wiki web page:
+    # url = 'https://en.wikipedia.org/w/index.php?title=List_of_Shark_Tank_episodes&oldid=911241643'
+    # res = scraping_the_wiki_web_page_of_sark_tank_viewers(url)
+    # res.to_csv('scrape_dump.csv')
 
     ########################################################################################################################
-    # #Path 2 : Scaling the data of top 10 episodes viewer of each year
+    # Path 2 : Scaling the data of top 10 episodes viewer of each year
 
-
-    # # creating dynamic Bubble Multi chart :
+    res = pd.read_csv('scrape_dump.csv')
+    # creating dynamic Bubble Multi chart :
     groups_by_season = res.groupby('season')
     for season_number, mini_df_season_number in groups_by_season:
-        res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,season_number)
-        #visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2,season_number)
-    print('*')
+        res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,
+                                                                                                 season_number)
+        # visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2,season_number)
+        print('*')
