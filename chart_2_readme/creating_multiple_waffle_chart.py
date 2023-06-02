@@ -1,7 +1,7 @@
-import pandas as pd
 import dataframe_image as dfi
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 import seaborn as sns
 from pywaffle import Waffle
 
@@ -15,7 +15,6 @@ def relevant_columns_highlighter(x):
     my_style = "color: #1E90FF;" \
                "font-weight: bold;"
     return [my_style] * len(x)
-
 
 
 # ******************************************************************************************************************
@@ -57,7 +56,6 @@ def creating_the_input_data_for_the_multi_whaffle_chart(df):
     all_the_deals_closed = all_the_deals_closed.loc[all_the_deals_closed['Close_DEAL'] != '', :]
     all_the_deals_closed['Close_DEAL'] = all_the_deals_closed['Close_DEAL'].astype('int')
 
-    list_of_seasons = []
     df_shark = pd.DataFrame({'Investor_name': [],
                              'Amount_of_investments': [],
                              'Percent': [],
@@ -84,24 +82,30 @@ def creating_the_input_data_for_the_multi_whaffle_chart(df):
         res2.reset_index(level=0, inplace=True)
         res2.rename(columns={res2.columns[0]: 'Investor_name'}, inplace=True)
         res2.rename(columns={res2.columns[1]: 'Amount_of_investments'}, inplace=True)
-        res2['Amount_of_investments']=res2['Amount_of_investments'].apply(lambda x:int(x))
+        res2['Amount_of_investments'] = res2['Amount_of_investments'].apply(lambda x: int(x))
+        # res2['Amount_of_investments']=res2['Amount_of_investments'].apply(lambda x : "{:,}".format(x))  # # in order to  add ','
+
         # Adding another column - "Percent" :
         res2['Percent'] = [round(i * 100 / sum(res2.Amount_of_investments), 1) for i in res2.Amount_of_investments]
-        res2['Percent'] = (res2['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
+        res2['Percent'] = (res2['Percent']).apply(lambda x: "{0:.2f}".format(x))  # + '%'
+
+        # fixing the name of the shark without '\n'
         res2['Investor_name'] = res2['Investor_name'].apply(lambda x: x.replace('\n', ' '))
 
         # Adding another column - "season_number" :
-        res2['season_number']= season_number
+        res2['season_number'] = season_number
         res2['season_number'] = res2['season_number'].apply(lambda x: int(x))
 
-        res2 = df.style.apply(func=relevant_columns_highlighter, subset=['Amount_of_investments','Percent']).hide_index()
-        #dfi.export(df_11, filename='output_images/bold_color_without_index.png')
-        dfi.export(res2, filename='multi_whaffle_1_condifinal.png')
+        styled_formating_df = res2.style.apply(func=relevant_columns_highlighter,
+                                               subset=['Amount_of_investments', 'Percent']).hide_index()
+        dfi.export(styled_formating_df,
+                   filename=f'../images/waffle_seasons/multi_waffle_{season_number}_conditional.png')
         print('*')
         print(f'Season #{season_number}:\n {res2}')
-        #df_shark['Investor_name'] = df_shark['Investor_name'].apply(lambda x: x.replace('\n', ' '))
+        print('*')
+        # df_shark['Investor_name'] = df_shark['Investor_name'].apply(lambda x: x.replace('\n', ' '))
         df_shark = pd.concat([df_shark, res2], axis=0)
-        #df_shark['season_number'] = df_shark['season_number'].apply(lambda x: int(x))
+        # df_shark['season_number'] = df_shark['season_number'].apply(lambda x: int(x))
         print('*' * 50)
     # In the next row we will export data into CSV
     # df_shark.to_csv(fr'C:\Users\Gil\PycharmProjects\building-blocks-python\Coding_in_finance\shark_output\{season_number}.csv', index = False)
@@ -123,7 +127,7 @@ def generate_plot_per_season(mini_df_season_number, season_number):
 
     pal = plt.cm.tab20c
     pal = list(sns.color_palette(palette='plasma_r', n_colors=len(mini_df_season_number.Investor_name)).as_hex())
-    #pal = sns.color_palette("Blues", as_cmap=True)
+    # pal = sns.color_palette("Blues", as_cmap=True)
     # Loop for creating dictionary
     for number_image, col, row, per, investor_name, color in zip(number_of_images,
                                                                  col_number,
@@ -135,7 +139,8 @@ def generate_plot_per_season(mini_df_season_number, season_number):
 
         dict_subplots_data[current_k] = {
             'values': {'Cat1': int(float(per)), 'Rest': total_squares - int(float(per))},
-            'labels': [investor_name + ' ' + str(per) + ' %', 'Rest of the sharks' + ' ' + str(100 - float(per)) + ' %'],
+            'labels': [investor_name + ' ' + str(per) + ' %',
+                       'Rest of the sharks' + ' ' + str(100 - float(per)) + ' %'],
             'legend': {'loc': 'upper left', 'bbox_to_anchor': (1.05, 1), 'fontsize': 8},
             'title': {'label': f'{investor_name}' ' invesments', 'loc': 'left', 'fontsize': 12},
             'colors': [color, "#EEEEEE"]
@@ -151,26 +156,26 @@ def generate_plot_per_season(mini_df_season_number, season_number):
     )
 
     fig.suptitle(f'Season {season_number}', fontsize=14, fontweight='bold')
-    fig.supxlabel('The investments made by the entire group of sharks are distributed \n in such a manner that each square represents a 1% portion', fontsize=8, x=0.36,
-                  style='italic')
+    fig.supxlabel(
+        'The investments made by the entire group of sharks are distributed \n in such a manner that each square represents a 1% portion',
+        fontsize=8, x=0.36,
+        style='italic')
     fig.set_facecolor('#ffffff')
     # plt.savefig(f'{waffle_season_1[:-4]}.jpg', dpi=250)
     plt.savefig(f'waffle_{season_number}_2.jpg', dpi=250, bbox_inches='tight')
 
-
-plt.show()
-
+    plt.show()
 
 
 if __name__ == '__main__':
-
-    df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')
+    df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',
+                       sheet_name='Sheet1')
 
     # creating dynamic Waffle Multi chart :
     df_all = creating_the_input_data_for_the_multi_whaffle_chart(df)
-    df_all.to_csv('whole_seasons.csv', index = False)
+    df_all.to_csv('whole_seasons.csv', index=False)
     groups_by_season = df_all.groupby('season_number')
-    for season_number, mini_df_season_number in groups_by_season:
-        generate_plot_per_season(mini_df_season_number, season_number)
-    print('*')
-
+    # for season_number, mini_df_season_number in groups_by_season:
+    #     print(f'season_number = {season_number}')
+    #     generate_plot_per_season(mini_df_season_number, season_number)
+    #     print('*')
