@@ -16,10 +16,8 @@ if __name__ == '__main__':
 
 ########################################################################################################################
     # Example 1: Remove row indices
-    df_1 = df.style.hide(axis="index")
-    dfi.export(df_1, filename='hide_index.png')
-
-
+    # df_1 = df.style.hide(axis="index")
+    # dfi.export(df_1, filename='hide_index.png')
 
 ########################################################################################################################
     # Example 2: Format Table
@@ -77,7 +75,7 @@ if __name__ == '__main__':
         f.write(html)
 
     df_6 = highlight
-    dfi.export(df_6, filename='../size_of_bar_corresponds.png')
+    dfi.export(df_6, filename='output_images/size_of_bar_corresponds.png')
 
 ########################################################################################################################
 
@@ -114,29 +112,26 @@ if __name__ == '__main__':
     dfi.export(df_9, filename='output_images/highlight_columns.png')
 
 ########################################################################################################################
-
-    # Example 10: mean_highlighter
+    # Example 10: coloring values less than X and values greater than
 
     # Color the cell red if the value is less than or equal to the mean
     # Color the cell green if the value is greater than the mean
     # Make the text white and bold in cases
-
-    def mean_highlighter(x):
-        # lt = less than
-        style_lt = "background-color: #EE2E31; " \  
-                   "color: white; " \
-                   "font-weight: bold;"
-        # gt =greater than
-        style_gt = "background-color: #31D843; " \
-                    "color: white; " \
-                    "font-weight: bold;"
-        gt_mean = x > x.mean()
-        return [style_gt if i else style_lt for i in gt_mean]
-
-
-    df_10 = df.style.apply(mean_highlighter)
-    dfi.export(df_10, filename='output_images/mean_highlighter.png')
-
+    #
+    # def mean_highlighter(x):
+    #     # lt = less than
+    #     style_lt = "background-color: #EE2E31; " \
+    #                "color: white; " \
+    #                "font-weight: bold;"
+    #     # gt =greater than
+    #     style_gt = "background-color: #31D843; " \
+    #                 "color: white; " \
+    #                 "font-weight: bold;"
+    #     gt_mean = x > x.mean()
+    #     return [style_gt if i else style_lt for i in gt_mean]
+    #
+    # df_10 = df.style.apply(mean_highlighter)
+    # dfi.export(df_10, filename='output_images/mean_highlighter.png')
 
 ########################################################################################################################
 
@@ -148,4 +143,47 @@ if __name__ == '__main__':
         return [my_style] * len(x)
 
     df_11 = df.style.apply(func=relevant_columns_highlighter, subset=['C']).hide_index()
-    dfi.export(df_10, filename='output_images/bold_color_without_index.png')
+    dfi.export(df_11, filename='output_images/bold_color_without_index.png')
+########################################################################################################################
+    #This code below is not working
+    #
+    # data = {
+    #     'Name': ['John', 'Emily', 'Mike', 'Sara'],
+    #     'Age': [25, 30, 35, 40],
+    #     'City': ['New York', 'London', 'Paris', 'Tokyo']
+    # }
+    # df = pd.DataFrame(data)
+    # print('*')
+    # def style_dataframe(df):
+    #     # Create a copy of the DataFrame
+    #     styled_df = df.copy()
+    #
+    #     # Apply styles to specific rows
+    #     styled_df.loc[[0, 2], :] = "color: #1E90FF;" \
+    #                                "font-weight: bold;"
+    #     # Remove the index column
+    #     styled_df = styled_df.style.hide_index()
+    #
+    #     return styled_df
+    #
+    # styled_df = style_dataframe(df)
+    # dfi.export(styled_df, filename='output_images/styled_df.png')
+
+
+########################################################################################################################
+    # Example 13 : bold column  + color column + removing index column
+    data = {'A': [1, 2, 3],
+            'B': [4, 5, 6],
+            'C': [7, 8, 9]}
+
+    df = pd.DataFrame(data, index=['row_0', 'row_1', 'row_2']) # Here are the index part referred
+    print('*')
+
+    rows_to_mark = {'row_0','row_2'}
+    highlighted_df = df.style.apply(lambda x: ['background: lightgreen' if x.name in rows_to_mark else '' for i in x],axis=1)
+
+    dfi.export(highlighted_df, filename='output_images/highlighted_rows.png')
+
+
+    rows_to_mark = {'1,2,3'}#, 'row_2'}
+    highlighted_df = df.style.apply(lambda x: ['background: lightgreen' if x.name in rows_to_mark else '' for i in x],axis=1)
