@@ -96,8 +96,8 @@ The next thing that we would like to dive into is to find out for each deal whic
 ## Industries that Have Experienced Temperature Changes over 10 Seasons
 
 Over the course of the first ten years, the show has been televised, numerous pitch presentations have taken place in front of the sharks panel. These pitches spanned various industries, ranging from “online services” to the "baby and Child care" sector. As a result, our upcoming research aims to uncover the industries that have experienced shifts in temperature over the ten-year period. By addressing this question, we can identify which industries have reached their peak or declined from their peak.
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/051c330a-187a-474c-a855-6655258140c3)
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/6b410e8c-7537-46e0-b870-f2b622123023)
 
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/6a449aee-3478-453b-b346-579cf2de9381)
@@ -141,8 +141,8 @@ Hence, I have chosen to visualize these findings by creating a 3-D plot. The plo
 3.	The third dimension will represent the amount of investment made by each shark in a particular industry.
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ec8d609-5f7e-4fe1-b504-a6f5443c2e43)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/d1e7edcc-5462-4ed4-a5c4-c1f7dff2f06f)
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/0089b6c2-f9e3-4c5a-9ec6-2a1ba5ac873a)
 
 Based on the animated chart we created, it is evident that the "Food and Beverage" industry stands out as one of the most appealing sectors for investment, according to the sharks. Additionally, two other industries, namely "Health" and "Lifestyle," are also recognized by the sharks and hold considerable allure.
 
