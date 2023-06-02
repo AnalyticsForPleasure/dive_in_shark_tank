@@ -7,6 +7,17 @@ import kaleido
 import dataframe_image as dfi
 
 
+# **************************************************************************************************************
+# Function  name: relevant_columns_highlighter
+# input: adding styles to our dataframe
+# return value:
+# ****************************************************************************************************************
+def relevant_columns_highlighter(x):
+    my_style = "color: #1E90FF;" \
+               "font-weight: bold;"
+    return [my_style] * len(x)
+
+
 # ******************************************************************************************************************
 # Function  name: Part 1 -- "scraping_the_wiki_web_page_of_sark_tank_viewers"
 # input:
@@ -93,18 +104,29 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
     # Adding "M" for the viewers:
 
-    top_eight_episode['viewers'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x)) # +'M'
-    top_eight_episode['viewers'] = top_eight_episode['viewers'].astype(float)
+    top_eight_episode['Viewers ( In Millions )'] = (top_eight_episode['viewers']).apply(lambda x: "{0:.2f}".format(x)) # +'M'
+    top_eight_episode['Viewers ( In Millions )'] = top_eight_episode['Viewers ( In Millions )'].astype(float)
+    print('*')
+
+    top_eight_episode['episode'] = top_eight_episode['episode'].astype(str)
+    #top_eight_episode=top_eight_episode.drop(['Counter_shark', 'Industry'], axis=1)
+
+    # droping 1 column - 'viewers' because we have  'Viewers ( In Millions )'
+    top_eight_episode=top_eight_episode.drop(['viewers'], axis=1)
+    print('*')
+    top_eight_episode = top_eight_episode.style.apply(func=relevant_columns_highlighter, subset=['Viewers ( In Millions )','Percent']).hide_index()
+    print('*')
+    #TODO: Can't get the 10 season image - try again
+    dfi.export(top_eight_episode, f'../images/scraping_bubble/top_eight_episode_season_{season_number}_conditional.png')
+    print('*')
+
     # Adding X, Y coordinates scale :
     top_eight_episode['Y Position'] = [1] * len(top_eight_episode)
     list_x = list(range(0, len(top_eight_episode)))
     top_eight_episode['X Position'] = list_x
 
-    top_eight_episode['episode'] = top_eight_episode['episode'].astype(str)
-    dfi.export(top_eight_episode, '../images/scraping_bubble/top_eight_episode_season_10.png')
+    #top_eight_episode.dtypes
 
-    top_eight_episode.dtypes
-    print('*')
 
     return top_eight_episode
 
@@ -121,14 +143,14 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
     # create a labels list for each bubble
     label = [f'Episode {i} <br> {j} Million <br> {k}' for i, j, k in
              zip(top_eight_episode['episode'],
-                 top_eight_episode['viewers'],
+                 top_eight_episode['Viewers ( In Millions )'],
                  top_eight_episode['Percent'])]
 
     # Before passing the array of viewers into into the scatter plot we should
     # cast into float since it was string:
     # [3.56, 3.96 ,4.23, 4.3, 4.4, 4.44, 4.65, 4.79]
     # but the numbers are very close to each other, so we would like to rescale it using Exponential function:
-    top_eight_episode['viewers'] = 60 ** top_eight_episode['viewers'].astype(float)
+    top_eight_episode['viewers'] = 60 ** top_eight_episode['Viewers ( In Millions )'].astype(float)
 
     # Now we got a better separation between the numbers so we will be able to see the difference sizes much more
     # clearly, output:
@@ -139,7 +161,7 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
                      y=list(top_eight_episode.loc[:, 'Y Position']),
                      color=top_eight_episode['episode'],
                      color_discrete_sequence=pal_,
-                     size=top_eight_episode['viewers'],
+                     size=top_eight_episode['Viewers ( In Millions )'],
                      text=label,
                      size_max=50)
     fig.update_layout(width=900, height=320, margin=dict(t=50, l=0, r=0, b=0), showlegend=False)
@@ -198,5 +220,5 @@ if __name__ == '__main__':
     groups_by_season = res.groupby('season')
     for season_number, mini_df_season_number in groups_by_season:
         res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,season_number)
-        visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2,season_number)
-        print('*')
+        #visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2,season_number)
+    print('*')
