@@ -5,6 +5,19 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pywaffle import Waffle
 
+
+# **************************************************************************************************************
+# Function  name: relevant_columns_highlighter
+# input: adding styles to our dataframe
+# return value:
+# ****************************************************************************************************************
+def relevant_columns_highlighter(x):
+    my_style = "color: #1E90FF;" \
+               "font-weight: bold;"
+    return [my_style] * len(x)
+
+
+
 # ******************************************************************************************************************
 # Function  name: Helper function  - convert_to_number
 # input:
@@ -74,15 +87,21 @@ def creating_the_input_data_for_the_multi_whaffle_chart(df):
         res2['Amount_of_investments']=res2['Amount_of_investments'].apply(lambda x:int(x))
         # Adding another column - "Percent" :
         res2['Percent'] = [round(i * 100 / sum(res2.Amount_of_investments), 1) for i in res2.Amount_of_investments]
-        res2['Percent'] = (res2['Percent']).apply(lambda x: "{0:.2f}".format(x))  # + '%'
-        # Adding another column - "season_number" :
-        res2['season_number'] = season_number
-        dfi.export(res2, 'multi_whaffle_10.png')
+        res2['Percent'] = (res2['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
+        res2['Investor_name'] = res2['Investor_name'].apply(lambda x: x.replace('\n', ' '))
 
+        # Adding another column - "season_number" :
+        res2['season_number']= season_number
+        res2['season_number'] = res2['season_number'].apply(lambda x: int(x))
+
+        res2 = df.style.apply(func=relevant_columns_highlighter, subset=['Amount_of_investments','Percent']).hide_index()
+        #dfi.export(df_11, filename='output_images/bold_color_without_index.png')
+        dfi.export(res2, filename='multi_whaffle_1_condifinal.png')
+        print('*')
         print(f'Season #{season_number}:\n {res2}')
-        df_shark['Investor_name'] = df_shark['Investor_name'].apply(lambda x: x.replace('\n', ' '))
+        #df_shark['Investor_name'] = df_shark['Investor_name'].apply(lambda x: x.replace('\n', ' '))
         df_shark = pd.concat([df_shark, res2], axis=0)
-        df_shark['season_number'] = df_shark['season_number'].apply(lambda x: int(x))
+        #df_shark['season_number'] = df_shark['season_number'].apply(lambda x: int(x))
         print('*' * 50)
     # In the next row we will export data into CSV
     # df_shark.to_csv(fr'C:\Users\Gil\PycharmProjects\building-blocks-python\Coding_in_finance\shark_output\{season_number}.csv', index = False)
