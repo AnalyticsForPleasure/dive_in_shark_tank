@@ -19,9 +19,11 @@ def get_number_of_investments_each_season_over_the_years(df):
     res.sort_values(by='season_number', inplace=True, ascending=True)
 
     # TOD0: Need to check the diff + pct_change()
-    res['Change Percentage %'] = res['Amount_of_investments_over_each_season'].diff()
-    res['Change Percentage %'] = res['Change Percentage %'].pct_change()
-    res['Change Percentage %'].round(2)
+    df['Percentage Difference'] = df['Amount_of_investments_over_each_season'].pct_change() * 100 #+ '%'
+
+    # res['Change Percentage %'] = res['Amount_of_investments_over_each_season'].diff()
+    # res['Change Percentage %'] = res['Change Percentage %'].pct_change()
+    # res['Change Percentage %'].round(2)
     dfi.export(res, '../images/area_chart/result_investment_per_season.png')
     print('*')
 
@@ -84,8 +86,12 @@ def creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(table)
     for season,amount_investment in zip(number_of_season,number_of_investments_over_each_season):
         plt.text(x=season - offset_x, y=amount_investment + offset_y, s=amount_investment, ha='left', va='bottom', fontdict=fontdict_input)
 
+    # settings
+    plt.rcParams["figure.figsize"] = (21, 8)
     # Save the image
     plt.savefig('area_chart.jpg',dpi=450, bbox_inches='tight')
+    # settings
+
 
     # Displaying the chart
     plt.show()
@@ -95,6 +101,8 @@ if __name__ == '__main__':
     pd.set_option('display.max_rows', 900)
 
     df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')  # Ten seasons
+    column_headers = list(df.columns.values)
+    print('*')
 
     my_result =get_number_of_investments_each_season_over_the_years(df)
     #creating_gradient_area_bar_chart_for_the_investments_over_the_seasons(my_result)
