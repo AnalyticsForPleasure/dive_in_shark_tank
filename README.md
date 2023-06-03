@@ -80,7 +80,9 @@ The next thing that we would like to dive into is to find out for each deal whic
 ## Industries that Have Experienced Temperature Changes over 10 Seasons
 
 Over the course of the first ten years, the show has been televised, numerous pitch presentations have taken place in front of the sharks panel. These pitches spanned various industries, ranging from “online services” to the "baby and Child care" sector. As a result, our upcoming research aims to uncover the industries that have experienced shifts in temperature over the ten-year period. By addressing this question, we can identify which industries have reached their peak or declined from their peak.
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/051c330a-187a-474c-a855-6655258140c3)
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/0bdd6110-3eaf-4931-b27b-181f99074266)
+
 
 
 
