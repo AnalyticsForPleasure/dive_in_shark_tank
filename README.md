@@ -123,7 +123,9 @@ Hence, I have chosen to visualize these findings by creating a 3-D plot. The plo
 2.	The names of the industries in which the sharks have made investments over the years will form the second dimension.
 3.	The third dimension will represent the amount of investment made by each shark in a particular industry.
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/d1e7edcc-5462-4ed4-a5c4-c1f7dff2f06f)
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/8c45ac2a-fb30-445e-9eef-7cbd433ad536)
+
 
 
 Based on the animated chart we created, it is evident that the "Food and Beverage" industry stands out as one of the most appealing sectors for investment, according to the sharks. Additionally, two other industries, namely "Health" and "Lifestyle," are also recognized by the sharks and hold considerable allure.
