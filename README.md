@@ -27,22 +27,7 @@ The dataset we are working with contains information about the "Shark Tank" seri
 
 The column names include: 
 
-- [x] Season                            
-- [x] No. in series
-- [x] Episode
-- [x] Company
-- [x] Description
-- [x] Deal
-- [x] Industry
-- [x] Entrepreneur Gender
-- [x] ASK
-- [x] DEAL
-- [x] Barbara Corcoran
-- [x] Mark Cuban
-- [x] Lori Greiner
-- [x] Robert Herjavec
-- [x] Daymond john 
-
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/9f9be082-00ef-4844-8fb0-330163f23da2)
 
 ## Number of Investments Made over the Seasons
 Our initial objective is to analyse the dataset and gather information on the total number of investments made by the panel of sharks in each season. To accomplish this, we aim to present this data visually using an area chart.
@@ -56,9 +41,8 @@ Upon examining the data, we observe a significant surge in the number of investm
 ## Investment Percentage: Sharks vs. Rest of the Panel in Each Season
 One intriguing aspect we want to delve into is the level of investment made by each shark or guest on the show. Essentially, we aim to determine how much personal capital each individual is willing to invest in new entrepreneurial ideas. To shed light on this question, we conducted an analysis for each season, spanning from the first to the tenth. The chart below allows us to examine the percentage of investments made by a specific shark or guest in each season individual
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/a280c684-2525-4342-ad40-39aafb2fce31)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/f83289b9-de27-4f3c-9c15-fc158960f0eb)
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/fea0bf23-a17d-4a68-ae9a-440213fcf743)
 
 
 <p align="center">
@@ -96,7 +80,9 @@ The next thing that we would like to dive into is to find out for each deal whic
 ## Industries that Have Experienced Temperature Changes over 10 Seasons
 
 Over the course of the first ten years, the show has been televised, numerous pitch presentations have taken place in front of the sharks panel. These pitches spanned various industries, ranging from “online services” to the "baby and Child care" sector. As a result, our upcoming research aims to uncover the industries that have experienced shifts in temperature over the ten-year period. By addressing this question, we can identify which industries have reached their peak or declined from their peak.
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/051c330a-187a-474c-a855-6655258140c3)
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/0bdd6110-3eaf-4931-b27b-181f99074266)
+
 
 
 
@@ -117,8 +103,7 @@ Episode
 Number of viewers (audience)
 After retrieving this data, we proceeded to select the top 8 episodes for each season. We then visualized the results using a multi-bubble chart design created with Plotly.
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/ab27cb66-d96d-4cfd-9003-e238ca79dafe)
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/c842ed9a-a41b-468f-98fa-70a614a1c10b)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ce1c7d9-48f0-4f9d-8235-bedc4e897da0)
 
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/06908ef2-6ef8-41bf-ad4d-e8aff974618f)
@@ -131,8 +116,8 @@ After retrieving this data, we proceeded to select the top 8 episodes for each s
 As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
 
 In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. For example, Daymond has invested his funds in three different fields: electronics (650,000 USD), novelties (500,000 USD), and specialty food (380 USD).
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ec8d609-5f7e-4fe1-b504-a6f5443c2e43)
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/8c45ac2a-fb30-445e-9eef-7cbd433ad536)
 
 I would like to explore the investment patterns of each shark in different industries. By analyzing the data, I aim to determine which shark has a strong preference for investing in the technology sector, or who shows a particular interest in the food industry. Additionally, I want to identify any industries that the sharks tend to avoid investing in or where they show minimal interest. Moreover, I am curious to know which shark has made the highest number of investments in total. 
 Hence, I have chosen to visualize these findings by creating a 3-D plot. The plot will incorporate three dimensions:
@@ -140,15 +125,14 @@ Hence, I have chosen to visualize these findings by creating a 3-D plot. The plo
 2.	The names of the industries in which the sharks have made investments over the years will form the second dimension.
 3.	The third dimension will represent the amount of investment made by each shark in a particular industry.
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ec8d609-5f7e-4fe1-b504-a6f5443c2e43)
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/d1e7edcc-5462-4ed4-a5c4-c1f7dff2f06f)
+
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/8c45ac2a-fb30-445e-9eef-7cbd433ad536)
+
 
 
 Based on the animated chart we created, it is evident that the "Food and Beverage" industry stands out as one of the most appealing sectors for investment, according to the sharks. Additionally, two other industries, namely "Health" and "Lifestyle," are also recognized by the sharks and hold considerable allure.
 
-
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/fa1f56af-f8f6-4ef1-893a-fd89e81c7951)
-
+![animation_3d_output](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/13046d22-9c9c-422e-953c-8f4c27c067f7)
 
 
 
