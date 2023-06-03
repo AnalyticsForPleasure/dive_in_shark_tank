@@ -27,22 +27,7 @@ The dataset we are working with contains information about the "Shark Tank" seri
 
 The column names include: 
 
-- [x] Season                            
-- [x] No. in series
-- [x] Episode
-- [x] Company
-- [x] Description
-- [x] Deal
-- [x] Industry
-- [x] Entrepreneur Gender
-- [x] ASK
-- [x] DEAL
-- [x] Barbara Corcoran
-- [x] Mark Cuban
-- [x] Lori Greiner
-- [x] Robert Herjavec
-- [x] Daymond john 
-
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/9f9be082-00ef-4844-8fb0-330163f23da2)
 
 ## Number of Investments Made over the Seasons
 Our initial objective is to analyse the dataset and gather information on the total number of investments made by the panel of sharks in each season. To accomplish this, we aim to present this data visually using an area chart.
