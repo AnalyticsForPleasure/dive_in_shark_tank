@@ -41,9 +41,8 @@ Upon examining the data, we observe a significant surge in the number of investm
 ## Investment Percentage: Sharks vs. Rest of the Panel in Each Season
 One intriguing aspect we want to delve into is the level of investment made by each shark or guest on the show. Essentially, we aim to determine how much personal capital each individual is willing to invest in new entrepreneurial ideas. To shed light on this question, we conducted an analysis for each season, spanning from the first to the tenth. The chart below allows us to examine the percentage of investments made by a specific shark or guest in each season individual
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/a280c684-2525-4342-ad40-39aafb2fce31)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/f83289b9-de27-4f3c-9c15-fc158960f0eb)
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/fea0bf23-a17d-4a68-ae9a-440213fcf743)
 
 
 <p align="center">
