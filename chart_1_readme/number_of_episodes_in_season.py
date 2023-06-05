@@ -9,6 +9,20 @@ from matplotlib.colors import LinearSegmentedColormap # in order to add the grad
 # input:
 # return value:
 # ****************************************************************************************************************
+# Example 4: Make Negative Numbers Red
+# red if negative
+def color_negative_red(number):
+    # returns a string with the css property 'color: red' for negative strings, black otherwise
+    print('*')
+    color = 'red' if number < 0 else 'black'
+    #color = 'red' if number < 0 else 'black'
+    return f'color: {color}'
+
+# **************************************************************************************************************
+# Function  name: get_number_of_investments_each_season_over_the_years
+# input:
+# return value:
+# ****************************************************************************************************************
 def get_number_of_investments_each_season_over_the_years(df):
     all_the_deals_closed = df.loc[df['Deal'] == 'Yes', :]
     res = all_the_deals_closed['Season'].value_counts().to_frame()
@@ -18,14 +32,17 @@ def get_number_of_investments_each_season_over_the_years(df):
     res['season_number'] = res['season_number'].apply(lambda x: int(x))
     res.sort_values(by='season_number', inplace=True, ascending=True)
     print('*')
-
-
+    # Creating a column which calculate the diff of each row:
     res['Percentage Difference'] = res['Amount of investments made over each season'].pct_change() * 100
-    res['Percentage Difference'] =res['Percentage Difference'].apply(lambda x: "{0:.2f}".format(x)) + '%'
+    res['Percentage Difference'] =res['Percentage Difference'].apply(lambda x: "{0:.2f}".format(x)) #+ '%'
     res.reset_index(inplace=True)
     res['Percentage Difference'][0]= '-'
     print('*')
-    dfi.export(res, '../images/area_chart/result_investment_per_season.png')
+
+    # looks at each value to find negative numbers
+    style_by_coloring_negative_red =res.style.applymap(color_negative_red)
+    #dfi.export(res, filename='output_images/Make_Negative_Numbers_Red.png')
+    dfi.export(style_by_coloring_negative_red, filename='../images/area_chart/style_by_coloring_negative_red.png')
     print('*')
 
     return res
