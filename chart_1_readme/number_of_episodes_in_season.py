@@ -14,16 +14,17 @@ def get_number_of_investments_each_season_over_the_years(df):
     res = all_the_deals_closed['Season'].value_counts().to_frame()
     res = res.reset_index(level=0)
     res.rename(columns={res.columns[0]: 'season_number'}, inplace=True)
-    res.rename(columns={res.columns[1]: 'Amount_of_investments_over_each_season'}, inplace=True)
+    res.rename(columns={res.columns[1]: 'Amount of investments made over each season'}, inplace=True)
     res['season_number'] = res['season_number'].apply(lambda x: int(x))
     res.sort_values(by='season_number', inplace=True, ascending=True)
+    print('*')
 
-    # TOD0: Need to check the diff + pct_change()
-    df['Percentage Difference'] = df['Amount_of_investments_over_each_season'].pct_change() * 100 #+ '%'
 
-    # res['Change Percentage %'] = res['Amount_of_investments_over_each_season'].diff()
-    # res['Change Percentage %'] = res['Change Percentage %'].pct_change()
-    # res['Change Percentage %'].round(2)
+    res['Percentage Difference'] = res['Amount of investments made over each season'].pct_change() * 100
+    res['Percentage Difference'] =res['Percentage Difference'].apply(lambda x: "{0:.2f}".format(x)) + '%'
+    res.reset_index(inplace=True)
+    res['Percentage Difference'][0]= '-'
+    print('*')
     dfi.export(res, '../images/area_chart/result_investment_per_season.png')
     print('*')
 
