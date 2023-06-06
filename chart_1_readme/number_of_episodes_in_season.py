@@ -11,13 +11,15 @@ from matplotlib.colors import LinearSegmentedColormap # in order to add the grad
 # ****************************************************************************************************************
 # Example 4: Make Negative Numbers Red
 # red if negative
-def color_negative_red(number):
-    # returns a string with the css property 'color: red' for negative strings, black otherwise
+def color_negative_red(val):
     print('*')
-    color = 'red' if number < 0 else 'black'
-    #color = 'red' if number < 0 else 'black'
-    return f'color: {color}'
-
+    """
+    Takes a scalar and returns a string with
+    the css property `'color: red'` for negative
+    strings, black otherwise.
+    """
+    color = 'red' if val < 0 else 'black'
+    return 'color: %s' % color
 # **************************************************************************************************************
 # Function  name: get_number_of_investments_each_season_over_the_years
 # input:
@@ -28,19 +30,24 @@ def get_number_of_investments_each_season_over_the_years(df):
     res = all_the_deals_closed['Season'].value_counts().to_frame()
     res = res.reset_index(level=0)
     res.rename(columns={res.columns[0]: 'season_number'}, inplace=True)
-    res.rename(columns={res.columns[1]: 'Amount of investments made over each season'}, inplace=True)
+    res.rename(columns={res.columns[1]: 'Amount of investments made'}, inplace=True)
     res['season_number'] = res['season_number'].apply(lambda x: int(x))
     res.sort_values(by='season_number', inplace=True, ascending=True)
     print('*')
     # Creating a column which calculate the diff of each row:
-    res['Percentage Difference'] = res['Amount of investments made over each season'].pct_change() * 100
+    res['Percentage Difference'] = res['Amount of investments made'].pct_change() * 100
     res['Percentage Difference'] =res['Percentage Difference'].apply(lambda x: "{0:.2f}".format(x)) #+ '%'
     res.reset_index(inplace=True)
-    res['Percentage Difference'][0]= '-'
-    print('*')
+    res['Percentage Difference'][0]= '0'
+    # #res = res.iloc[:5,] #
+    # res = res.iloc[5:,]
 
+    #res['Percentage Difference'] = res['Percentage Difference'].astype(float)
+    #print('*')
     # looks at each value to find negative numbers
-    style_by_coloring_negative_red =res.style.applymap(color_negative_red)
+    #res['Percentage Difference'] = res['Percentage Difference'].apply(lambda x: 'color: red' if x < 0 else '')
+    print('*')
+    style_by_coloring_negative_red =res.style.applymap(color_negative_red)#.hide_index()
     #dfi.export(res, filename='output_images/Make_Negative_Numbers_Red.png')
     dfi.export(style_by_coloring_negative_red, filename='../images/area_chart/style_by_coloring_negative_red.png')
     print('*')
