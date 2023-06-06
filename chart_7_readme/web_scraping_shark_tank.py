@@ -107,6 +107,7 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     top_eight_episode['Viewers ( In Millions )'] = (top_eight_episode['viewers']).apply(
         lambda x: "{0:.2f}".format(x))  # +'M'
     top_eight_episode['Viewers ( In Millions )'] = top_eight_episode['Viewers ( In Millions )'].astype(float)
+    top_eight_episode['Viewers ( In Millions )'] = top_eight_episode['Viewers ( In Millions )'].apply(lambda x: "{0:.2f}".format(x))
     print('*')
 
     top_eight_episode['episode'] = top_eight_episode['episode'].astype(str)
