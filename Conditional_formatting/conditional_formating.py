@@ -12,8 +12,13 @@ if __name__ == '__main__':
                        'C': np.arange(10),
                        'D': [-5,np.nan,5,np.nan,-5,5,-5,np.nan,np.nan,5]})
     df
+    print('*')
 
-
+    # Example 13 : bold column  + color column + removing index column - gil's approach
+    rows_to_mark = {1,2,3,9} # name of the index
+    highlighted_df = df.style.apply(lambda x: ['background: lightgreen' if x.name in rows_to_mark else '' for i in x],axis=1)
+    dfi.export(highlighted_df, filename='output_images/highlighted_rows_test.png')
+    print('*')
 ########################################################################################################################
     # Example 1: Remove row indices
     # df_1 = df.style.hide(axis="index")
@@ -171,7 +176,7 @@ if __name__ == '__main__':
 
 
 ########################################################################################################################
-    # Example 13 : bold column  + color column + removing index column
+    # Example 13 : bold column  + color column + removing index column - gil's approach
     data = {'A': [1, 2, 3],
             'B': [4, 5, 6],
             'C': [7, 8, 9]}
@@ -185,5 +190,3 @@ if __name__ == '__main__':
     dfi.export(highlighted_df, filename='output_images/highlighted_rows.png')
 
 
-    rows_to_mark = {'1,2,3'}#, 'row_2'}
-    highlighted_df = df.style.apply(lambda x: ['background: lightgreen' if x.name in rows_to_mark else '' for i in x],axis=1)
