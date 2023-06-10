@@ -21,9 +21,7 @@ Today, we will be working with a dataset obtained from the Kaggle website. The d
 
 This televised format, showcasing angel investment (where high net worth individuals invest their own money and time), provides valuable insights into discussions on equity, funding, valuation, and growth strategies.
 
-Now, let's take a brief look at the angel investor process.
-
-The dataset we are working with contains information about the "Shark Tank" series aired on the ABC channel. It comprises 18 columns and 960 rows, forming a matrix of 450 * 18. Each row provides information about an aspiring entrepreneur venturing into the business world.
+The dataset we are working with contains information about the "Shark Tank" series aired on the ABC channel. It comprises 18 columns and 960 rows, forming a matrix of 900 * 27. Each row provides information about an aspiring entrepreneur venturing into the business world.
 
 The column names include: 
 
