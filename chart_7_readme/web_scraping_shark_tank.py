@@ -101,13 +101,13 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     # Adding another column - "Percent" :
     top_eight_episode['Percent'] = [round(i * 100 / sum(top_eight_episode.viewers), 1) for i in
                                     top_eight_episode.viewers]
-    top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x)) + '%'
+    top_eight_episode['Percent'] = (top_eight_episode['Percent']).apply(lambda x: "{0:.2f}".format(x))  # + '%'
     # Adding "M" for the viewers:
-
     top_eight_episode['Viewers ( In Millions )'] = (top_eight_episode['viewers']).apply(
         lambda x: "{0:.2f}".format(x))  # +'M'
     top_eight_episode['Viewers ( In Millions )'] = top_eight_episode['Viewers ( In Millions )'].astype(float)
-    top_eight_episode['Viewers ( In Millions )'] = top_eight_episode['Viewers ( In Millions )'].apply(lambda x: "{0:.2f}".format(x))
+    top_eight_episode['Viewers ( In Millions )'] = top_eight_episode['Viewers ( In Millions )'].apply(
+        lambda x: "{0:.2f}".format(x))
     print('*')
 
     top_eight_episode['episode'] = top_eight_episode['episode'].astype(str)
@@ -127,7 +127,7 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
     top_eight_episode['Y Position'] = [1] * len(top_eight_episode)
     list_x = list(range(0, len(top_eight_episode)))
     top_eight_episode['X Position'] = list_x
-
+    print('*')
     # top_eight_episode.dtypes
 
     return top_eight_episode
@@ -138,7 +138,7 @@ def scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_ase
 # input:
 # return value:
 # ******************************************************************************************************************
-def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eight_episode, season_number_scrap):
+def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eight_episode, season_number_scraped):
     pal_ = list(sns.color_palette(palette='crest', n_colors=len(top_eight_episode)).as_hex())
     # cmap = sns.color_palette("Blues", as_cmap=True).as_hex()
     # Now' let's go to the charting part:
@@ -153,7 +153,7 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
     # [3.56, 3.96 ,4.23, 4.3, 4.4, 4.44, 4.65, 4.79]
     # but the numbers are very close to each other, so we would like to rescale it using Exponential function:
     top_eight_episode['viewers'] = 60 ** top_eight_episode['Viewers ( In Millions )'].astype(float)
-
+    print('*')
     # Now we got a better separation between the numbers so we will be able to see the difference sizes much more
     # clearly, output:
     # [1117720.497, 5344673.95, 15368911.80 , 20210218.95, 29886015.61, 34948361.49, 79471337.11, 137425181.99)
@@ -163,7 +163,7 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
                      y=list(top_eight_episode.loc[:, 'Y Position']),
                      color=top_eight_episode['episode'],
                      color_discrete_sequence=pal_,
-                     size=top_eight_episode['Viewers ( In Millions )'],
+                     size=top_eight_episode['viewers'],  # size=top_eight_episode['Viewers ( In Millions )'],
                      text=label,
                      size_max=50)
     fig.update_layout(width=900, height=320, margin=dict(t=50, l=0, r=0, b=0), showlegend=False)
@@ -173,36 +173,24 @@ def visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(top_eigh
     fig.update_layout({'plot_bgcolor': 'white',
                        'paper_bgcolor': 'white'})
 
-    # fig.update_layout(
-    #     title=dict(text=f'{season_number_scrap} Season.jpg', font=dict(size=50), automargin=True, yref='paper',)
-    #
-    # )
-
-    # fig.update_layout(
-    #     title={
-    #         'text' : f'{season_number_scrap} Season',
-    #         'x':0.5,
-    #         'y':0.9,
-    #         'xanchor': 'center'
-    #         'yanchor': 'top',
-    #         'title_font_color':'Gray',
-    #     })
-
     fig.update_layout(
         title={
-            'text': f'The 8 episodes with the highest audience viewership - {season_number_scrap} Season',
-            'font': {
-                'size': 34,  # Adjust the size of the title font
-                'family': 'Franklin Gothic Medium Cond',  # Specify the font family
-                'color': 'gray'
-            },
+            'text': f'The 8 episodes with the highest rating - Season {season_number_scraped}',
             'y': 0.9,
             'x': 0.5,
+            'font_size': 34,
             'xanchor': 'center',
-            'yanchor': 'top'})
+            'yanchor': 'top',
+            'font_color': "Gray",
+            'font_family': "Franklin Gothic"
+        }
+        # font_family = "Courier New"
 
-    fig.write_image(f'scraping_Bubble_{season_number_scrap}_season.jpg')
-    fig.show()
+        # title_font_color="red",
+    )
+
+    fig.write_image(f'scraping_Bubble_{season_number_scraped}_season_final.jpg')
+    # fig.show()
     print('*')
 
 
@@ -223,5 +211,5 @@ if __name__ == '__main__':
     for season_number, mini_df_season_number in groups_by_season:
         res_2 = scaling_the_scraped_data_in_order_to_get_to_the_top_n_viewers_episode_in_aseason(mini_df_season_number,
                                                                                                  season_number)
-        # visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2,season_number)
+        visualizing_the_number_of_viewers_for_each_season_with_bubble_chart(res_2, season_number)
         print('*')
