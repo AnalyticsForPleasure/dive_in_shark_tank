@@ -114,12 +114,6 @@ After retrieving this data, we proceeded to select the top 8 episodes for each s
 
 
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/06908ef2-6ef8-41bf-ad4d-e8aff974618f)
-
-
-
-
-
 ## Sharks' Preferred Industries for Investments
 As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
 
