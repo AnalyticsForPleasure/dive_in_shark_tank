@@ -105,6 +105,15 @@ After retrieving this data, we proceeded to select the top 8 episodes for each s
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ce1c7d9-48f0-4f9d-8235-bedc4e897da0)
 
 
+
+![advanced_blurred_background](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/c537fc18-8027-4f90-8d05-67c42ac8fd0f)
+
+
+
+
+
+
+
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/06908ef2-6ef8-41bf-ad4d-e8aff974618f)
 
 
@@ -117,7 +126,6 @@ As we are aware, in each episode of every season, the sharks make multiple inves
 In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. 
 
 
-![Uploading advanced_blurred_background.gif…]()
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ec8d609-5f7e-4fe1-b504-a6f5443c2e43)
 
