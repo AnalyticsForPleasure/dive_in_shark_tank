@@ -18,7 +18,7 @@ def animate(i, input_heights):
     ax.set_xticklabels(shark_names)
     ax.yaxis.set_ticks(y)
     ax.set_yticklabels(industries_names)
-    ax.zaxis.set_ticks(range(1, 15))
+    ax.zaxis.set_ticks(np.arange(1, 30,step = 5) )# ,step = 5
 
     ax.set_xlabel("Shark Name", labelpad=12, fontsize=17, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
     ax.set_ylabel("Industry name", labelpad=12, fontsize=17, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
@@ -35,6 +35,7 @@ if __name__ == '__main__':
     # Generating synthetic data:
     data = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/part_one_3d.csv')
     data = data.loc[1:4,'BarbaraCorcoran':"KevinO'Leary"]
+
     # converting_dataframe_to_numpy
     actual_bar_heights = data.to_numpy()
     #actual_bar_heights = np.random.randint(low=1, high=10, size=(len(industries_names), len(shark_names)))
@@ -44,9 +45,8 @@ if __name__ == '__main__':
                       index=industries_names)
 
     # The coordinates of the anchor point of the bars:
-
-    x = [idx + 0.5 for idx, _ in enumerate(shark_names, start=1)]
-    y = [idx + 0.5 for idx, _ in enumerate(industries_names, start=1)]
+    x = [idx + 3 for idx, _ in enumerate(shark_names, start=1)]
+    y = [idx + 3 for idx, _ in enumerate(industries_names, start=1)]
 
     xx_table, yy_table = np.meshgrid(x, y)
 
@@ -55,12 +55,12 @@ if __name__ == '__main__':
     colors = np.array(['skyblue', 'dodgerblue', 'lightseagreen','slategray','navy','lightsteelblue'] * len(industries_names)).reshape((4, 6))
     # dx, dy, dz : float or array-like
     # The width, depth, and height of the bars, respectively:
-    bar_width = 0.2
+    bar_width = 0.4 #0.2
     bar_depth = 0.4
 
     width_vec = [bar_width] * xx_table.shape[1]
     depth_vec = [bar_depth] * yy_table.shape[1]
-    heights_vec = actual_bar_heights  # In this line I need to give the real values.
+    heights_vec = actual_bar_heights
 
     fig = plt.figure(figsize=(12, 12))
     ax = plt.axes(projection='3d')
