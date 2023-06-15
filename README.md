@@ -12,7 +12,7 @@
 * [Shark Preferences: Multi-Entrepreneur vs. Solo Entrepreneur Investments](#Shark-Preferences-Multi-Entrepreneur-vs-Solo-Entrepreneur-Investments)
 * [Average Equity of Each Shark over Closing Deals, Divided by Gender](#Average-Equity-of-Each-Shark-over-Closing-Deals,-Divided-by-Gender)
 * [Industries that Have Experienced Temperature Changes over 10 Seasons](#Industries-that-Have-Experienced-Temperature-Changes-over-10-Seasons)
-* [Top episodes with the highest rating  – Using Web Scraping](#Top-episodes-with-the-highest-rating –Using-Web-Scraping)
+* [Top episodes with the highest rating – Using Web Scraping](#Top-episodes-with-the-highest-rating–Using-Web-Scraping)
 * [Sharks' Preferred Industries for Investments](#sharks-preferred-industries-for-investments)
 
 
@@ -105,7 +105,10 @@ After retrieving this data, we proceeded to select the top 8 episodes for each s
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ce1c7d9-48f0-4f9d-8235-bedc4e897da0)
 
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/06908ef2-6ef8-41bf-ad4d-e8aff974618f)
+
+![advanced_blurred_background](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/c537fc18-8027-4f90-8d05-67c42ac8fd0f)
+
+
 
 
 
@@ -115,6 +118,9 @@ After retrieving this data, we proceeded to select the top 8 episodes for each s
 As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
 
 In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. 
+
+
+
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ec8d609-5f7e-4fe1-b504-a6f5443c2e43)
 
 
