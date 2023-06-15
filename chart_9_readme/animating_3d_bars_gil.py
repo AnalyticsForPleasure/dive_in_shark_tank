@@ -18,11 +18,11 @@ def animate(i, input_heights):
     ax.set_xticklabels(shark_names)
     ax.yaxis.set_ticks(y)
     ax.set_yticklabels(industries_names)
-    ax.zaxis.set_ticks(np.arange(1, 30,step = 5) )# ,step = 5
+    ax.zaxis.set_ticks(np.arange(1, 30,step = 5))
 
-    ax.set_xlabel("Shark Name", labelpad=12, fontsize=17, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
-    ax.set_ylabel("Industry name", labelpad=12, fontsize=17, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
-    ax.set_zlabel("Number of investments made", labelpad=17, fontsize=25, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
+    ax.set_xlabel("Shark Name",  fontsize=20 , fontweight='heavy',fontname='Franklin Gothic Medium Cond') # labelpad=12,
+    ax.set_ylabel("Industry name",  fontsize=20, fontweight='heavy',fontname='Franklin Gothic Medium Cond') # labelpad=12,
+    ax.set_zlabel("Number of investments made", fontsize=25, fontweight='heavy',fontname='Franklin Gothic Medium Cond') # labelpad=17
     ax.set_title("Investments per Industry per shark",fontsize=36, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
 
     return output,
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     colors = np.array(['skyblue', 'dodgerblue', 'lightseagreen','slategray','navy','lightsteelblue'] * len(industries_names)).reshape((4, 6))
     # dx, dy, dz : float or array-like
     # The width, depth, and height of the bars, respectively:
-    bar_width = 0.4 #0.2
+    bar_width = 0.4
     bar_depth = 0.4
 
     width_vec = [bar_width] * xx_table.shape[1]

@@ -4,6 +4,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+
+# **************************************************************************************************************
+# Function  name: relevant_columns_highlighter
+# input: adding styles to our dataframe
+# return value:
+# ****************************************************************************************************************
+def relevant_columns_highlighter(x):
+    my_style = "color: #1E90FF;" \
+               "font-weight: bold;"
+    return [my_style] * len(x)
+
+
+
 # ******************************************************************************************************************
 # Function  name: creating_the_data_for_the_3d_plot
 # input:
@@ -35,7 +48,10 @@ def creating_the_data_for_the_3d_plot(df):
     shark_table.fillna(0, inplace=True)  # Replace NA values with zeros
     shark_table.iloc[:, 1:7] = shark_table.iloc[:, 1:7].apply(lambda x: x.astype(int))
     shark_table.drop(0, axis=0, inplace=True)  # remove the first row
-    dfi.export(shark_table, '../images/3D_chart/shark_table.png')
+
+
+    # shark_table = shark_table.style.apply(func=relevant_columns_highlighter, subset=['Industry']).hide_index()
+    # dfi.export(shark_table, '../images/3D_chart/shark_table_condition.png')
     shark_table.to_csv('part_one_3d.csv', index = False)
     print('*')
     return shark_table
@@ -110,8 +126,10 @@ if __name__ == '__main__':
 
 
     df = pd.read_excel(r'C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/shark_tank_data.xlsx',sheet_name='Sheet1')
+    column_headers = list(df.columns.values)
+
     print('*')
 
     res = creating_the_data_for_the_3d_plot(df)
-    creating_the_3D_chart(res)
+    #creating_the_3D_chart(res)
     print('*')
