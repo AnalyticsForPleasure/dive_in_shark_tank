@@ -29,7 +29,7 @@ def animate(i, input_heights):
 
 
 if __name__ == '__main__':
-    shark_names = ['Barbra', 'Mark', 'Lori']
+    shark_names = ['Barbra', 'Mark', 'Lori','Robert','Daymond','Kevin']
     industries_names = ['Health', 'Food', 'LifeStyle', 'Children']
 
     # Generating synthetic data:
@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
     zz = np.zeros((len(industries_names), len(shark_names)))
     # skyblue', 'dodgerblue', 'lightseagreen','palegreen','navy'
-    colors = np.array(['skyblue', 'dodgerblue', 'lightseagreen'] * len(industries_names)).reshape((4, 3))
+    colors = np.array(['skyblue', 'dodgerblue', 'lightseagreen','slategray','navy','lightsteelblue'] * len(industries_names)).reshape((4, 3))
     # dx, dy, dz : float or array-like
     # The width, depth, and height of the bars, respectively:
     bar_width = 0.2
