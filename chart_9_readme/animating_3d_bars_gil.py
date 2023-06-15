@@ -20,10 +20,10 @@ def animate(i, input_heights):
     ax.set_yticklabels(industries_names)
     ax.zaxis.set_ticks(range(1, 15))
 
-    ax.set_xlabel("Shark Name", labelpad=12)
-    ax.set_ylabel("Industry name", labelpad=12)
-    ax.set_zlabel("Price", labelpad=12)
-    ax.set_title("Investments per Industry per shark")
+    ax.set_xlabel("Shark Name", labelpad=12, fontsize=17, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
+    ax.set_ylabel("Industry name", labelpad=12, fontsize=17, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
+    ax.set_zlabel("Number of investments made", labelpad=17, fontsize=25, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
+    ax.set_title("Investments per Industry per shark",fontsize=36, fontweight='heavy',fontname='Franklin Gothic Medium Cond')
 
     return output,
 
