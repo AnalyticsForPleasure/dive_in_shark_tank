@@ -95,4 +95,4 @@ if __name__ == '__main__':
 
     # Save the stitched GIF file
     output_file = "C:/Users/Gil/PycharmProjects/dive_into_shark_tank/chart_9_readme/images/final_animation/stitched"
-    imageio.mimsave(output_file, frames, format='GIF', duration=0.1)  # stiching the gifs - ODO: find out why thr last  row isn't working
+    imageio.mimsave(output_file, frames, format='GIF', duration=0.1)  # stiching the gifs - TODO: find out why the last row isn't working
