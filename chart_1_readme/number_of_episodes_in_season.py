@@ -9,7 +9,7 @@ from matplotlib.colors import LinearSegmentedColormap # in order to add the grad
 # input:
 # return value:
 # ****************************************************************************************************************
-# Example 4: Make Negative Numbers Red
+# Example 4: Make Negative Numbers red + positive number in green
 # red if negative
 def color_negative_red(value):
     if isinstance(value, str) :
@@ -39,7 +39,7 @@ def get_number_of_investments_each_season_over_the_years(df):
     print('*')
     # Creating a column which calculate the diff of each row:
     res['Percentage Difference'] = res['Amount of investments made'].pct_change() * 100
-    res['Percentage Difference'] =res['Percentage Difference'].apply(lambda x: "{0:.2f}".format(x)) #+ '%'
+    res['Percentage Difference'] =res['Percentage Difference'].apply(lambda x: "{0:.2f}".format(x))
     res.reset_index(inplace=True)
     res['Percentage Difference'][0]= '0'
     print('*')
@@ -48,9 +48,6 @@ def get_number_of_investments_each_season_over_the_years(df):
     print('*')
 
     res['Percentage Difference'] = res['Percentage Difference'].astype(float)
-    print('*')
-
-    #res['Percentage Difference'] = res['Percentage Difference'].apply(lambda x: "{0:.2f}".format(x))
     print('*')
 
     d = dict.fromkeys(res.select_dtypes('float').columns, "{:.2f}" + '%')
