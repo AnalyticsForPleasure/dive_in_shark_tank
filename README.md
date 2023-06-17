@@ -136,7 +136,8 @@ Hence, I have chosen to visualize these findings by creating a 3-D plot. The plo
 
 Based on the animated chart we created, it is evident that the "Food and Beverage" industry stands out as one of the most appealing sectors for investment, according to the sharks. Additionally, two other industries, namely "Health" and "Lifestyle," are also recognized by the sharks and hold considerable allure.
 
-![anim_2](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/8d22e143-5292-4b09-a2fd-79e75858dbbd)
+![anim_3](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/5389b1ae-61cf-466d-aec4-5dc0c206c153)
+
 
 
 
