@@ -55,8 +55,8 @@ if __name__ == '__main__':
     colors = np.array(['skyblue', 'dodgerblue', 'lightseagreen','slategray','navy','lightsteelblue'] * len(industries_names)).reshape((4, 6))
     # dx, dy, dz : float or array-like
     # The width, depth, and height of the bars, respectively:
-    bar_width = 0.4
-    bar_depth = 0.4
+    bar_width = 0.2
+    bar_depth = 0.2
 
     width_vec = [bar_width] * xx_table.shape[1]
     depth_vec = [bar_depth] * yy_table.shape[1]
@@ -68,8 +68,10 @@ if __name__ == '__main__':
     for idx, (xx, yy, heights, color) in enumerate(zip(xx_table, yy_table, actual_bar_heights, colors)):
         anim = FuncAnimation(fig,
                              func=animate,
-                             frames=20,
+                             frames=4, # 20
                              fargs=(heights,),
                              interval=100,
                              blit=True)
         anim.save(f'images/anim_{idx}.gif', writer='imagemagick')
+
+        # matplotlib.animation.FileMovieWriter(*args, **kwargs)[source] TODO: "FileMovieWriter" - Ask gil if to add this line?
