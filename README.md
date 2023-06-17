@@ -31,7 +31,8 @@ The column names include:
 Our initial objective is to analyse the dataset and gather information on the total number of investments made by the panel of sharks in each season. To accomplish this, we aim to present this data visually using an area chart.
 
 Upon examining the data, we observe a significant surge in the number of investments over the years, particularly between the second and sixth seasons. During this period, there was a remarkable increase of almost  ~250%, with investments rising from 19 in the second season to 66 in the sixth season.
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/5ab3a929-12d8-4ec0-be68-ca13dcb23c2b)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/dab12a42-6f52-43a3-9d8d-b2f028f18822)
+
 
 
 
