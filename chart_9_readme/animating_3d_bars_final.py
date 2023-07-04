@@ -3,13 +3,12 @@ from matplotlib.animation import FuncAnimation
 import numpy as np
 import pandas as pd
 import imageio
-# import PIL
-from PIL import Im
 
 # In the line below, we used a global variable which will affect 2 element on the animation:
 # 1) Height to the bar.
 # 2) number of frames in each gif.
-NUM_FRAMES_PER_GIF = 4
+NUM_FRAMES_PER_GIF = 8
+
 
 # We will  gradually update and increase the heights of bars on each frame "i" by ( input_heights / NUM_FRAMES_PER_GIF)/
 # Each generated gif file refers to different industry.
@@ -46,7 +45,7 @@ if __name__ == '__main__':
     industries_names = ['Health', 'Food', 'LifeStyle', 'Children']
 
     # Generating synthetic data:
-    data = pd.read_csv('C:/Users/Gil/PycharmProjects/dive_into_shark_tank/Data/part_one_3d.csv')
+    data = pd.read_csv('data/part_one_3d.csv')
     data = data.loc[1:4, 'BarbaraCorcoran':"KevinO'Leary"]
 
     # converting_dataframe_to_numpy
@@ -69,8 +68,8 @@ if __name__ == '__main__':
         industries_names)).reshape((4, 6))
     # dx, dy, dz : float or array-like
     # The width, depth, and height of the bars, respectively:
-    bar_width = 0.1
-    bar_depth = 0.2
+    bar_width = 0.3
+    bar_depth = 0.5
 
     width_vec = [bar_width] * xx_table.shape[1]
     depth_vec = [bar_depth] * yy_table.shape[1]
@@ -86,15 +85,15 @@ if __name__ == '__main__':
                              fargs=(heights,),
                              interval=100,
                              blit=True)
-        anim.save(f'anim_{idx}.gif', writer='imagemagick')
+        anim.save(f'images/anim_{idx}.gif', writer='imagemagick')
 
     ########################################################################################################################
-    # stiching the gifs
-    #List of GIF files to stitch together
-    gif_files = ["C:/Users/Gil/PycharmProjects/dive_into_shark_tank/chart_9_readme/images/anim_0.gif",
-                 "C:/Users/Gil/PycharmProjects/dive_into_shark_tank/chart_9_readme/images/anim_1.gif",
-                 "C:/Users/Gil/PycharmProjects/dive_into_shark_tank/chart_9_readme/images/anim_2.gif",
-                 "C:/Users/Gil/PycharmProjects/dive_into_shark_tank/chart_9_readme/images/anim_3.gif"]
+    # Stitching the gifs
+    # List of GIF files to stitch together
+    gif_files = ["images/anim_0.gif",
+                 "images/anim_1.gif",
+                 "images/anim_2.gif",
+                 "images/anim_3.gif"]
 
     # Create a list to hold the frames of the stitched GIF
     frames = []
@@ -107,7 +106,7 @@ if __name__ == '__main__':
         frames.extend(gif_frames)
 
     # Save the stitched GIF file
-    output_file = "C:/Users/Gil/PycharmProjects/dive_into_shark_tank/chart_9_readme/images/final_animation/stitched"
+    output_file = "final_animation/stitched.gif"
     imageio.mimsave(output_file, frames, format='GIF',
                     duration=0.1)  # stiching the gifs
     print('*')
