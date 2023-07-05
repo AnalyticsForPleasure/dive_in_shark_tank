@@ -27,18 +27,30 @@ The column names include:
 
 ![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/9f9be082-00ef-4844-8fb0-330163f23da2)
 
-## Number of Investments Made over the Seasons
-Our initial objective is to analyse the dataset and gather information on the total number of investments made by the panel of sharks in each season. To accomplish this, we aim to present this data visually using an area chart.
 
-Upon examining the data, we observe a significant surge in the number of investments over the years, particularly between the second and sixth seasons. During this period, there was a remarkable increase of almost  ~250%, with investments rising from 19 in the second season to 66 in the sixth season.
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/31714743-f20a-4341-95f8-9f0efe2e2eb6)
+## Sharks' Preferred Industries for Investments
+As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
 
-
+In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. 
 
 
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2865a78f-c59f-4e52-8452-c883aa7481ca)
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ec8d609-5f7e-4fe1-b504-a6f5443c2e43)
 
+
+I would like to explore the investment patterns of each shark in different industries. By analyzing the data, I aim to determine which shark has a strong preference for investing in the technology sector, or who shows a particular interest in the food industry. Additionally, I want to identify any industries that the sharks tend to avoid investing in or where they show minimal interest. Moreover, I am curious to know which shark has made the highest number of investments in total. 
+Hence, I have chosen to visualize these findings by creating a 3-D plot. The plot will incorporate three dimensions:
+1.	The names of each shark will represent the first dimension.
+2.	The names of the industries in which the sharks have made investments over the years will form the second dimension.
+3.	The third dimension will represent the amount of investment made by each shark in a particular industry.
+
+
+
+
+
+Based on the animated chart we created, it is evident that the "Food and Beverage" industry stands out as one of the most appealing sectors for investment, according to the sharks. Additionally, two other industries, namely "Health" and "Lifestyle," are also recognized by the sharks and hold considerable allure.
+
+![anim_3](chart_9_readme/final_animation/stitched.gif)
 
 ## Investment Percentage: Sharks vs. Rest of the Panel in Each Season
 One intriguing aspect we want to delve into is the level of investment made by each shark or guest on the show. Essentially, we aim to determine how much personal capital each individual is willing to invest in new entrepreneurial ideas. To shed light on this question, we conducted an analysis for each season, spanning from the first to the tenth. The chart below allows us to examine the percentage of investments made by a specific shark or guest in each season individual
@@ -117,33 +129,21 @@ After retrieving this data, we proceeded to select the top 8 episodes for each s
 
 
 
-## Sharks' Preferred Industries for Investments
-As we are aware, in each episode of every season, the sharks make multiple investment decisions to become stakeholders in various projects or companies. These companies operate in diverse industries such as toys and games, electronics, specialty food, and more.
-
-In our upcoming analysis, we aim to gain a deeper understanding of the specific industries in which the sharks have chosen to invest with entrepreneurs. Furthermore, we have included the monetary amounts that each shark has decided to invest in these industries. 
 
 
 
-![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2ec8d609-5f7e-4fe1-b504-a6f5443c2e43)
 
+## Number of Investments Made over the Seasons
+Our initial objective is to analyse the dataset and gather information on the total number of investments made by the panel of sharks in each season. To accomplish this, we aim to present this data visually using an area chart.
 
-I would like to explore the investment patterns of each shark in different industries. By analyzing the data, I aim to determine which shark has a strong preference for investing in the technology sector, or who shows a particular interest in the food industry. Additionally, I want to identify any industries that the sharks tend to avoid investing in or where they show minimal interest. Moreover, I am curious to know which shark has made the highest number of investments in total. 
-Hence, I have chosen to visualize these findings by creating a 3-D plot. The plot will incorporate three dimensions:
-1.	The names of each shark will represent the first dimension.
-2.	The names of the industries in which the sharks have made investments over the years will form the second dimension.
-3.	The third dimension will represent the amount of investment made by each shark in a particular industry.
+Upon examining the data, we observe a significant surge in the number of investments over the years, particularly between the second and sixth seasons. During this period, there was a remarkable increase of almost  ~250%, with investments rising from 19 in the second season to 66 in the sixth season.
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/31714743-f20a-4341-95f8-9f0efe2e2eb6)
 
 
 
 
 
-Based on the animated chart we created, it is evident that the "Food and Beverage" industry stands out as one of the most appealing sectors for investment, according to the sharks. Additionally, two other industries, namely "Health" and "Lifestyle," are also recognized by the sharks and hold considerable allure.
-
-![anim_3](chart_9_readme/final_animation/stitched.gif)
-
-
-
-
+![image](https://github.com/AnalyticsForPleasure/dive_into_shark_tank/assets/28948369/2865a78f-c59f-4e52-8452-c883aa7481ca)
 
 
 
