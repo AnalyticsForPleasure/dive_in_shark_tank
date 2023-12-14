@@ -58,7 +58,11 @@ def which_industries_have_gotten_hotter_or_colder_over_10_seasons(df_2):
 
 
 # Helper function for the -"slope_chart_for_industries_have_gotten_hotter_or_colder_over_6_seasons"
-
+# **************************************************************************************************************
+# Function  name: newline
+# input:
+# return value:
+# ****************************************************************************************************************
 def newline(p1, p2, color='black'):
     ax = plt.gca()
     l = mlines.Line2D([p1[0], p2[0]], [p1[1], p2[1]], color='darkblue' if p1[1] - p2[1] > 0 else 'deepskyblue', marker='o',
